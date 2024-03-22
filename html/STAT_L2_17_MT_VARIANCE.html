@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_17_MT_VARIANCE.css"	rel="stylesheet" type="text/css" />
+<title>Calculate the Variance in MINITAB</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'menubar', t0:2000, t1:2100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:2000, t1:2100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'wsheet', t0:2000, t1:2100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:33180, t1:33847, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:368, dx:-218},
+			{ID:'pointer', t0:33180, t1:33847, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:240, dy:-209},
+			{ID:'stat', t0:33850, t1:33950, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:34180, t1:34847, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:150, dx:105},
+			{ID:'pointer', t0:34180, t1:34847, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:31, dy:20},
+			{ID:'bshl', t0:34850, t1:34950, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'menu2', t0:34850, t1:34950, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:35180, t1:35847, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:255, dx:235},
+			{ID:'pointer', t0:35180, t1:35847, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:51, dy:21},
+			{ID:'sdshl', t0:35850, t1:35950, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sdshl', t0:38290, t1:38390, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'menu2', t0:38290, t1:38390, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'bshl', t0:38290, t1:38390, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'stat', t0:38290, t1:38390, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'sdswin', t0:38290, t1:38390, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:38790, t1:39457, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:490, dx:-83},
+			{ID:'pointer', t0:38790, t1:39457, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:72, dy:65},
+			{ID:'box1', t0:39460, t1:39560, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:39790, t1:40457, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:407, dx:-119},
+			{ID:'pointer', t0:39790, t1:40457, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:137, dy:-29},
+			{ID:'c1hl', t0:40460, t1:40560, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'box2', t0:40460, t1:40560, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:42570, t1:43237, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:288, dx:105},
+			{ID:'pointer', t0:42570, t1:43237, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:108, dy:242},
+			{ID:'statb', t0:43240, t1:43340, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'c1hl', t0:43240, t1:43340, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'sdswin2', t0:43570, t1:43670, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:44880, t1:45547, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:393, dx:-232},
+			{ID:'pointer', t0:44880, t1:45547, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:350, dy:-242},
+			{ID:'cbox1', t0:45550, t1:45650, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:45880, t1:46547, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:161, dx:265},
+			{ID:'cbox2', t0:46550, t1:46650, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:46880, t1:47547, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:426, dx:-265},
+			{ID:'pointer', t0:46880, t1:47547, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:108, dy:50},
+			{ID:'cbox3', t0:47550, t1:47650, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:50200, t1:50867, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:161, dx:265},
+			{ID:'pointer', t0:50200, t1:50867, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:158, dy:139},
+			{ID:'ok1', t0:50870, t1:50970, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'cbox1', t0:51200, t1:51300, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'cbox3', t0:51200, t1:51300, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'cbox2', t0:51200, t1:51300, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'ok1', t0:51200, t1:51300, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'sdswin2', t0:51200, t1:51300, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pointer', t0:51530, t1:52197, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:426, dx:-36},
+			{ID:'pointer', t0:51530, t1:52197, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:297, dy:86},
+			{ID:'ok2', t0:52200, t1:52300, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ok2', t0:52530, t1:52630, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'statb', t0:52530, t1:52630, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box2', t0:52530, t1:52630, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box1', t0:52530, t1:52630, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'sdswin', t0:52530, t1:52630, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pointer', t0:52530, t1:52630, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'vari1', t0:52530, t1:52630, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ckey', t0:58520, t1:59187, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:456, dx:-40},
+			{ID:'psign', t0:59190, t1:59857, dt:667, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ekey', t0:59860, t1:60527, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:594, dx:-40},
+			{ID:'ckey', t0:60030, t1:60197, dt:167, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:122, dy:5},
+			{ID:'psign', t0:60030, t1:60197, dt:167, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:138, dy:5},
+			{ID:'ekey', t0:60030, t1:60197, dt:167, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:122, dy:5},
+			{ID:'ckey', t0:60200, t1:60367, dt:167, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:127, dy:-5},
+			{ID:'psign', t0:60200, t1:60367, dt:167, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:143, dy:-5},
+			{ID:'ekey', t0:60200, t1:60367, dt:167, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:127, dy:-5},
+			{ID:'ckey', t0:61930, t1:62030, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'psign', t0:61930, t1:62030, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'ekey', t0:61930, t1:62030, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'sdswin3', t0:61930, t1:62030, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:61930, t1:62030, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:62430, t1:63097, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:390, dx:5},
+			{ID:'pointer', t0:62430, t1:63097, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:383, dy:-255},
+			{ID:'pointer', t0:65440, t1:66107, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:395, dx:-2},
+			{ID:'pointer', t0:65440, t1:66107, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:128, dy:222},
+			{ID:'statb', t0:66110, t1:66210, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sdswin4', t0:67920, t1:68020, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:68420, t1:69087, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:393, dx:-232},
+			{ID:'pointer', t0:68420, t1:69087, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:350, dy:-242},
+			{ID:'cbox4', t0:69090, t1:69190, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:69420, t1:70087, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:108, dy:35},
+			{ID:'cbox5', t0:70090, t1:70190, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:70420, t1:71087, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:143, dy:82},
+			{ID:'cbox6', t0:71090, t1:71190, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:71420, t1:72087, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:161, dx:142},
+			{ID:'pointer', t0:71420, t1:72087, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:225, dy:-51},
+			{ID:'cbox7', t0:72090, t1:72190, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:72420, t1:73087, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:303, dx:123},
+			{ID:'pointer', t0:72420, t1:73087, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:174, dy:-32},
+			{ID:'cbox8', t0:73090, t1:73190, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:76380, t1:77047, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:142, dy:155},
+			{ID:'ok1', t0:77050, t1:77150, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ok1', t0:77380, t1:77480, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'cbox8', t0:77380, t1:77480, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'cbox7', t0:77380, t1:77480, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'cbox6', t0:77380, t1:77480, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'cbox5', t0:77380, t1:77480, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'cbox4', t0:77380, t1:77480, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'sdswin4', t0:77380, t1:77480, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pointer', t0:77710, t1:78377, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:426, dx:-36},
+			{ID:'pointer', t0:77710, t1:78377, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:297, dy:86},
+			{ID:'ok2', t0:78380, t1:78480, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ok2', t0:78750, t1:78850, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'statb', t0:78750, t1:78850, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'sdswin3', t0:78750, t1:78850, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pointer', t0:78750, t1:78850, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'vari2', t0:79080, t1:79180, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1}
+	];
+
+
+smA.filename = '../audio/stat_l2_17_mt_variance';
+smA.soundLength = 91193;
+
+	ccText = [ '',
+				'In this slide, you will calculate the Variance using Minitab.',
+				'For the Variance, we won&apos;t be able to utilize the Column Statistics dialog box we',
+				'used earlier to calculate the median, mean, and range. Instead, we will use',
+				'&quot;Store Descriptive Statistics&quot; routine. This routine can be used to',
+				'calculate most, if not all, of the values in this part of the module.',
+				'One difference with this function is that the results are written directly to',
+				'the worksheet instead of to the Session Window. Using our GemWeight data, in Minitab',
+				'go to Stat > Basic Statistics > Store Descriptive Statistics.',
+				'For Variables, we will select the GemWeight column.',
+				'Click on the Statistics button.',
+				'Uncheck Mean and N nonmissing and then select Variance.',
+				'Click OK twice and Minitab writes the result to the worksheet.',
+				'This same routine can be used to calculate many other statistics.',
+				'Press Control-E to return to the previous dialog box.',
+				'Make sure GemWeight is in the Variables box',
+				'and then click on the Statistics button again.',
+				'For this run, we will select Mean,',
+				'Standard Deviation, Median, Range and N total.',
+				'Click OK twice and Minitab once again',
+				'writes the results to the worksheet. The versatility of',
+				'this routine is demonstrated here, showing that it can',
+				'be used for all of the calculations demonstrated so far.'
+			];
+
+ccTime = [ 0, 2000, 6079, 10683, 15113, 19658, 23971, 28517, 33180, 38790, 42570, 44880, 50200, 54295, 58520, 62430, 65440, 68420, 71859, 76380, 79080, 81465, 83807, 9999];
+
+
+
+	slideID = 'STAT_L2_17_MT_VARIANCE';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='menubar'>	<div id='menubar_ie'>	<img id='menubar' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_menubar.png' alt='' />	</div>	</div>
+					<div id='wsheet'>	<div id='wsheet_ie'>	<img id='wsheet' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_wsheet.png' alt='' />	</div>	</div>
+					<div id='stat'>	<div id='stat_ie'>	<img id='stat' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_stat.png' alt='' />	</div>	</div>
+					<div id='menu2'>	<div id='menu2_ie'>	<img id='menu2' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_menu2.png' alt='' />	</div>	</div>
+					<div id='bshl'>	<div id='bshl_ie'>	<img id='bshl' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_bshl.png' alt='' />	</div>	</div>
+					<div id='sdshl'>	<div id='sdshl_ie'>	<img id='sdshl' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_sdshl.png' alt='' />	</div>	</div>
+					<div id='sdswin'>	<div id='sdswin_ie'>	<img id='sdswin' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_sdswin.png' alt='' />	</div>	</div>
+					<div id='box1'>	<div id='box1_ie'>	<img id='box1' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_box1.png' alt='' />	</div>	</div>
+					<div id='c1hl'>	<div id='c1hl_ie'>	<img id='c1hl' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_c1hl.png' alt='' />	</div>	</div>
+					<div id='box2'>	<div id='box2_ie'>	<img id='box2' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_box2.png' alt='' />	</div>	</div>
+					<div id='sdswin2'>	<div id='sdswin2_ie'>	<img id='sdswin2' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_sdswin2.png' alt='' />	</div>	</div>
+					<div id='cbox1'>	<div id='cbox1_ie'>	<img id='cbox1' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_cbox1.png' alt='' />	</div>	</div>
+					<div id='cbox3'>	<div id='cbox3_ie'>	<img id='cbox3' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_cbox3.png' alt='' />	</div>	</div>
+					<div id='cbox2'>	<div id='cbox2_ie'>	<img id='cbox2' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_cbox2.png' alt='' />	</div>	</div>
+					<div id='vari1'>	<div id='vari1_ie'>	<img id='vari1' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_vari1.png' alt='' />	</div>	</div>
+					<div id='sdswin3'>	<div id='sdswin3_ie'>	<img id='sdswin3' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_sdswin3.png' alt='' />	</div>	</div>
+					<div id='sdswin4'>	<div id='sdswin4_ie'>	<img id='sdswin4' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_sdswin4.png' alt='' />	</div>	</div>
+					<div id='cbox4'>	<div id='cbox4_ie'>	<img id='cbox4' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_cbox4.png' alt='' />	</div>	</div>
+					<div id='cbox5'>	<div id='cbox5_ie'>	<img id='cbox5' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_cbox5.png' alt='' />	</div>	</div>
+					<div id='cbox6'>	<div id='cbox6_ie'>	<img id='cbox6' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_cbox6.png' alt='' />	</div>	</div>
+					<div id='cbox7'>	<div id='cbox7_ie'>	<img id='cbox7' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_cbox7.png' alt='' />	</div>	</div>
+					<div id='cbox8'>	<div id='cbox8_ie'>	<img id='cbox8' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_cbox8.png' alt='' />	</div>	</div>
+					<div id='vari2'>	<div id='vari2_ie'>	<img id='vari2' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_vari2.png' alt='' />	</div>	</div>
+					<div id='ok1'>	<div id='ok1_ie'>	<img id='ok1' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_ok1.png' alt='' />	</div>	</div>
+					<div id='ok2'>	<div id='ok2_ie'>	<img id='ok2' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_ok2.png' alt='' />	</div>	</div>
+					<div id='statb'>	<div id='statb_ie'>	<img id='statb' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_statb.png' alt='' />	</div>	</div>
+					<div id='pointer'>	<div id='pointer_ie'>	<img id='pointer' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_pointer.png' alt='' />	</div>	</div>
+					<div id='psign'>	<div id='psign_ie'>	<img id='psign' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_psign.png' alt='' />	</div>	</div>
+					<div id='ckey'>	<div id='ckey_ie'>	<img id='ckey' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_ckey.png' alt='' />	</div>	</div>
+					<div id='ekey'>	<div id='ekey_ie'>	<img id='ekey' class='altPNG' src='../images/STAT_L2_17_MT_VARIANCE/STAT_L2_17_MT_VARIANCE_ekey.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Calculate the Variance in MINITAB</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

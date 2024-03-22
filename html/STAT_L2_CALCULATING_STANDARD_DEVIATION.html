@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_CALCULATING_STANDARD_DEVIATION.css"	rel="stylesheet" type="text/css" />
+<title>Calculating the Standard Deviation</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'bkgr1', t0:2000, t1:2500, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'bkgr2', t0:2330, t1:2863, dt:533, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hlines', t0:2800, t1:3167, dt:367, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:257},
+			{ID:'vlines1', t0:3070, t1:3437, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:129, y:241, bh:129},
+			{ID:'vlines2', t0:3070, t1:3437, dt:367, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:129},
+			{ID:'hl1', t0:3440, t1:3973, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row1', t0:3440, t1:3540, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl2', t0:3640, t1:4173, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row2', t0:3640, t1:3740, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl3', t0:3840, t1:4373, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row3', t0:3840, t1:3940, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl4', t0:4040, t1:4573, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row4', t0:4040, t1:4140, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl5', t0:4240, t1:4773, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row5', t0:4240, t1:4340, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl6', t0:4440, t1:4973, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row6', t0:4440, t1:4540, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl7', t0:4640, t1:5173, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row7', t0:4640, t1:4740, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl8', t0:4840, t1:5373, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row8', t0:4840, t1:4940, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl10', t0:5040, t1:5573, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row10', t0:5040, t1:5140, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl11', t0:5240, t1:5773, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row11', t0:5240, t1:5340, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl12', t0:5440, t1:5973, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row12', t0:5440, t1:5540, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl13', t0:5640, t1:6173, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row13', t0:5640, t1:5740, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl14', t0:5840, t1:6373, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row14', t0:5840, t1:5940, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl15', t0:6040, t1:6573, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row15', t0:6040, t1:6140, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl16', t0:6240, t1:6773, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row16', t0:6240, t1:6340, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl17', t0:8190, t1:8557, dt:367, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'ans1', t0:8190, t1:8290, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl18', t0:11020, t1:11387, dt:367, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'ans2', t0:11020, t1:11120, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'equa1', t0:24640, t1:25007, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl19', t0:27670, t1:28037, dt:367, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'ans3', t0:27670, t1:27770, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'equa2', t0:33860, t1:34227, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl20', t0:35710, t1:36077, dt:367, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'ans4', t0:35710, t1:35810, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1}
+	];
+
+
+smA.filename = '../audio/stat_l2_calculating_standard_deviation';
+smA.soundLength = 53029;
+
+	ccText = [ '',
+				'As you might recall from this example, we had seven',
+				'observations. We calculated a population variance',
+				'of six squared units and a sample variance of',
+				'seven squared units. From these, we can easily take the square roots and',
+				'obtain the standard deviations of each. If, in fact, this was population',
+				'data, we could calculate a population standard deviation as simply the square',
+				'root of six or 2.44.',
+				'If this was, indeed, sample data pulled from a',
+				'population, we could calculate our sample standard deviation as',
+				'the square root of seven or 2',
+				'point 64. Notice, the sample standard deviation is slightly bigger than',
+				'the population because this sample standard deviation is simply an estimate',
+				'and estimates are always larger than actual numbers for standard deviations.'
+			];
+
+ccTime = [ 0, 2000, 5186, 8189, 11020, 15478, 19937, 24640, 27670, 30314, 33860, 35710, 39889, 43849, 9999];
+
+
+
+	slideID = 'STAT_L2_CALCULATING_STANDARD_DEVIATION';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='bkgr1'>	<div id='bkgr1_ie'>	<img id='bkgr1' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_bkgr1.png' alt='' />	</div>	</div>
+					<div id='bkgr2'>	<div id='bkgr2_ie'>	<img id='bkgr2' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_bkgr2.png' alt='' />	</div>	</div>
+					<div id='row10'>	<div id='row10_ie'>	<img id='row10' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_row10.png' alt='' />	</div>	</div>
+					<div id='row11'>	<div id='row11_ie'>	<img id='row11' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_row11.png' alt='' />	</div>	</div>
+					<div id='row15'>	<div id='row15_ie'>	<img id='row15' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_row15.png' alt='' />	</div>	</div>
+					<div id='row16'>	<div id='row16_ie'>	<img id='row16' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_row16.png' alt='' />	</div>	</div>
+					<div id='row12'>	<div id='row12_ie'>	<img id='row12' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_row12.png' alt='' />	</div>	</div>
+					<div id='row13'>	<div id='row13_ie'>	<img id='row13' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_row13.png' alt='' />	</div>	</div>
+					<div id='row14'>	<div id='row14_ie'>	<img id='row14' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_row14.png' alt='' />	</div>	</div>
+					<div id='hlines'></div>
+					<div id='vlines1'></div>
+					<div id='vlines2'></div>
+					<div id='row1'>	<div id='row1_ie'>	<img id='row1' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_row1.png' alt='' />	</div>	</div>
+					<div id='row2'>	<div id='row2_ie'>	<img id='row2' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_row2.png' alt='' />	</div>	</div>
+					<div id='row3'>	<div id='row3_ie'>	<img id='row3' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_row3.png' alt='' />	</div>	</div>
+					<div id='row4'>	<div id='row4_ie'>	<img id='row4' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_row4.png' alt='' />	</div>	</div>
+					<div id='row5'>	<div id='row5_ie'>	<img id='row5' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_row5.png' alt='' />	</div>	</div>
+					<div id='row6'>	<div id='row6_ie'>	<img id='row6' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_row6.png' alt='' />	</div>	</div>
+					<div id='row7'>	<div id='row7_ie'>	<img id='row7' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_row7.png' alt='' />	</div>	</div>
+					<div id='row8'>	<div id='row8_ie'>	<img id='row8' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_row8.png' alt='' />	</div>	</div>
+					<div id='ans1'>	<div id='ans1_ie'>	<img id='ans1' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_ans1.png' alt='' />	</div>	</div>
+					<div id='ans2'>	<div id='ans2_ie'>	<img id='ans2' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_ans2.png' alt='' />	</div>	</div>
+					<div id='ans3'>	<div id='ans3_ie'>	<img id='ans3' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_ans3.png' alt='' />	</div>	</div>
+					<div id='ans4'>	<div id='ans4_ie'>	<img id='ans4' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_ans4.png' alt='' />	</div>	</div>
+					<div id='equa1'>	<div id='equa1_ie'>	<img id='equa1' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_equa1.png' alt='' />	</div>	</div>
+					<div id='equa2'>	<div id='equa2_ie'>	<img id='equa2' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_equa2.png' alt='' />	</div>	</div>
+					<div id='hl1'>	<div id='hl1_ie'>	<img id='hl1' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl1.png' alt='' />	</div>	</div>
+					<div id='hl2'>	<div id='hl2_ie'>	<img id='hl2' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl2.png' alt='' />	</div>	</div>
+					<div id='hl3'>	<div id='hl3_ie'>	<img id='hl3' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl3.png' alt='' />	</div>	</div>
+					<div id='hl4'>	<div id='hl4_ie'>	<img id='hl4' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl4.png' alt='' />	</div>	</div>
+					<div id='hl5'>	<div id='hl5_ie'>	<img id='hl5' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl5.png' alt='' />	</div>	</div>
+					<div id='hl6'>	<div id='hl6_ie'>	<img id='hl6' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl6.png' alt='' />	</div>	</div>
+					<div id='hl7'>	<div id='hl7_ie'>	<img id='hl7' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl7.png' alt='' />	</div>	</div>
+					<div id='hl8'>	<div id='hl8_ie'>	<img id='hl8' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl8.png' alt='' />	</div>	</div>
+					<div id='hl10'>	<div id='hl10_ie'>	<img id='hl10' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl10.png' alt='' />	</div>	</div>
+					<div id='hl11'>	<div id='hl11_ie'>	<img id='hl11' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl11.png' alt='' />	</div>	</div>
+					<div id='hl12'>	<div id='hl12_ie'>	<img id='hl12' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl12.png' alt='' />	</div>	</div>
+					<div id='hl13'>	<div id='hl13_ie'>	<img id='hl13' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl13.png' alt='' />	</div>	</div>
+					<div id='hl14'>	<div id='hl14_ie'>	<img id='hl14' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl14.png' alt='' />	</div>	</div>
+					<div id='hl15'>	<div id='hl15_ie'>	<img id='hl15' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl15.png' alt='' />	</div>	</div>
+					<div id='hl16'>	<div id='hl16_ie'>	<img id='hl16' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl16.png' alt='' />	</div>	</div>
+					<div id='hl17'>	<div id='hl17_ie'>	<img id='hl17' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl17.png' alt='' />	</div>	</div>
+					<div id='hl18'>	<div id='hl18_ie'>	<img id='hl18' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl18.png' alt='' />	</div>	</div>
+					<div id='hl19'>	<div id='hl19_ie'>	<img id='hl19' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl19.png' alt='' />	</div>	</div>
+					<div id='hl20'>	<div id='hl20_ie'>	<img id='hl20' class='altPNG' src='../images/STAT_L2_CALCULATING_STANDARD_DEVIATION/STAT_L2_CALCULATING_STANDARD_DEVIATION_hl20.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Calculating the Standard Deviation</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

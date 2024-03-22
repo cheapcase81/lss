@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_EQUATION_COMPARISON.css"	rel="stylesheet" type="text/css" />
+<title>Comparing Population and Sample Equations</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'hline', t0:5700, t1:5967, dt:267, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:574},
+			{ID:'vline', t0:5970, t1:6237, dt:267, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:291},
+			{ID:'pop', t0:6240, t1:6507, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'samp', t0:6540, t1:6807, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'mean1', t0:8210, t1:8477, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'mean2', t0:8870, t1:9137, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'vari1', t0:9590, t1:9857, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'vari2', t0:11170, t1:11437, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sd1', t0:11500, t1:11767, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sd2', t0:12470, t1:12737, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl1', t0:19230, t1:19530, dt:300, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl1', t0:20010, t1:20110, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl2', t0:20010, t1:20310, dt:300, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl2', t0:21410, t1:21510, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl3', t0:21410, t1:21710, dt:300, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl3', t0:24890, t1:24990, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl4', t0:30500, t1:30800, dt:300, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl4', t0:31100, t1:31200, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl5', t0:31100, t1:31400, dt:300, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl5', t0:32210, t1:32310, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl6', t0:32210, t1:32510, dt:300, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl6', t0:33160, t1:33260, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1}
+	];
+
+
+smA.filename = '../audio/stat_l2_equation_comparison';
+smA.soundLength = 39367;
+
+	ccText = [ '',
+				'We can summarize these fancy calculations that we just learned about in this',
+				'little table here. As we compare',
+				'population parameters to',
+				'sample statistics,',
+				'we can see that they&apos;re very',
+				'close to each other, but conceptually they&apos;re very',
+				'different. In particular, all of the population parameters --',
+				'σ2 and σ -- are OKTG. We don&apos;t ever really',
+				'know them, so in absence of knowing them,',
+				'we actually calculate our sample statistics - x-',
+				'bar, s2 and s -- to infer about those population parameters that we don&apos;t know about.'
+			];
+
+ccTime = [ 0, 2000, 5700, 8210, 9590, 11170, 12470, 15705, 20010, 24890, 27695, 30500, 9999];
+
+
+
+	slideID = 'STAT_L2_EQUATION_COMPARISON';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='hline'></div>
+					<div id='vline'></div>
+					<div id='pop'>	<div id='pop_ie'>	<img id='pop' class='altPNG' src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_pop.png' alt='' />	</div>	</div>
+					<div id='samp'>	<div id='samp_ie'>	<img id='samp' class='altPNG' src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_samp.png' alt='' />	</div>	</div>
+					<div id='mean1'>	<div id='mean1_ie'>	<img id='mean1' class='altPNG' src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_mean1.png' alt='' />	</div>	</div>
+					<div id='mean2'>	<div id='mean2_ie'>	<img id='mean2' class='altPNG' src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_mean2.png' alt='' />	</div>	</div>
+					<div id='vari1'>	<div id='vari1_ie'>	<img id='vari1' class='altPNG' src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_vari1.png' alt='' />	</div>	</div>
+					<div id='vari2'>	<div id='vari2_ie'>	<img id='vari2' class='altPNG' src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_vari2.png' alt='' />	</div>	</div>
+					<div id='sd1'>	<div id='sd1_ie'>	<img id='sd1' class='altPNG' src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_sd1.png' alt='' />	</div>	</div>
+					<div id='sd2'>	<div id='sd2_ie'>	<img id='sd2' class='altPNG' src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_sd2.png' alt='' />	</div>	</div>
+					<div id='hl1'>	<div id='hl1_ie'>	<img id='hl1' class='altPNG' src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl1.png' alt='' />	</div>	</div>
+					<div id='hl2'>	<div id='hl2_ie'>	<img id='hl2' class='altPNG' src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl2.png' alt='' />	</div>	</div>
+					<div id='hl3'>	<div id='hl3_ie'>	<img id='hl3' class='altPNG' src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl3.png' alt='' />	</div>	</div>
+					<div id='hl4'>	<div id='hl4_ie'>	<img id='hl4' class='altPNG' src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl4.png' alt='' />	</div>	</div>
+					<div id='hl5'>	<div id='hl5_ie'>	<img id='hl5' class='altPNG' src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl5.png' alt='' />	</div>	</div>
+					<div id='hl6'>	<div id='hl6_ie'>	<img id='hl6' class='altPNG' src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl6.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Comparing Population and Sample Equations</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

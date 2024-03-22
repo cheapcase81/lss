@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_DPU_AND_DPMO_01.css"	rel="stylesheet" type="text/css" />
+<title>DPU and DPMO - Computation</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'curve', t0:4240, t1:4740, dt:500, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:281},
+			{ID:'text1', t0:9450, t1:9783, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'text2', t0:22670, t1:23003, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lines', t0:24470, t1:24770, dt:300, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:113, y:242, bh:113},
+			{ID:'defects', t0:26430, t1:26830, dt:400, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'equa1', t0:39050, t1:39750, dt:700, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:174},
+			{ID:'equa2', t0:62130, t1:62463, dt:333, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:37},
+			{ID:'equa2a', t0:62460, t1:62860, dt:400, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:98},
+			{ID:'equa3', t0:82510, t1:83377, dt:867, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:177},
+			{ID:'equa4', t0:97770, t1:98637, dt:867, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:227}
+	];
+
+
+smA.filename = '../audio/stat_l2_dpu_and_dpmo_01';
+smA.soundLength = 107076;
+
+	ccText = [ '',
+				'Let&apos;s just pretend for one second that our',
+				'Gemomatic process was spitting out great looking',
+				'gems for us and we collected a random sample of',
+				'1000 gems and those 1000 gems came from all sorts of operators and',
+				'shifts and raw materials and maybe even different equipment,',
+				'as well. And let&apos;s just assume that out of that 1000-piece sample',
+				'50 of the gems were either too',
+				'large or too small.',
+				'Now I don&apos;t know about you, but I might want a particularly large',
+				'gem, but let&apos;s just assume it&apos;s out of spec anyway. So if we',
+				'have 50 defects out of 1000 units, we can calculate something called a',
+				'DPU -- a defects per unit. In this case, let&apos;s assume we',
+				'don&apos;t really care about the color or the luster or the cut of',
+				'the gem. All we care about is the gem size, this single opportunity.',
+				'So we can calculate a defects per unit as the total number of defects',
+				'divided by the total number of units.  In this case, that would be 50',
+				'defects over 1000 units or a percent defects of 5 percent or a DPU',
+				'of .05. Some people like to state it as a percentage. Others like',
+				'to state it as a DPU. We can then take that DPU and assume that',
+				'if we were to actually create a million gems, we can calculate a D',
+				'PMO -- a defect per million opportunities -- assuming that we just',
+				'have a single opportunity here called gem size. So if we take our',
+				'DPU and we multiply it by a million, we will get our DPMO. So that is',
+				'.05 times a million and that will give us',
+				'50,000 defects per million opportunities.'
+			];
+
+ccTime = [ 0, 2000, 4240, 6899, 9450, 13923, 18196, 22670, 24470, 26430, 30656, 34883, 39050, 43296, 48158, 52815, 57404, 62130, 67321, 72436, 77395, 82510, 87571, 92557, 97770, 99948, 9999];
+
+
+
+	slideID = 'STAT_L2_DPU_AND_DPMO_01';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='text1'>	<div id='text1_ie'>	<img id='text1' class='altPNG' src='../images/STAT_L2_DPU_AND_DPMO_01/STAT_L2_DPU_AND_DPMO_01_text1.png' alt='' />	</div>	</div>
+					<div id='text2'>	<div id='text2_ie'>	<img id='text2' class='altPNG' src='../images/STAT_L2_DPU_AND_DPMO_01/STAT_L2_DPU_AND_DPMO_01_text2.png' alt='' />	</div>	</div>
+					<div id='curve'></div>
+					<div id='lines'></div>
+					<div id='defects'>	<div id='defects_ie'>	<img id='defects' class='altPNG' src='../images/STAT_L2_DPU_AND_DPMO_01/STAT_L2_DPU_AND_DPMO_01_defects.png' alt='' />	</div>	</div>
+					<div id='equa1'></div>
+					<div id='equa2'></div>
+					<div id='equa2a'></div>
+					<div id='equa3'></div>
+					<div id='equa4'></div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>DPU and DPMO - Computation</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

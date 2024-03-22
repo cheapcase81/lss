@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_SHIFT_DRIFT.css"	rel="stylesheet" type="text/css" />
+<title>Shift and Drift</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'ltd1', t0:12870, t1:13270, dt:400, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'bkgr', t0:12870, t1:13437, dt:567, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'std1', t0:13100, t1:13500, dt:400, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'grid', t0:13230, t1:13697, dt:467, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'shift', t0:13530, t1:13897, dt:367, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:211, dy:16},
+			{ID:'scurve1', t0:14030, t1:14363, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rcurve1', t0:14500, t1:15033, dt:533, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sline1', t0:14500, t1:15033, dt:533, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sline2', t0:14500, t1:15033, dt:533, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rcurve1', t0:15030, t1:15530, dt:500, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'rcurve2', t0:15030, t1:15530, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sline1', t0:15030, t1:15530, dt:500, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:324, dx:-8},
+			{ID:'scurve2', t0:15030, t1:15530, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'scurve3', t0:15530, t1:16063, dt:533, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rcurve3', t0:15530, t1:16063, dt:533, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rcurve2', t0:15530, t1:16063, dt:533, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'sline2', t0:15530, t1:16063, dt:533, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:414, dx:13},
+			{ID:'sline2', t0:16060, t1:17060, dt:1000, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:427, dx:23},
+			{ID:'rcurve4', t0:16060, t1:17127, dt:1067, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rcurve3', t0:16060, t1:17127, dt:1067, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'scurve4', t0:16060, t1:17127, dt:1067, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'scurve5', t0:17090, t1:17657, dt:567, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'scurve6', t0:17690, t1:18257, dt:567, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rcurve5', t0:17690, t1:18257, dt:567, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rcurve4', t0:17690, t1:18257, dt:567, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'sline1', t0:17690, t1:18257, dt:567, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:316, dx:-8},
+			{ID:'hl1', t0:21740, t1:22240, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl1', t0:30750, t1:30850, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'shift', t0:34280, t1:34780, dt:500, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'scurve1', t0:34280, t1:34780, dt:500, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'scurve2', t0:34280, t1:34780, dt:500, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'scurve3', t0:34280, t1:34780, dt:500, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'scurve4', t0:34280, t1:34780, dt:500, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'scurve5', t0:34280, t1:34780, dt:500, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'scurve6', t0:34280, t1:34780, dt:500, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'sline1', t0:34280, t1:34780, dt:500, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'sline2', t0:34280, t1:34780, dt:500, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'rcurve5', t0:34280, t1:34780, dt:500, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'drift', t0:34850, t1:35217, dt:367, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:204, dy:24},
+			{ID:'dcurve1', t0:35050, t1:35383, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'dline1', t0:35050, t1:35383, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'dline2', t0:35050, t1:35383, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'drcurve1', t0:35050, t1:35383, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'dcurve2', t0:35380, t1:35713, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'drcurve2', t0:35380, t1:35713, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'drcurve1', t0:35380, t1:35713, dt:333, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'dline2', t0:35380, t1:35713, dt:333, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:406, dx:7},
+			{ID:'drcurve2', t0:35710, t1:36043, dt:333, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'drcurve3', t0:35710, t1:36043, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'dcurve3', t0:35710, t1:36043, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'dline2', t0:35710, t1:36043, dt:333, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:413, dx:7},
+			{ID:'dcurve4', t0:36040, t1:36373, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'drcurve4', t0:36040, t1:36373, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'drcurve3', t0:36040, t1:36373, dt:333, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'dline2', t0:36040, t1:36373, dt:333, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:420, dx:7},
+			{ID:'drcurve4', t0:36370, t1:36703, dt:333, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'drcurve5', t0:36370, t1:36703, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'dcurve5', t0:36370, t1:36703, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'dline2', t0:36370, t1:36703, dt:333, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:427, dx:8},
+			{ID:'dcurve6', t0:36700, t1:37067, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'drcurve6', t0:36700, t1:37067, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'drcurve5', t0:36700, t1:37067, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'dline2', t0:36700, t1:37067, dt:367, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:435, dx:7},
+			{ID:'hl2', t0:58760, t1:59260, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl2', t0:61760, t1:61860, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1}
+	];
+
+
+smA.filename = '../audio/stat_l2_shift_drift';
+smA.soundLength = 72098;
+
+	ccText = [ '',
+				'We talked about the 1.5 sigma shift when we discussed long',
+				'term versus short term. Another way to think of this is',
+				'to consider something we call shift and drift. A short-term',
+				'process has a particular mean. That mean can shift over time and',
+				'the combination of all of those short-term shifts in time give us a long',
+				'term distribution. The capability of that long-term distribution will',
+				'be worse than the capability of any individual short-term snapshots.',
+				'Just remember one thing: Shift happens.',
+				'Alternatively, we can look at drift. Drift is when a process tends to',
+				'wear over time, like tool wear or depletion in a vat or something',
+				'along those lines where gradually, over time, you need some',
+				'preventative maintenance to make sure you&apos;re stable. If you don&apos;t,',
+				'your process will tend to slowly drift in one direction or another and',
+				'the combination of all those short-term drifts in time will give you',
+				'an overall long-term process capability that is worse than any individual',
+				'short term. So the 1.5 sigma shift can come from shifts or drifts in a process.'
+			];
+
+ccTime = [ 0, 2000, 5685, 9184, 12870, 17337, 21740, 26310, 30750, 34280, 38439, 42360, 45925, 50500, 54719, 58760, 62792, 9999];
+
+
+
+	slideID = 'STAT_L2_SHIFT_DRIFT';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='ltd1'>	<div id='ltd1_ie'>	<img id='ltd1' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_ltd1.png' alt='' />	</div>	</div>
+					<div id='std1'>	<div id='std1_ie'>	<img id='std1' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_std1.png' alt='' />	</div>	</div>
+					<div id='bkgr'>	<div id='bkgr_ie'>	<img id='bkgr' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_bkgr.png' alt='' />	</div>	</div>
+					<div id='grid'>	<div id='grid_ie'>	<img id='grid' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_grid.png' alt='' />	</div>	</div>
+					<div id='shift'>	<div id='shift_ie'>	<img id='shift' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_shift.png' alt='' />	</div>	</div>
+					<div id='scurve1'>	<div id='scurve1_ie'>	<img id='scurve1' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_scurve1.png' alt='' />	</div>	</div>
+					<div id='rcurve1'>	<div id='rcurve1_ie'>	<img id='rcurve1' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_rcurve1.png' alt='' />	</div>	</div>
+					<div id='sline1'>	<div id='sline1_ie'>	<img id='sline1' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_sline1.png' alt='' />	</div>	</div>
+					<div id='sline2'>	<div id='sline2_ie'>	<img id='sline2' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_sline2.png' alt='' />	</div>	</div>
+					<div id='rcurve2'>	<div id='rcurve2_ie'>	<img id='rcurve2' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_rcurve2.png' alt='' />	</div>	</div>
+					<div id='scurve2'>	<div id='scurve2_ie'>	<img id='scurve2' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_scurve2.png' alt='' />	</div>	</div>
+					<div id='scurve3'>	<div id='scurve3_ie'>	<img id='scurve3' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_scurve3.png' alt='' />	</div>	</div>
+					<div id='scurve4'>	<div id='scurve4_ie'>	<img id='scurve4' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_scurve4.png' alt='' />	</div>	</div>
+					<div id='scurve5'>	<div id='scurve5_ie'>	<img id='scurve5' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_scurve5.png' alt='' />	</div>	</div>
+					<div id='rcurve3'>	<div id='rcurve3_ie'>	<img id='rcurve3' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_rcurve3.png' alt='' />	</div>	</div>
+					<div id='rcurve4'>	<div id='rcurve4_ie'>	<img id='rcurve4' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_rcurve4.png' alt='' />	</div>	</div>
+					<div id='rcurve5'>	<div id='rcurve5_ie'>	<img id='rcurve5' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_rcurve5.png' alt='' />	</div>	</div>
+					<div id='scurve6'>	<div id='scurve6_ie'>	<img id='scurve6' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_scurve6.png' alt='' />	</div>	</div>
+					<div id='drift'>	<div id='drift_ie'>	<img id='drift' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_drift.png' alt='' />	</div>	</div>
+					<div id='drcurve1'>	<div id='drcurve1_ie'>	<img id='drcurve1' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_drcurve1.png' alt='' />	</div>	</div>
+					<div id='dline1'>	<div id='dline1_ie'>	<img id='dline1' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_dline1.png' alt='' />	</div>	</div>
+					<div id='dline2'>	<div id='dline2_ie'>	<img id='dline2' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_dline2.png' alt='' />	</div>	</div>
+					<div id='drcurve2'>	<div id='drcurve2_ie'>	<img id='drcurve2' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_drcurve2.png' alt='' />	</div>	</div>
+					<div id='drcurve3'>	<div id='drcurve3_ie'>	<img id='drcurve3' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_drcurve3.png' alt='' />	</div>	</div>
+					<div id='drcurve4'>	<div id='drcurve4_ie'>	<img id='drcurve4' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_drcurve4.png' alt='' />	</div>	</div>
+					<div id='drcurve5'>	<div id='drcurve5_ie'>	<img id='drcurve5' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_drcurve5.png' alt='' />	</div>	</div>
+					<div id='drcurve6'>	<div id='drcurve6_ie'>	<img id='drcurve6' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_drcurve6.png' alt='' />	</div>	</div>
+					<div id='dcurve1'>	<div id='dcurve1_ie'>	<img id='dcurve1' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_dcurve1.png' alt='' />	</div>	</div>
+					<div id='dcurve2'>	<div id='dcurve2_ie'>	<img id='dcurve2' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_dcurve2.png' alt='' />	</div>	</div>
+					<div id='dcurve3'>	<div id='dcurve3_ie'>	<img id='dcurve3' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_dcurve3.png' alt='' />	</div>	</div>
+					<div id='dcurve4'>	<div id='dcurve4_ie'>	<img id='dcurve4' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_dcurve4.png' alt='' />	</div>	</div>
+					<div id='dcurve5'>	<div id='dcurve5_ie'>	<img id='dcurve5' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_dcurve5.png' alt='' />	</div>	</div>
+					<div id='dcurve6'>	<div id='dcurve6_ie'>	<img id='dcurve6' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_dcurve6.png' alt='' />	</div>	</div>
+					<div id='hl2'>	<div id='hl2_ie'>	<img id='hl2' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_hl2.png' alt='' />	</div>	</div>
+					<div id='hl1'>	<div id='hl1_ie'>	<img id='hl1' class='altPNG' src='../images/STAT_L2_SHIFT_DRIFT/STAT_L2_SHIFT_DRIFT_hl1.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Shift and Drift</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

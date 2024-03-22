@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_MEDIAN.css"	rel="stylesheet" type="text/css" />
+<title>The Median</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'title', t0:4740, t1:5073, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num1', t0:6400, t1:6767, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num2', t0:6400, t1:6767, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num3', t0:6400, t1:6767, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num4', t0:6400, t1:6767, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num5', t0:6400, t1:6767, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num6', t0:6400, t1:6767, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num7', t0:6400, t1:6767, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num8', t0:6400, t1:6767, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num9', t0:6400, t1:6767, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num10', t0:6400, t1:6767, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num11', t0:6400, t1:6767, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'def', t0:11500, t1:11867, dt:367, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:329, dy:-8},
+			{ID:'circ1', t0:14540, t1:15440, dt:900, ease:23, alpha:0, vis:3, vID:1, vName:'x', x:65, dx:286},
+			{ID:'circ2', t0:14540, t1:15440, dt:900, ease:23, alpha:0, vis:3, vID:1, vName:'x', x:639, dx:-288},
+			{ID:'blinker', t0:15470, t1:17037, dt:1567, ease:1, alpha:0, vis:3, vID:31, vName:'pMM', p:1, dp:46, np:47, child0:0, nC:2},
+			{ID:'circ1', t0:33340, t1:33640, dt:300, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'circ2', t0:33340, t1:33640, dt:300, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'blinker', t0:33340, t1:33640, dt:300, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'xline1', t0:33670, t1:33903, dt:233, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:20},
+			{ID:'xline2', t0:33840, t1:34073, dt:233, ease:1, alpha:0, vis:3, vID:22, vName:'wr', w:0, dw:20, x:635, bw:20},
+			{ID:'xline1', t0:34840, t1:34940, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'xline2', t0:34840, t1:34940, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'num11', t0:34840, t1:34940, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'num1', t0:34840, t1:35207, dt:367, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:109, dx:24},
+			{ID:'num2', t0:34840, t1:35207, dt:367, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:159, dx:24},
+			{ID:'num3', t0:34840, t1:35207, dt:367, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:211, dx:24},
+			{ID:'num4', t0:34840, t1:35207, dt:367, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:262, dx:24},
+			{ID:'num5', t0:34840, t1:35207, dt:367, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:314, dx:24},
+			{ID:'num6', t0:34840, t1:35207, dt:367, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:365, dx:24},
+			{ID:'num7', t0:34840, t1:35207, dt:367, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:416, dx:24},
+			{ID:'num8', t0:34840, t1:35207, dt:367, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:464, dx:24},
+			{ID:'num9', t0:34840, t1:35207, dt:367, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:515, dx:24},
+			{ID:'num10', t0:34840, t1:35207, dt:367, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:566, dx:24},
+			{ID:'box', t0:47520, t1:47887, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num1', t0:47990, t1:48257, dt:267, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:133, dx:-16},
+			{ID:'num2', t0:47990, t1:48257, dt:267, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:183, dx:-18},
+			{ID:'num3', t0:47990, t1:48257, dt:267, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:235, dx:-20},
+			{ID:'num4', t0:47990, t1:48257, dt:267, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:286, dx:-21},
+			{ID:'num5', t0:47990, t1:48257, dt:267, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:338, dx:-24},
+			{ID:'num6', t0:47990, t1:48257, dt:267, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:389, dx:24},
+			{ID:'num7', t0:47990, t1:48257, dt:267, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:440, dx:22},
+			{ID:'num8', t0:47990, t1:48257, dt:267, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:488, dx:20},
+			{ID:'num9', t0:47990, t1:48257, dt:267, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:539, dx:18},
+			{ID:'num10', t0:47990, t1:48257, dt:267, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:590, dx:16},
+			{ID:'mnum', t0:48090, t1:48357, dt:267, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:227, dy:8},
+			{ID:'box', t0:48190, t1:48557, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box2', t0:48190, t1:48557, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1}
+	];
+hasMovieMaps = true;
+
+mmChildren = ['STAT_L2_MEDIAN_blinker_1000', 'STAT_L2_MEDIAN_blinker_1001'];
+mmIndexPacked = [
+	[0, -1, 0.21, 1, 0, 0.23], 
+	[0, 0.46, -1]
+	];
+	mmX = [0, 352];
+	mmY = [0, 224];
+	mmW = [1, 32];
+	mmH = [1, 32];
+	mmA = [2, 1];
+
+
+smA.filename = '../audio/stat_l2_median';
+smA.soundLength = 92421;
+
+	ccText = [ '',
+				'We can utilize the data set to demonstrate the concept of',
+				'the median. If we take',
+				'our 11 observations and list them in rank',
+				'order or order of magnitude, the middle',
+				'observation is, in fact, the median.',
+				'The middle observation is where half the data -- here five observations --',
+				'lie below the median and half the data lie above the median. So in these 11',
+				'numbers, seven is our median. Now some of you, that are more savvy in',
+				'nature, might ask the question: What if we had an even number of observations,',
+				'say only 10 observations instead of 11? There is no middle value where 50',
+				'percent of the data lies above and 50 percent lies below because',
+				'there&apos;s an even number of observations. When that happens, you simply take',
+				'the average of the middle two most observations and that becomes your median.',
+				'So if that was a question you had, good job. You asked a good one. One last',
+				'comment to make about these 11 observations. These 11 observations were pulled',
+				'from a population.  When we do these calculations of modes and medians,',
+				'we typically are calculating a sample mode and a sample median -- for 11',
+				'observations in this case -- pulled from a population of data. So we could,',
+				'if we had the whole population, calculate a population mode or a population',
+				'median, but in this case, we&apos;re assuming these 11 observations came from a',
+				'population, hence we&apos;re calculating the sample mode and the sample median.'
+			];
+
+ccTime = [ 0, 2000, 4740, 6400, 9044, 11500, 14540, 19255, 24034, 28435, 33340, 38066, 42218, 47520, 52005, 56257, 60859, 65227, 69305, 74081, 78159, 82819, 9999];
+
+
+
+	slideID = 'STAT_L2_MEDIAN';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='title'>	<div id='title_ie'>	<img id='title' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_title.png' alt='' />	</div>	</div>
+					<div id='num1'>	<div id='num1_ie'>	<img id='num1' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num1.png' alt='' />	</div>	</div>
+					<div id='num2'>	<div id='num2_ie'>	<img id='num2' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num2.png' alt='' />	</div>	</div>
+					<div id='num3'>	<div id='num3_ie'>	<img id='num3' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num3.png' alt='' />	</div>	</div>
+					<div id='num4'>	<div id='num4_ie'>	<img id='num4' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num4.png' alt='' />	</div>	</div>
+					<div id='num5'>	<div id='num5_ie'>	<img id='num5' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num5.png' alt='' />	</div>	</div>
+					<div id='num6'>	<div id='num6_ie'>	<img id='num6' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num6.png' alt='' />	</div>	</div>
+					<div id='num7'>	<div id='num7_ie'>	<img id='num7' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num7.png' alt='' />	</div>	</div>
+					<div id='num8'>	<div id='num8_ie'>	<img id='num8' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num8.png' alt='' />	</div>	</div>
+					<div id='num9'>	<div id='num9_ie'>	<img id='num9' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num9.png' alt='' />	</div>	</div>
+					<div id='num10'>	<div id='num10_ie'>	<img id='num10' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num10.png' alt='' />	</div>	</div>
+					<div id='num11'>	<div id='num11_ie'>	<img id='num11' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num11.png' alt='' />	</div>	</div>
+					<div id='def'>	<div id='def_ie'>	<img id='def' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_def.png' alt='' />	</div>	</div>
+					<div id='mnum'>	<div id='mnum_ie'>	<img id='mnum' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_mnum.png' alt='' />	</div>	</div>
+					<div id='blinker' class='movieMap'>
+						<div id='STAT_L2_MEDIAN_blinker_1000'>	<div id='STAT_L2_MEDIAN_blinker_1000_ie'>	<img id='STAT_L2_MEDIAN_blinker_1000' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_blinker_1000.png' alt='' />	</div>	</div>
+						<div id='STAT_L2_MEDIAN_blinker_1001'>	<div id='STAT_L2_MEDIAN_blinker_1001_ie'>	<img id='STAT_L2_MEDIAN_blinker_1001' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_blinker_1001.png' alt='' />	</div>	</div>
+					</div>
+					<div id='xline1'></div>
+					<div id='xline2'></div>
+					<div id='circ1'>	<div id='circ1_ie'>	<img id='circ1' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_circ1.png' alt='' />	</div>	</div>
+					<div id='circ2'>	<div id='circ2_ie'>	<img id='circ2' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_circ2.png' alt='' />	</div>	</div>
+					<div id='box'>	<div id='box_ie'>	<img id='box' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_box.png' alt='' />	</div>	</div>
+					<div id='box2'>	<div id='box2_ie'>	<img id='box2' class='altPNG' src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_box2.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>The Median</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

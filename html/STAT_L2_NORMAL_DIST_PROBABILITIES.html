@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_NORMAL_DIST_PROBABILITIES.css"	rel="stylesheet" type="text/css" />
+<title>Normal Distribution Probabilities</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'bkgr', t0:2000, t1:2333, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'title', t0:4140, t1:4507, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'axis', t0:4140, t1:4540, dt:400, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lines', t0:5780, t1:6180, dt:400, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'curve', t0:13020, t1:13387, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl1', t0:23670, t1:24003, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'per1', t0:23940, t1:24307, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sigma1', t0:24310, t1:24610, dt:300, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sigma2', t0:24480, t1:24780, dt:300, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl1', t0:47510, t1:47610, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'per1', t0:47510, t1:47610, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl2', t0:47510, t1:47843, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'per2', t0:47910, t1:48243, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sigma3', t0:48240, t1:48607, dt:367, ease:23, alpha:0, vis:3, vID:1, vName:'x', x:320, dx:-48},
+			{ID:'sigma4', t0:48440, t1:48807, dt:367, ease:23, alpha:0, vis:3, vID:1, vName:'x', x:368, dx:48},
+			{ID:'hl2', t0:72770, t1:72870, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'per2', t0:72770, t1:72870, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl3', t0:72770, t1:73103, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'per3', t0:73140, t1:73473, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sigma5', t0:73510, t1:73877, dt:367, ease:23, alpha:0, vis:3, vID:1, vName:'x', x:272, dx:-48},
+			{ID:'sigma6', t0:73710, t1:74077, dt:367, ease:23, alpha:0, vis:3, vID:1, vName:'x', x:416, dx:48},
+			{ID:'kmkey', t0:96480, t1:97480, dt:1000, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:-2, dx:64},
+			{ID:'kmglint', t0:97480, t1:97613, dt:133, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'kmglint', t0:97610, t1:98110, dt:500, ease:21, alpha:0, vis:7, vID:40, vName:'a', a:1, da:-0.19999999999999996},
+			{ID:'kmtext', t0:98240, t1:98740, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:401, dy:9}
+	];
+
+
+smA.filename = '../audio/stat_l2_normal_dist_probabilities';
+smA.soundLength = 101042;
+
+	ccText = [ '',
+				'Very commonly in statistics we use',
+				'the normal distribution and its',
+				'corresponding probabilities to predict the proportion of data',
+				'that lies underneath a particular section of the normal curve.',
+				'Notice here we have a normal curve, centered at a mean of',
+				'zero and a standard deviation of one. One of the incredible',
+				'attributes of the normal distribution is that if you move one',
+				'sigma to the right and one sigma to the left of the mean of a normal',
+				'distribution, you will have characterized exactly 68.3 percent of',
+				'the observations. Another way to say that is 68.3 percent of',
+				'the observations in this normal curve lie within plus and minus one sigma of',
+				'the mean. That&apos;s an important characteristic. We can extend that notion',
+				'by moving plus and minus two sigmas from the mean and we find that when',
+				'we move plus and minus two standard deviations away from the mean,',
+				'we can characterize 95.4 percent of all the observations underneath the normal',
+				'curve. Again, another way to say that is to say 95.4 percent of all of our',
+				'data lies within plus and minus two sigmas of the mean. If we extend that',
+				'notion to three sigmas, 99.7 percent of all of our data will fall',
+				'within plus and minus three sigma of the mean and we can keep going.',
+				'Unfortunately, the numbers get very, very large and very close to 100',
+				'percent if we move to plus and minus four and plus and minus five sigma.',
+				'We will soon relate why we call this methodology Six Sigma, but this is an',
+				'important piece of the puzzle.'
+			];
+
+ccTime = [ 0, 2000, 4140, 5780, 9400, 13020, 16470, 20040, 23670, 28383, 33165, 37331, 42591, 47510, 52479, 57586, 62555, 67731, 72770, 77215, 81863, 86578, 91697, 96480, 9999];
+
+
+
+	slideID = 'STAT_L2_NORMAL_DIST_PROBABILITIES';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='bkgr'>	<div id='bkgr_ie'>	<img id='bkgr' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_bkgr.png' alt='' />	</div>	</div>
+					<div id='title'>	<div id='title_ie'>	<img id='title' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_title.png' alt='' />	</div>	</div>
+					<div id='axis'>	<div id='axis_ie'>	<img id='axis' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_axis.png' alt='' />	</div>	</div>
+					<div id='kmkey'>	<div id='kmkey_ie'>	<img id='kmkey' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_kmkey.png' alt='' />	</div>	</div>
+					<div id='kmglint'>	<div id='kmglint_ie'>	<img id='kmglint' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_kmglint.png' alt='' />	</div>	</div>
+					<div id='kmtext'>	<div id='kmtext_ie'>	<img id='kmtext' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_kmtext.png' alt='' />	</div>	</div>
+					<div id='curve'>	<div id='curve_ie'>	<img id='curve' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_curve.png' alt='' />	</div>	</div>
+					<div id='lines'>	<div id='lines_ie'>	<img id='lines' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_lines.png' alt='' />	</div>	</div>
+					<div id='hl1'>	<div id='hl1_ie'>	<img id='hl1' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_hl1.png' alt='' />	</div>	</div>
+					<div id='hl2'>	<div id='hl2_ie'>	<img id='hl2' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_hl2.png' alt='' />	</div>	</div>
+					<div id='hl3'>	<div id='hl3_ie'>	<img id='hl3' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_hl3.png' alt='' />	</div>	</div>
+					<div id='sigma1'>	<div id='sigma1_ie'>	<img id='sigma1' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma1.png' alt='' />	</div>	</div>
+					<div id='sigma2'>	<div id='sigma2_ie'>	<img id='sigma2' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma2.png' alt='' />	</div>	</div>
+					<div id='sigma3'>	<div id='sigma3_ie'>	<img id='sigma3' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma3.png' alt='' />	</div>	</div>
+					<div id='sigma4'>	<div id='sigma4_ie'>	<img id='sigma4' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma4.png' alt='' />	</div>	</div>
+					<div id='sigma5'>	<div id='sigma5_ie'>	<img id='sigma5' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma5.png' alt='' />	</div>	</div>
+					<div id='sigma6'>	<div id='sigma6_ie'>	<img id='sigma6' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma6.png' alt='' />	</div>	</div>
+					<div id='per1'>	<div id='per1_ie'>	<img id='per1' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_per1.png' alt='' />	</div>	</div>
+					<div id='per2'>	<div id='per2_ie'>	<img id='per2' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_per2.png' alt='' />	</div>	</div>
+					<div id='per3'>	<div id='per3_ie'>	<img id='per3' class='altPNG' src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_per3.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Normal Distribution Probabilities</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

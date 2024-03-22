@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_17_MT_MODE2.css"	rel="stylesheet" type="text/css" />
+<title>Calculate the Mode in MINITAB - Method 2</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'menubar', t0:2000, t1:2100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:2000, t1:2100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'wsheet', t0:14160, t1:14260, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:16330, t1:16997, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:368, dx:-218},
+			{ID:'pointer', t0:16330, t1:16997, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:240, dy:-209},
+			{ID:'stat', t0:17000, t1:17100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:17330, t1:17997, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:150, dx:94},
+			{ID:'pointer', t0:17330, t1:17997, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:31, dy:219},
+			{ID:'tbhl', t0:18000, t1:18100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'menu2', t0:18000, t1:18100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:18330, t1:18997, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:244, dx:265},
+			{ID:'tivhl', t0:19000, t1:19100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tivhl', t0:21120, t1:21220, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'menu2', t0:21120, t1:21220, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'tbhl', t0:21120, t1:21220, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'stat', t0:21120, t1:21220, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'tivwin', t0:21120, t1:21220, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:21320, t1:21987, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:509, dx:-132},
+			{ID:'pointer', t0:21320, t1:21987, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:250, dy:-104},
+			{ID:'vari1', t0:21990, t1:22090, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:22320, t1:22987, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:377, dx:-201},
+			{ID:'pointer', t0:22320, t1:22987, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:146, dy:-39},
+			{ID:'c1hl', t0:22990, t1:23090, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'vari2', t0:22990, t1:23090, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:24840, t1:25507, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:176, dx:48},
+			{ID:'pointer', t0:24840, t1:25507, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:107, dy:144},
+			{ID:'cbox', t0:25510, t1:25610, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:29330, t1:29997, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:224, dx:289},
+			{ID:'pointer', t0:29330, t1:29997, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:251, dy:181},
+			{ID:'ok1', t0:30000, t1:30100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ok1', t0:33320, t1:33420, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'cbox', t0:33320, t1:33420, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'vari2', t0:33320, t1:33420, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'c1hl', t0:33320, t1:33420, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'vari1', t0:33320, t1:33420, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'tivwin', t0:33320, t1:33420, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'session1', t0:33320, t1:33420, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:33520, t1:34187, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:513, dx:177},
+			{ID:'pointer', t0:33520, t1:34187, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:432, dy:-177},
+			{ID:'session2', t0:34520, t1:34620, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'bhl1', t0:35190, t1:35290, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1}
+	];
+
+
+smA.filename = '../audio/stat_l2_17_mt_mode2';
+smA.soundLength = 47543;
+
+	ccText = [ '',
+				'The second method of calculating the mode is more exact since it',
+				'counts the frequency of the value of each measurement. Counting frequencies',
+				'is a job that can be easily done in Minitab using its tables routines.',
+				'Using the same data, in Minitab,',
+				'go to Stat > Tables >Tally Individual Variables',
+				'to open the Tally Individual Variables dialog box.',
+				'For Variables we select the GemWeight column.',
+				'We also need to verify that Counts is selected under Display.',
+				'Click OK and Minitab writes the results to the Session Window.',
+				'By looking at the results, we can see that the value of 35',
+				'occurs most frequently, and therefore is the mode of this',
+				'dataset. This is the same value we arrived at previously.'
+			];
+
+ccTime = [ 0, 2000, 5745, 10125, 14160, 16329, 18773, 21320, 24840, 29330, 33520, 36579, 39587, 9999];
+
+
+
+	slideID = 'STAT_L2_17_MT_MODE2';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='menubar'>	<div id='menubar_ie'>	<img id='menubar' class='altPNG' src='../images/STAT_L2_17_MT_MODE2/STAT_L2_17_MT_MODE2_menubar.png' alt='' />	</div>	</div>
+					<div id='wsheet'>	<div id='wsheet_ie'>	<img id='wsheet' class='altPNG' src='../images/STAT_L2_17_MT_MODE2/STAT_L2_17_MT_MODE2_wsheet.png' alt='' />	</div>	</div>
+					<div id='stat'>	<div id='stat_ie'>	<img id='stat' class='altPNG' src='../images/STAT_L2_17_MT_MODE2/STAT_L2_17_MT_MODE2_stat.png' alt='' />	</div>	</div>
+					<div id='menu2'>	<div id='menu2_ie'>	<img id='menu2' class='altPNG' src='../images/STAT_L2_17_MT_MODE2/STAT_L2_17_MT_MODE2_menu2.png' alt='' />	</div>	</div>
+					<div id='tbhl'>	<div id='tbhl_ie'>	<img id='tbhl' class='altPNG' src='../images/STAT_L2_17_MT_MODE2/STAT_L2_17_MT_MODE2_tbhl.png' alt='' />	</div>	</div>
+					<div id='tivhl'>	<div id='tivhl_ie'>	<img id='tivhl' class='altPNG' src='../images/STAT_L2_17_MT_MODE2/STAT_L2_17_MT_MODE2_tivhl.png' alt='' />	</div>	</div>
+					<div id='tivwin'>	<div id='tivwin_ie'>	<img id='tivwin' class='altPNG' src='../images/STAT_L2_17_MT_MODE2/STAT_L2_17_MT_MODE2_tivwin.png' alt='' />	</div>	</div>
+					<div id='vari1'>	<div id='vari1_ie'>	<img id='vari1' class='altPNG' src='../images/STAT_L2_17_MT_MODE2/STAT_L2_17_MT_MODE2_vari1.png' alt='' />	</div>	</div>
+					<div id='c1hl'>	<div id='c1hl_ie'>	<img id='c1hl' class='altPNG' src='../images/STAT_L2_17_MT_MODE2/STAT_L2_17_MT_MODE2_c1hl.png' alt='' />	</div>	</div>
+					<div id='cbox'>	<div id='cbox_ie'>	<img id='cbox' class='altPNG' src='../images/STAT_L2_17_MT_MODE2/STAT_L2_17_MT_MODE2_cbox.png' alt='' />	</div>	</div>
+					<div id='ok1'>	<div id='ok1_ie'>	<img id='ok1' class='altPNG' src='../images/STAT_L2_17_MT_MODE2/STAT_L2_17_MT_MODE2_ok1.png' alt='' />	</div>	</div>
+					<div id='vari2'>	<div id='vari2_ie'>	<img id='vari2' class='altPNG' src='../images/STAT_L2_17_MT_MODE2/STAT_L2_17_MT_MODE2_vari2.png' alt='' />	</div>	</div>
+					<div id='session1'>	<div id='session1_ie'>	<img id='session1' class='altPNG' src='../images/STAT_L2_17_MT_MODE2/STAT_L2_17_MT_MODE2_session1.png' alt='' />	</div>	</div>
+					<div id='session2'>	<div id='session2_ie'>	<img id='session2' class='altPNG' src='../images/STAT_L2_17_MT_MODE2/STAT_L2_17_MT_MODE2_session2.png' alt='' />	</div>	</div>
+					<div id='bhl1'>	<div id='bhl1_ie'>	<img id='bhl1' class='altPNG' src='../images/STAT_L2_17_MT_MODE2/STAT_L2_17_MT_MODE2_bhl1.png' alt='' />	</div>	</div>
+					<div id='pointer'>	<div id='pointer_ie'>	<img id='pointer' class='altPNG' src='../images/STAT_L2_17_MT_MODE2/STAT_L2_17_MT_MODE2_pointer.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Calculate the Mode in MINITAB - Method 2</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

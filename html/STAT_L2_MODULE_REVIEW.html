@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_MODULE_REVIEW.css"	rel="stylesheet" type="text/css" />
+<title>Module Review</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'bullet1', t0:2000, t1:2500, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:69, dx:5},
+			{ID:'text1', t0:2330, t1:3030, dt:700, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:105, dy:7},
+			{ID:'bullet2', t0:4480, t1:5147, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:74, dx:12},
+			{ID:'text2', t0:4480, t1:5147, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:110, dy:24},
+			{ID:'bullet3', t0:5210, t1:5877, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:74, dx:12},
+			{ID:'text3', t0:5210, t1:5877, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:134, dy:24},
+			{ID:'bullet4', t0:5940, t1:6440, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:69, dx:5},
+			{ID:'text4', t0:6270, t1:6970, dt:700, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:201, dy:7},
+			{ID:'bullet5', t0:7820, t1:8487, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:74, dx:12},
+			{ID:'text5', t0:7820, t1:8487, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:222, dy:24},
+			{ID:'bullet6', t0:8440, t1:9107, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:74, dx:12},
+			{ID:'text6', t0:8440, t1:9107, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:246, dy:24},
+			{ID:'bullet7', t0:10100, t1:10600, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:69, dx:5},
+			{ID:'text7', t0:10430, t1:11130, dt:700, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:313, dy:7},
+			{ID:'bullet8', t0:11030, t1:11697, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:74, dx:12},
+			{ID:'text8', t0:11030, t1:11697, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:334, dy:24},
+			{ID:'bullet9', t0:12500, t1:13000, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:381, dx:5},
+			{ID:'text9', t0:12830, t1:13530, dt:700, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:105, dy:7},
+			{ID:'bullet10', t0:13130, t1:13797, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:385, dx:12},
+			{ID:'text10', t0:13130, t1:13797, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:110, dy:24},
+			{ID:'bullet11', t0:14570, t1:15070, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:381, dx:5},
+			{ID:'text11', t0:14900, t1:15600, dt:700, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:169, dy:7},
+			{ID:'bullet12', t0:15900, t1:16567, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:385, dx:12},
+			{ID:'text12', t0:15900, t1:16567, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:191, dy:24},
+			{ID:'bullet13', t0:17110, t1:17610, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:381, dx:5},
+			{ID:'text13', t0:17440, t1:18140, dt:700, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:249, dy:7},
+			{ID:'bullet14', t0:21490, t1:22157, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:385, dx:12},
+			{ID:'text14', t0:21490, t1:22157, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:254, dy:24},
+			{ID:'bullet15', t0:22100, t1:22767, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:385, dx:12},
+			{ID:'text15', t0:22100, t1:22767, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:279, dy:24},
+			{ID:'bullet16', t0:22970, t1:23637, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:385, dx:12},
+			{ID:'text16', t0:22970, t1:23637, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:305, dy:24},
+			{ID:'bullet17', t0:26520, t1:27020, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:381, dx:5},
+			{ID:'text17', t0:26850, t1:27550, dt:700, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:353, dy:7}
+	];
+
+
+smA.filename = '../audio/stat_l2_module_review';
+smA.soundLength = 38400;
+
+	ccText = [ '',
+				'In this module: We learned to define',
+				'data types. We discussed populations versus',
+				'samples extensively.  We',
+				'introduced measures',
+				'of central tendency',
+				'and measures of',
+				'variation. We introduced frequency',
+				'distributions',
+				'and we talked about very specific topics to Six Sigma like long',
+				'term versus short term, DPMO and DPU. And lastly,',
+				'we brought this module to a close by understanding the statistical',
+				'definition of Six Sigma. Great work! You&apos;ve just covered a lot of information'
+			];
+
+ccTime = [ 0, 2000, 4480, 7820, 10100, 11030, 12500, 13130, 15900, 17110, 21490, 26520, 29613, 9999];
+
+
+
+	slideID = 'STAT_L2_MODULE_REVIEW';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='bullet1'>	<div id='bullet1_ie'>	<img id='bullet1' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet1.png' alt='' />	</div>	</div>
+					<div id='text1'>	<div id='text1_ie'>	<img id='text1' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text1.png' alt='' />	</div>	</div>
+					<div id='text2'>	<div id='text2_ie'>	<img id='text2' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text2.png' alt='' />	</div>	</div>
+					<div id='bullet3'>	<div id='bullet3_ie'>	<img id='bullet3' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet3.png' alt='' />	</div>	</div>
+					<div id='text3'>	<div id='text3_ie'>	<img id='text3' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text3.png' alt='' />	</div>	</div>
+					<div id='bullet2'>	<div id='bullet2_ie'>	<img id='bullet2' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet2.png' alt='' />	</div>	</div>
+					<div id='bullet4'>	<div id='bullet4_ie'>	<img id='bullet4' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet4.png' alt='' />	</div>	</div>
+					<div id='text4'>	<div id='text4_ie'>	<img id='text4' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text4.png' alt='' />	</div>	</div>
+					<div id='bullet5'>	<div id='bullet5_ie'>	<img id='bullet5' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet5.png' alt='' />	</div>	</div>
+					<div id='text5'>	<div id='text5_ie'>	<img id='text5' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text5.png' alt='' />	</div>	</div>
+					<div id='bullet6'>	<div id='bullet6_ie'>	<img id='bullet6' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet6.png' alt='' />	</div>	</div>
+					<div id='text6'>	<div id='text6_ie'>	<img id='text6' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text6.png' alt='' />	</div>	</div>
+					<div id='bullet7'>	<div id='bullet7_ie'>	<img id='bullet7' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet7.png' alt='' />	</div>	</div>
+					<div id='text7'>	<div id='text7_ie'>	<img id='text7' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text7.png' alt='' />	</div>	</div>
+					<div id='bullet8'>	<div id='bullet8_ie'>	<img id='bullet8' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet8.png' alt='' />	</div>	</div>
+					<div id='text8'>	<div id='text8_ie'>	<img id='text8' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text8.png' alt='' />	</div>	</div>
+					<div id='bullet9'>	<div id='bullet9_ie'>	<img id='bullet9' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet9.png' alt='' />	</div>	</div>
+					<div id='text9'>	<div id='text9_ie'>	<img id='text9' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text9.png' alt='' />	</div>	</div>
+					<div id='bullet10'>	<div id='bullet10_ie'>	<img id='bullet10' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet10.png' alt='' />	</div>	</div>
+					<div id='text10'>	<div id='text10_ie'>	<img id='text10' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text10.png' alt='' />	</div>	</div>
+					<div id='bullet11'>	<div id='bullet11_ie'>	<img id='bullet11' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet11.png' alt='' />	</div>	</div>
+					<div id='text11'>	<div id='text11_ie'>	<img id='text11' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text11.png' alt='' />	</div>	</div>
+					<div id='bullet12'>	<div id='bullet12_ie'>	<img id='bullet12' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet12.png' alt='' />	</div>	</div>
+					<div id='text12'>	<div id='text12_ie'>	<img id='text12' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text12.png' alt='' />	</div>	</div>
+					<div id='bullet13'>	<div id='bullet13_ie'>	<img id='bullet13' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet13.png' alt='' />	</div>	</div>
+					<div id='text13'>	<div id='text13_ie'>	<img id='text13' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text13.png' alt='' />	</div>	</div>
+					<div id='bullet14'>	<div id='bullet14_ie'>	<img id='bullet14' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet14.png' alt='' />	</div>	</div>
+					<div id='text14'>	<div id='text14_ie'>	<img id='text14' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text14.png' alt='' />	</div>	</div>
+					<div id='bullet15'>	<div id='bullet15_ie'>	<img id='bullet15' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet15.png' alt='' />	</div>	</div>
+					<div id='text15'>	<div id='text15_ie'>	<img id='text15' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text15.png' alt='' />	</div>	</div>
+					<div id='bullet16'>	<div id='bullet16_ie'>	<img id='bullet16' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet16.png' alt='' />	</div>	</div>
+					<div id='text16'>	<div id='text16_ie'>	<img id='text16' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text16.png' alt='' />	</div>	</div>
+					<div id='bullet17'>	<div id='bullet17_ie'>	<img id='bullet17' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_bullet17.png' alt='' />	</div>	</div>
+					<div id='text17'>	<div id='text17_ie'>	<img id='text17' class='altPNG' src='../images/STAT_L2_MODULE_REVIEW/STAT_L2_MODULE_REVIEW_text17.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Module Review</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_LONG_TERM_DISTRIBUTION.css"	rel="stylesheet" type="text/css" />
+<title>Long Term Distributions</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'mach', t0:8300, t1:8533, dt:233, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'arrow', t0:8300, t1:8533, dt:233, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'oper1', t0:8530, t1:9030, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:-10, dx:104},
+			{ID:'box1', t0:9100, t1:9367, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'gems', t0:9100, t1:11167, dt:2067, ease:1, alpha:0, vis:3, vID:31, vName:'pMM', p:1, dp:61, np:15, child0:0, nC:5},
+			{ID:'axis', t0:10930, t1:11230, dt:300, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:241},
+			{ID:'curve1', t0:11300, t1:11633, dt:333, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:132},
+			{ID:'oper1', t0:20930, t1:21597, dt:667, ease:21, alpha:2, aa:1, daa:-1, vis:6, vID:1, vName:'x', x:94, dx:-88},
+			{ID:'oper2', t0:21660, t1:22393, dt:733, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:6, dx:88},
+			{ID:'curve1', t0:22890, t1:23190, dt:300, ease:21, alpha:0, vis:7, vID:40, vName:'a', a:1, da:-0.8},
+			{ID:'curve2', t0:22890, t1:23223, dt:333, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:132},
+			{ID:'arrow', t0:26230, t1:26930, dt:700, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:186, dx:56},
+			{ID:'curve2', t0:27300, t1:27567, dt:267, ease:21, alpha:0, vis:7, vID:40, vName:'a', a:1, da:-0.8},
+			{ID:'curve3', t0:27300, t1:27633, dt:333, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:132},
+			{ID:'box1', t0:39130, t1:39730, dt:600, ease:21, alpha:2, aa:1, daa:-1, vis:6, vID:1, vName:'x', x:176, dx:96},
+			{ID:'box2', t0:39130, t1:39763, dt:633, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:95, dx:80},
+			{ID:'curve3', t0:40400, t1:40667, dt:267, ease:21, alpha:0, vis:7, vID:40, vName:'a', a:1, da:-0.8},
+			{ID:'curve4', t0:40400, t1:40733, dt:333, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:132},
+			{ID:'curve4', t0:50560, t1:50827, dt:267, ease:21, alpha:0, vis:7, vID:40, vName:'a', a:1, da:-0.8},
+			{ID:'curve5', t0:50560, t1:50893, dt:333, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:132},
+			{ID:'curve5', t0:62090, t1:62357, dt:267, ease:21, alpha:0, vis:7, vID:40, vName:'a', a:1, da:-0.8},
+			{ID:'lines', t0:62090, t1:62423, dt:333, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:129, y:305, bh:129},
+			{ID:'mu', t0:62460, t1:62760, dt:300, ease:1, alpha:0, vis:3, vID:30, vName:'p', p:2, dp:8, np:10, px:1024, py:30, pw:1, ph:34},
+			{ID:'sigma1', t0:62760, t1:63260, dt:500, ease:1, alpha:0, vis:3, vID:22, vName:'wr', w:0, dw:60, x:537, bw:60},
+			{ID:'sigma2', t0:62760, t1:63260, dt:500, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:64},
+			{ID:'rcurve', t0:69060, t1:69393, dt:333, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:237},
+			{ID:'rcurve', t0:76900, t1:77133, dt:233, ease:21, alpha:0, vis:7, vID:40, vName:'a', a:1, da:-0.35},
+			{ID:'key', t0:77170, t1:77470, dt:300, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'curve2', t0:77170, t1:77470, dt:300, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:0.2, da:-0.2},
+			{ID:'curve3', t0:77170, t1:77470, dt:300, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:0.2, da:-0.2},
+			{ID:'curve4', t0:77170, t1:77470, dt:300, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:0.2, da:-0.2},
+			{ID:'curve5', t0:77170, t1:77470, dt:300, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:0.2, da:-0.2}
+	];
+hasMovieMaps = true;
+
+mmChildren = ['STAT_L2_LONG_TERM_DISTRIBUTION_gems_1000', 'STAT_L2_LONG_TERM_DISTRIBUTION_gems_1001', 'STAT_L2_LONG_TERM_DISTRIBUTION_gems_1002', 'STAT_L2_LONG_TERM_DISTRIBUTION_gems_1003', 'STAT_L2_LONG_TERM_DISTRIBUTION_gems_1004'];
+mmIndexPacked = [
+	[0, 1, 6, 11, 16, 21, 26, 31, 36, 40, 44, 48, 52, 56, 60, -2], 
+	[0, 2, 7, 12, 17, 22, 27, 32, 37, 41, 45, 49, 53, 57, 61, -3], 
+	[0, 3, 8, 13, 18, 23, 28, 33, 38, 42, 46, 50, 54, 58, 62, -4], 
+	[0, 4, 9, 14, 19, 24, 29, 34, 39, 43, 47, 51, 55, 59, 63, -5], 
+	[0, 5, 10, 15, 20, 25, 30, -35, 0.08]
+	];
+	mmX = [0, 217, 249, 281, 314, 345, 219, 251, 284, 316, 348, 221, 254, 286, 318, 350, 224, 256, 288, 320, 353, 
+		226, 258, 291, 323, 356, 228, 261, 293, 325, 358, 231, 263, 295, 327, 361, 233, 265, 298, 329, 235, 268, 
+		300, 332, 237, 270, 302, 334, 240, 272, 305, 336, 242, 275, 307, 338, 244, 277, 309, 341, 247, 279, 311, 
+		343];
+	mmY = [0, 240, 240, 240, 240, 240, 240, 240, 240, 240, 247, 240, 240, 240, 240, 254, 240, 240, 240, 240, 262, 
+		240, 240, 240, 240, 269, 240, 240, 240, 240, 276, 240, 240, 240, 240, 284, 240, 240, 240, 240, 240, 240, 
+		240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 
+		240];
+	mmW = [1, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 
+		13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 
+		13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 
+		13];
+	mmH = [1, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 
+		16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 
+		16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 
+		16];
+	mmA = [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+		1];
+
+
+smA.filename = '../audio/stat_l2_long_term_distribution';
+smA.soundLength = 111856;
+
+	ccText = [ '',
+				'One very important concept in Six Sigma is this',
+				'notion of long-term versus short-term variation.',
+				'Recall our Gemomatic process, spitting out incredible gems.',
+				'If you are using raw materials from one supplier and using',
+				'the operator from one shift, you may have a fairly stable process.',
+				'When Operator Two comes in, he may do something',
+				'different, whether it&apos;s loading parts differently',
+				'or working at a different time of the day or whatever the case may be and if',
+				'he does something different, he may shift the distribution of our gem',
+				'sizes. Then we may find that we&apos;ve run out of raw materials from Supplier A',
+				'and we start using raw materials from Supplier B and',
+				'the characteristics of that raw material may change our gem sizes, as well.',
+				'We can also have equipment changes. Some preventative maintenance',
+				'updates, some cleaning may cause our machines to act differently,',
+				'which could change the sizes of the gems, as well. Six Sigma',
+				'suggests that a short-term process, one of the blue curves, may tend',
+				'to shift up to 1.5 sigma away from its target',
+				'or its mean, over time. That means that our long',
+				'term delivered product will have much more variation than we',
+				'possibly observe in any given short-term snippet of time.',
+				'This is the difference between long-term and short-term variation. Short-term',
+				'variation can be measured when all Xs or all factors in a process are held',
+				'constant, meaning you only use one supplier of raw material,',
+				'one operator, one particular setting on the machine and you collect samples.',
+				'Those samples will represent short-term variability. But over many',
+				'operators and many batches of raw material and many machine settings,',
+				'we find that our short-term distribution will deliver much more variability.'
+			];
+
+ccTime = [ 0, 2000, 5150, 8300, 12487, 16476, 20930, 23279, 26230, 30605, 34583, 39130, 42429, 46597, 50360, 54330, 57999, 62090, 65500, 69060, 72738, 76900, 80910, 85467, 89417, 93913, 97984, 102420, 9999];
+
+
+
+	slideID = 'STAT_L2_LONG_TERM_DISTRIBUTION';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='gems' class='movieMap'>
+						<div id='STAT_L2_LONG_TERM_DISTRIBUTION_gems_1000'>	<div id='STAT_L2_LONG_TERM_DISTRIBUTION_gems_1000_ie'>	<img id='STAT_L2_LONG_TERM_DISTRIBUTION_gems_1000' class='altPNG' src='../images/STAT_L2_LONG_TERM_DISTRIBUTION/STAT_L2_LONG_TERM_DISTRIBUTION_gems_1000.png' alt='' />	</div>	</div>
+						<div id='STAT_L2_LONG_TERM_DISTRIBUTION_gems_1001'>	<div id='STAT_L2_LONG_TERM_DISTRIBUTION_gems_1001_ie'>	<img id='STAT_L2_LONG_TERM_DISTRIBUTION_gems_1001' class='altPNG' src='../images/STAT_L2_LONG_TERM_DISTRIBUTION/STAT_L2_LONG_TERM_DISTRIBUTION_gems_1001.png' alt='' />	</div>	</div>
+						<div id='STAT_L2_LONG_TERM_DISTRIBUTION_gems_1002'>	<div id='STAT_L2_LONG_TERM_DISTRIBUTION_gems_1002_ie'>	<img id='STAT_L2_LONG_TERM_DISTRIBUTION_gems_1002' class='altPNG' src='../images/STAT_L2_LONG_TERM_DISTRIBUTION/STAT_L2_LONG_TERM_DISTRIBUTION_gems_1002.png' alt='' />	</div>	</div>
+						<div id='STAT_L2_LONG_TERM_DISTRIBUTION_gems_1003'>	<div id='STAT_L2_LONG_TERM_DISTRIBUTION_gems_1003_ie'>	<img id='STAT_L2_LONG_TERM_DISTRIBUTION_gems_1003' class='altPNG' src='../images/STAT_L2_LONG_TERM_DISTRIBUTION/STAT_L2_LONG_TERM_DISTRIBUTION_gems_1003.png' alt='' />	</div>	</div>
+						<div id='STAT_L2_LONG_TERM_DISTRIBUTION_gems_1004'>	<div id='STAT_L2_LONG_TERM_DISTRIBUTION_gems_1004_ie'>	<img id='STAT_L2_LONG_TERM_DISTRIBUTION_gems_1004' class='altPNG' src='../images/STAT_L2_LONG_TERM_DISTRIBUTION/STAT_L2_LONG_TERM_DISTRIBUTION_gems_1004.png' alt='' />	</div>	</div>
+					</div>
+					<div id='mach'>	<div id='mach_ie'>	<img id='mach' class='altPNG' src='../images/STAT_L2_LONG_TERM_DISTRIBUTION/STAT_L2_LONG_TERM_DISTRIBUTION_mach.png' alt='' />	</div>	</div>
+					<div id='arrow'>	<div id='arrow_ie'>	<img id='arrow' class='altPNG' src='../images/STAT_L2_LONG_TERM_DISTRIBUTION/STAT_L2_LONG_TERM_DISTRIBUTION_arrow.png' alt='' />	</div>	</div>
+					<div id='oper1'>	<div id='oper1_ie'>	<img id='oper1' class='altPNG' src='../images/STAT_L2_LONG_TERM_DISTRIBUTION/STAT_L2_LONG_TERM_DISTRIBUTION_oper1.png' alt='' />	</div>	</div>
+					<div id='axis'></div>
+					<div id='box1'>	<div id='box1_ie'>	<img id='box1' class='altPNG' src='../images/STAT_L2_LONG_TERM_DISTRIBUTION/STAT_L2_LONG_TERM_DISTRIBUTION_box1.png' alt='' />	</div>	</div>
+					<div id='curve1'></div>
+					<div id='oper2'>	<div id='oper2_ie'>	<img id='oper2' class='altPNG' src='../images/STAT_L2_LONG_TERM_DISTRIBUTION/STAT_L2_LONG_TERM_DISTRIBUTION_oper2.png' alt='' />	</div>	</div>
+					<div id='curve2'></div>
+					<div id='curve3'></div>
+					<div id='box2'>	<div id='box2_ie'>	<img id='box2' class='altPNG' src='../images/STAT_L2_LONG_TERM_DISTRIBUTION/STAT_L2_LONG_TERM_DISTRIBUTION_box2.png' alt='' />	</div>	</div>
+					<div id='curve4'></div>
+					<div id='curve5'></div>
+					<div id='rcurve'></div>
+					<div id='key'>	<div id='key_ie'>	<img id='key' class='altPNG' src='../images/STAT_L2_LONG_TERM_DISTRIBUTION/STAT_L2_LONG_TERM_DISTRIBUTION_key.png' alt='' />	</div>	</div>
+					<div id='lines'></div>
+					<div id='mu'></div>
+					<div id='sigma1'></div>
+					<div id='sigma2'></div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Long Term Distributions</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

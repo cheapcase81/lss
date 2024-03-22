@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_VARIANCE.css"	rel="stylesheet" type="text/css" />
+<title>The Variance</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'line1', t0:22500, t1:22767, dt:267, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:574},
+			{ID:'line2', t0:22770, t1:23037, dt:267, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:291},
+			{ID:'pop', t0:23040, t1:23307, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'samp', t0:23340, t1:23607, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sigma', t0:28260, t1:28593, dt:333, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:17, vName:'s', x:131, dx:14, y:209, dy:8, w:82, dw:-41, h:38, dh:-19},
+			{ID:'esign1', t0:28260, t1:28527, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lxi', t0:31200, t1:31467, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'mmu', t0:34700, t1:34967, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'para1', t0:37940, t1:38207, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sum1', t0:39900, t1:40167, dt:267, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:161, dx:32},
+			{ID:'ltext', t0:42490, t1:42757, dt:267, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:260, dy:-32},
+			{ID:'ltext2', t0:48780, t1:49047, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'s2', t0:63460, t1:63793, dt:333, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:17, vName:'s', x:411, dx:15, y:209, dy:9, w:96, dw:-48, h:38, dh:-19},
+			{ID:'esign2', t0:63460, t1:63727, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rxi', t0:67170, t1:67437, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'mxbar', t0:69310, t1:69577, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'para2', t0:71410, t1:71677, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sum2', t0:74080, t1:74347, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rtext', t0:76230, t1:76497, dt:267, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:260, dy:-32},
+			{ID:'rtext2', t0:80880, t1:81147, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1}
+	];
+
+
+smA.filename = '../audio/stat_l2_variance';
+smA.soundLength = 101747;
+
+	ccText = [ '',
+				'Range has been used historically to estimate variation because it&apos;s',
+				'incredibly easy to calculate. You simply take the max minus the min, but, as we saw,',
+				'the range does not represent true variability of the data. Hence,',
+				'a more sophisticated statistic was created. That statistic is called the variance.',
+				'We have population variances and sample variances. The population variance, known as',
+				'σ2, is calculated by taking each',
+				'individual observation of the population, xi,',
+				'subtracting population mean, μ,',
+				'squaring that deviation,',
+				'summing the squared deviations together and',
+				'dividing by the total number of deviations we',
+				'have, called N, capital N. That&apos;s known as',
+				'the population variance. Unfortunately, the population variance is OKTG,',
+				'only known to God. Hence, we need another sample variance that',
+				'represents the population variance. The sample variance, commonly known to be',
+				's2, is calculated by taking each individual sample',
+				'observation, subtracting from',
+				'the sample mean, X-bar,',
+				'squaring that deviation,',
+				'summing all those deviations together and',
+				'dividing by n minus one, little n minus one, which is',
+				'the number of observations in our sample minus one. Many people ask why we',
+				'divide by n minus one instead of n in the denominator. This is a pretty',
+				'advanced concept that we cover in our advanced courses, so we won&apos;t answer',
+				'the question here, but if you&apos;re really curious, ask a Master Black Belt.'
+			];
+
+ccTime = [ 0, 2000, 6765, 12315, 17081, 22500, 28260, 31200, 34700, 37940, 39900, 42490, 45472, 48780, 53626, 58051, 63460, 67170, 69310, 71410, 74080, 76230, 80880, 84622, 88418, 92635, 9999];
+
+
+
+	slideID = 'STAT_L2_VARIANCE';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='line1'></div>
+					<div id='line2'></div>
+					<div id='pop'>	<div id='pop_ie'>	<img id='pop' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_pop.png' alt='' />	</div>	</div>
+					<div id='samp'>	<div id='samp_ie'>	<img id='samp' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_samp.png' alt='' />	</div>	</div>
+					<div id='esign1'>	<div id='esign1_ie'>	<img id='esign1' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_esign1.png' alt='' />	</div>	</div>
+					<div id='sigma'>	<div id='sigma_ie'>	<img id='sigma' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_sigma.png' alt='' />	</div>	</div>
+					<div id='lxi'>	<div id='lxi_ie'>	<img id='lxi' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_lxi.png' alt='' />	</div>	</div>
+					<div id='mmu'>	<div id='mmu_ie'>	<img id='mmu' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_mmu.png' alt='' />	</div>	</div>
+					<div id='para1'>	<div id='para1_ie'>	<img id='para1' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_para1.png' alt='' />	</div>	</div>
+					<div id='sum1'>	<div id='sum1_ie'>	<img id='sum1' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_sum1.png' alt='' />	</div>	</div>
+					<div id='ltext'>	<div id='ltext_ie'>	<img id='ltext' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_ltext.png' alt='' />	</div>	</div>
+					<div id='ltext2'>	<div id='ltext2_ie'>	<img id='ltext2' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_ltext2.png' alt='' />	</div>	</div>
+					<div id='esign2'>	<div id='esign2_ie'>	<img id='esign2' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_esign2.png' alt='' />	</div>	</div>
+					<div id='s2'>	<div id='s2_ie'>	<img id='s2' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_s2.png' alt='' />	</div>	</div>
+					<div id='rxi'>	<div id='rxi_ie'>	<img id='rxi' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_rxi.png' alt='' />	</div>	</div>
+					<div id='mxbar'>	<div id='mxbar_ie'>	<img id='mxbar' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_mxbar.png' alt='' />	</div>	</div>
+					<div id='sum2'>	<div id='sum2_ie'>	<img id='sum2' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_sum2.png' alt='' />	</div>	</div>
+					<div id='para2'>	<div id='para2_ie'>	<img id='para2' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_para2.png' alt='' />	</div>	</div>
+					<div id='rtext'>	<div id='rtext_ie'>	<img id='rtext' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_rtext.png' alt='' />	</div>	</div>
+					<div id='rtext2'>	<div id='rtext2_ie'>	<img id='rtext2' class='altPNG' src='../images/STAT_L2_VARIANCE/STAT_L2_VARIANCE_rtext2.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>The Variance</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

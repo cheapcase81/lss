@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_3_6_SIGMA_PROCESS.css"	rel="stylesheet" type="text/css" />
+<title>Three Sigma vs. Six Sigma Process</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'bkgr', t0:6320, t1:6853, dt:533, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'xaxis', t0:6850, t1:7050, dt:200, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'xtext', t0:6980, t1:7180, dt:200, ease:22, alpha:0, vis:3, vID:1, vName:'x', x:161, dx:-4},
+			{ID:'xtext', t0:6980, t1:7180, dt:200, ease:22, alpha:2, aa:0, daa:1, vis:7, vID:2, vName:'y', y:357, dy:-32},
+			{ID:'yaxis', t0:7110, t1:7310, dt:200, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ytext', t0:7240, t1:7440, dt:200, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'mu', t0:7610, t1:7810, dt:200, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'curve1', t0:7910, t1:8377, dt:467, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'title1', t0:8210, t1:8477, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'specs', t0:15870, t1:16370, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lsigma1', t0:28810, t1:29110, dt:300, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rsigma1', t0:28810, t1:29110, dt:300, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'wsigma1', t0:29010, t1:29243, dt:233, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lsigma2', t0:29110, t1:29410, dt:300, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:328, dx:-56},
+			{ID:'rsigma2', t0:29140, t1:29440, dt:300, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:383, dx:56},
+			{ID:'wsigma2', t0:29340, t1:29573, dt:233, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lsigma3', t0:29440, t1:29740, dt:300, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:272, dx:-56},
+			{ID:'rsigma3', t0:29470, t1:29770, dt:300, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:439, dx:56},
+			{ID:'wsigma3', t0:29670, t1:29903, dt:233, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'curve1', t0:48080, t1:48580, dt:500, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'curve2', t0:48080, t1:48580, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rsigma1', t0:48310, t1:48510, dt:200, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'lsigma1', t0:48310, t1:48510, dt:200, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'rsigma1a', t0:48310, t1:48510, dt:200, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lsigma1a', t0:48310, t1:48510, dt:200, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'wsigma1', t0:48310, t1:48510, dt:200, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:407, dx:-14},
+			{ID:'rsigma2', t0:48440, t1:48707, dt:267, ease:23, alpha:0, vis:3, vID:1, vName:'x', x:439, dx:-42},
+			{ID:'lsigma2', t0:48440, t1:48707, dt:267, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'rsigma2a', t0:48440, t1:48707, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lsigma2a', t0:48440, t1:48707, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'wsigma2', t0:48440, t1:48707, dt:267, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:463, dx:-43},
+			{ID:'rsigma2', t0:48440, t1:48707, dt:267, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'lsigma2', t0:48440, t1:48707, dt:267, ease:23, alpha:0, vis:3, vID:1, vName:'x', x:272, dx:42},
+			{ID:'rsigma3a', t0:48610, t1:48943, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lsigma3', t0:48610, t1:48943, dt:333, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'rsigma3', t0:48610, t1:48943, dt:333, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'lsigma3a', t0:48610, t1:48943, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rsigma3', t0:48610, t1:48943, dt:333, ease:23, alpha:0, vis:3, vID:1, vName:'x', x:495, dx:-70},
+			{ID:'wsigma3', t0:48610, t1:48943, dt:333, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:519, dx:-72},
+			{ID:'lsigma3', t0:48610, t1:48943, dt:333, ease:23, alpha:0, vis:3, vID:1, vName:'x', x:216, dx:70},
+			{ID:'rsigma4', t0:48680, t1:49047, dt:367, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:552, dx:-84},
+			{ID:'lsigma4', t0:48680, t1:49047, dt:367, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:188, dx:84},
+			{ID:'rsigma5', t0:48850, t1:49150, dt:300, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:552, dx:-56},
+			{ID:'lsigma5', t0:48850, t1:49150, dt:300, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:188, dx:56},
+			{ID:'rsigma6', t0:49050, t1:49283, dt:233, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:552, dx:-28},
+			{ID:'lsigma6', t0:49050, t1:49283, dt:233, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:188, dx:28},
+			{ID:'title1', t0:49150, t1:49383, dt:233, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'title2', t0:49280, t1:49647, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1}
+	];
+
+
+smA.filename = '../audio/stat_l2_3_6_sigma_process';
+smA.soundLength = 87667;
+
+	ccText = [ '',
+				'Finally, I get to tell you about why we call this Six Sigma.',
+				'In this illustration, we&apos;re going to characterize a',
+				'three sigma and a Six Sigma process. In order to characterize',
+				'the capability of a process, We need to know where the spec',
+				'limits are. We need to know where the mean is relative to those spec',
+				'limits and finally, We need to know how many standard deviations of a',
+				'process we can fit in between the mean and the nearest spec limit. Notice a',
+				'three sigma process can fit three sigmas in between the mean and the nearest',
+				'spec limit. Many people think because you can fit Six Sigmas in between the lower',
+				'and the upper spec limit that this means we have a Six Sigma process. That is,',
+				'in fact, incorrect. In order to have a Six Sigma process we need to be able to',
+				'fit six standard deviations between the mean and the nearest spec limit or',
+				'12 standard deviations between the lower and the upper spec limit. So a Six',
+				'Sigma process can fit 12 standard deviations in between the spec limits,',
+				'not six. The reason we call this methodology Six Sigma is because if you can fit',
+				'12 standard deviations in between your spec limits, you will have virtually',
+				'zero defects being delivered on this performance characteristic.',
+				'That is just such an incredible goal to strive for and, once achieved, your customers',
+				'will be incredibly delighted with the quality of their goods and services.'
+			];
+
+ccTime = [ 0, 2000, 6320, 9378, 12704, 15870, 20042, 24274, 28810, 33505, 38505, 43323, 48080, 52360, 56698, 61092, 65487, 69825, 73991, 78443, 9999];
+
+
+
+	slideID = 'STAT_L2_3_6_SIGMA_PROCESS';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='bkgr'>	<div id='bkgr_ie'>	<img id='bkgr' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_bkgr.png' alt='' />	</div>	</div>
+					<div id='curve1'>	<div id='curve1_ie'>	<img id='curve1' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_curve1.png' alt='' />	</div>	</div>
+					<div id='curve2'>	<div id='curve2_ie'>	<img id='curve2' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_curve2.png' alt='' />	</div>	</div>
+					<div id='xaxis'>	<div id='xaxis_ie'>	<img id='xaxis' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_xaxis.png' alt='' />	</div>	</div>
+					<div id='xtext'>	<div id='xtext_ie'>	<img id='xtext' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_xtext.png' alt='' />	</div>	</div>
+					<div id='yaxis'>	<div id='yaxis_ie'>	<img id='yaxis' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_yaxis.png' alt='' />	</div>	</div>
+					<div id='ytext'>	<div id='ytext_ie'>	<img id='ytext' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_ytext.png' alt='' />	</div>	</div>
+					<div id='mu'>	<div id='mu_ie'>	<img id='mu' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_mu.png' alt='' />	</div>	</div>
+					<div id='title1'>	<div id='title1_ie'>	<img id='title1' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_title1.png' alt='' />	</div>	</div>
+					<div id='specs'>	<div id='specs_ie'>	<img id='specs' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_specs.png' alt='' />	</div>	</div>
+					<div id='lsigma1'>	<div id='lsigma1_ie'>	<img id='lsigma1' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_lsigma1.png' alt='' />	</div>	</div>
+					<div id='lsigma2'>	<div id='lsigma2_ie'>	<img id='lsigma2' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_lsigma2.png' alt='' />	</div>	</div>
+					<div id='lsigma3'>	<div id='lsigma3_ie'>	<img id='lsigma3' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_lsigma3.png' alt='' />	</div>	</div>
+					<div id='rsigma1'>	<div id='rsigma1_ie'>	<img id='rsigma1' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_rsigma1.png' alt='' />	</div>	</div>
+					<div id='rsigma2'>	<div id='rsigma2_ie'>	<img id='rsigma2' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_rsigma2.png' alt='' />	</div>	</div>
+					<div id='rsigma3'>	<div id='rsigma3_ie'>	<img id='rsigma3' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_rsigma3.png' alt='' />	</div>	</div>
+					<div id='wsigma1'>	<div id='wsigma1_ie'>	<img id='wsigma1' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_wsigma1.png' alt='' />	</div>	</div>
+					<div id='wsigma2'>	<div id='wsigma2_ie'>	<img id='wsigma2' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_wsigma2.png' alt='' />	</div>	</div>
+					<div id='wsigma3'>	<div id='wsigma3_ie'>	<img id='wsigma3' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_wsigma3.png' alt='' />	</div>	</div>
+					<div id='title2'>	<div id='title2_ie'>	<img id='title2' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_title2.png' alt='' />	</div>	</div>
+					<div id='lsigma1a'>	<div id='lsigma1a_ie'>	<img id='lsigma1a' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_lsigma1a.png' alt='' />	</div>	</div>
+					<div id='lsigma2a'>	<div id='lsigma2a_ie'>	<img id='lsigma2a' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_lsigma2a.png' alt='' />	</div>	</div>
+					<div id='lsigma3a'>	<div id='lsigma3a_ie'>	<img id='lsigma3a' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_lsigma3a.png' alt='' />	</div>	</div>
+					<div id='lsigma4'>	<div id='lsigma4_ie'>	<img id='lsigma4' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_lsigma4.png' alt='' />	</div>	</div>
+					<div id='lsigma5'>	<div id='lsigma5_ie'>	<img id='lsigma5' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_lsigma5.png' alt='' />	</div>	</div>
+					<div id='lsigma6'>	<div id='lsigma6_ie'>	<img id='lsigma6' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_lsigma6.png' alt='' />	</div>	</div>
+					<div id='rsigma1a'>	<div id='rsigma1a_ie'>	<img id='rsigma1a' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_rsigma1a.png' alt='' />	</div>	</div>
+					<div id='rsigma2a'>	<div id='rsigma2a_ie'>	<img id='rsigma2a' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_rsigma2a.png' alt='' />	</div>	</div>
+					<div id='rsigma3a'>	<div id='rsigma3a_ie'>	<img id='rsigma3a' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_rsigma3a.png' alt='' />	</div>	</div>
+					<div id='rsigma4'>	<div id='rsigma4_ie'>	<img id='rsigma4' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_rsigma4.png' alt='' />	</div>	</div>
+					<div id='rsigma5'>	<div id='rsigma5_ie'>	<img id='rsigma5' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_rsigma5.png' alt='' />	</div>	</div>
+					<div id='rsigma6'>	<div id='rsigma6_ie'>	<img id='rsigma6' class='altPNG' src='../images/STAT_L2_3_6_SIGMA_PROCESS/STAT_L2_3_6_SIGMA_PROCESS_rsigma6.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Three Sigma vs. Six Sigma Process</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_POPULATION_DISTRIBUTION.css"	rel="stylesheet" type="text/css" />
+<title>Population Distribution</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'axis', t0:2000, t1:2467, dt:467, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:546},
+			{ID:'tick1', t0:2200, t1:2300, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick2', t0:2230, t1:2330, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick3', t0:2260, t1:2360, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick4', t0:2290, t1:2390, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick5', t0:2320, t1:2420, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick6', t0:2350, t1:2450, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick7', t0:2380, t1:2480, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick8', t0:2410, t1:2510, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick9', t0:2440, t1:2540, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick10', t0:2470, t1:2570, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick11', t0:2500, t1:2600, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick12', t0:2530, t1:2630, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick13', t0:2560, t1:2660, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick14', t0:2590, t1:2690, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick15', t0:2620, t1:2720, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick16', t0:2650, t1:2750, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick17', t0:2680, t1:2780, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick18', t0:2710, t1:2810, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick19', t0:2740, t1:2840, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick20', t0:2770, t1:2870, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick21', t0:2800, t1:2900, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick22', t0:2830, t1:2930, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick23', t0:2860, t1:2960, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick24', t0:2890, t1:2990, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick25', t0:2920, t1:3020, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick26', t0:2950, t1:3050, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick27', t0:2980, t1:3080, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick28', t0:3010, t1:3110, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick29', t0:3040, t1:3140, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick30', t0:3070, t1:3170, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick31', t0:3100, t1:3200, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick32', t0:3130, t1:3230, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick33', t0:3160, t1:3260, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick34', t0:3190, t1:3290, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'tick35', t0:3220, t1:3320, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'bbar1', t0:3980, t1:4447, dt:467, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:129, y:288, bh:129},
+			{ID:'bbar2', t0:4010, t1:4377, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:65, y:289, bh:65},
+			{ID:'bbar3', t0:4040, t1:4407, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:49, y:288, bh:49},
+			{ID:'bbar4', t0:4170, t1:4537, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:113, y:288, bh:113},
+			{ID:'bbar5', t0:4270, t1:4537, dt:267, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:9, y:289, bh:9},
+			{ID:'bbar6', t0:4300, t1:4633, dt:333, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:17, y:289, bh:17},
+			{ID:'bbar7', t0:4400, t1:4633, dt:233, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:113, y:288, bh:113},
+			{ID:'bbar4', t0:10880, t1:10980, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'bbar2', t0:10880, t1:10980, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'bbar3', t0:10880, t1:10980, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'bbar1', t0:10880, t1:10980, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'bbar5', t0:10880, t1:10980, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'bbar6', t0:10880, t1:10980, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'bbar7', t0:10880, t1:10980, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar1', t0:10880, t1:11347, dt:467, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:124, y:288, bh:124},
+			{ID:'nbar2', t0:10880, t1:11413, dt:533, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:121, y:289, bh:121},
+			{ID:'nbar5', t0:10910, t1:11377, dt:467, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:125, y:288, bh:125},
+			{ID:'nbar6', t0:10910, t1:11277, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:49, y:289, bh:49},
+			{ID:'nbar4', t0:10910, t1:11243, dt:333, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:70, y:289, bh:70},
+			{ID:'nbar3', t0:10910, t1:11277, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:57, y:289, bh:57},
+			{ID:'nbar7', t0:10940, t1:11307, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:129, y:289, bh:129},
+			{ID:'nbar8', t0:11040, t1:11407, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:61, y:288, bh:61},
+			{ID:'nbar9', t0:11040, t1:11373, dt:333, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:89, y:289, bh:89},
+			{ID:'nbar10', t0:11070, t1:11437, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:116, y:288, bh:116},
+			{ID:'nbar11', t0:11070, t1:11403, dt:333, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:105, y:289, bh:105},
+			{ID:'nbar12', t0:11070, t1:11370, dt:300, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:9, y:289, bh:9},
+			{ID:'nbar13', t0:11100, t1:11367, dt:267, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:6, y:288, bh:6},
+			{ID:'nbar14', t0:11100, t1:11400, dt:300, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:113, y:289, bh:113},
+			{ID:'nbar15', t0:11130, t1:11397, dt:267, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:17, y:289, bh:17},
+			{ID:'nbar16', t0:11130, t1:11497, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:25, y:289, bh:25},
+			{ID:'nbar17', t0:11160, t1:11493, dt:333, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:25, y:289, bh:25},
+			{ID:'nbar18', t0:11260, t1:11493, dt:233, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:105, y:289, bh:105},
+			{ID:'nbar19', t0:11260, t1:11460, dt:200, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:110, y:289, bh:110},
+			{ID:'nbar20', t0:11260, t1:11427, dt:167, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:105, y:289, bh:105},
+			{ID:'nbar21', t0:11290, t1:11490, dt:200, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:113, y:289, bh:113},
+			{ID:'nbar1', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar2', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar3', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar4', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar5', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar6', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar7', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar8', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar9', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar10', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar11', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar12', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar13', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar14', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar15', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar16', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar17', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar18', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar19', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar20', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbar21', t0:13150, t1:13250, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars1', t0:13150, t1:13617, dt:467, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:124, y:288, bh:124},
+			{ID:'nbars2', t0:13150, t1:13583, dt:433, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:129, y:289, bh:129},
+			{ID:'nbars3', t0:13150, t1:13650, dt:500, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:125, y:288, bh:125},
+			{ID:'nbars4', t0:13150, t1:13683, dt:533, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:121, y:289, bh:121},
+			{ID:'nbars5', t0:13180, t1:13547, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:61, y:288, bh:61},
+			{ID:'nbars6', t0:13180, t1:13513, dt:333, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:65, y:289, bh:65},
+			{ID:'nbars7', t0:13210, t1:13577, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:65, y:289, bh:65},
+			{ID:'nbars8', t0:13310, t1:13677, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:61, y:288, bh:61},
+			{ID:'nbars9', t0:13310, t1:13643, dt:333, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:89, y:289, bh:89},
+			{ID:'nbars10', t0:13340, t1:13707, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:116, y:288, bh:116},
+			{ID:'nbars11', t0:13340, t1:13673, dt:333, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:110, y:289, bh:110},
+			{ID:'nbars12', t0:13340, t1:13640, dt:300, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:33, y:289, bh:33},
+			{ID:'nbars13', t0:13370, t1:13670, dt:300, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:113, y:289, bh:113},
+			{ID:'nbars14', t0:13370, t1:13637, dt:267, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:9, y:289, bh:9},
+			{ID:'nbars15', t0:13400, t1:13667, dt:267, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:25, y:289, bh:25},
+			{ID:'nbars16', t0:13400, t1:13733, dt:333, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:113, y:289, bh:113},
+			{ID:'nbars17', t0:13400, t1:13767, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:25, y:289, bh:25},
+			{ID:'nbars18', t0:13430, t1:13763, dt:333, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:25, y:289, bh:25},
+			{ID:'nbars19', t0:13530, t1:13763, dt:233, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:113, y:289, bh:113},
+			{ID:'nbars1', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars2', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars3', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars4', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars5', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars6', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars7', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars8', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars9', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars10', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars11', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars12', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars13', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars14', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars15', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars16', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars17', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars18', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'nbars19', t0:14460, t1:14560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'barcurve', t0:14460, t1:15060, dt:600, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:133, y:288, bh:133},
+			{ID:'curve', t0:19980, t1:20480, dt:500, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:438},
+			{ID:'blue', t0:23200, t1:23533, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'barcurve', t0:25510, t1:26110, dt:600, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1}
+	];
+
+
+smA.filename = '../audio/stat_l2_population_distribution';
+smA.soundLength = 35004;
+
+	ccText = [ '',
+				'If we pull a sample of data and we plot',
+				'it on what is known as a histogram, we can start to analyze',
+				'the distribution of the sample. If we were to pull larger',
+				'and larger samples,',
+				'event ually, if we measured every single',
+				'observation there was to measure, we would move',
+				'from having a histogram of our sample data to having',
+				'a smooth curve of our population distribution.',
+				'Underneath this smooth curve is 100',
+				'percent of all of the observations in that',
+				'population. This is known as the population distribution.'
+			];
+
+ccTime = [ 0, 2000, 3980, 7518, 10880, 13150, 14460, 17109, 19980, 23200, 25510, 27442, 9999];
+
+
+
+	slideID = 'STAT_L2_POPULATION_DISTRIBUTION';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='barcurve'></div>
+					<div id='nbars1'></div>
+					<div id='nbars2'></div>
+					<div id='nbars3'></div>
+					<div id='nbars4'></div>
+					<div id='nbars5'></div>
+					<div id='nbars6'></div>
+					<div id='nbars7'></div>
+					<div id='nbars8'></div>
+					<div id='nbars9'></div>
+					<div id='nbars10'></div>
+					<div id='nbars11'></div>
+					<div id='nbars12'></div>
+					<div id='nbars13'></div>
+					<div id='nbars14'></div>
+					<div id='nbars15'></div>
+					<div id='nbars16'></div>
+					<div id='nbars17'></div>
+					<div id='nbars18'></div>
+					<div id='nbars19'></div>
+					<div id='nbar1'></div>
+					<div id='nbar2'></div>
+					<div id='nbar6'></div>
+					<div id='nbar5'></div>
+					<div id='nbar3'></div>
+					<div id='nbar4'></div>
+					<div id='nbar7'></div>
+					<div id='nbar8'></div>
+					<div id='nbar9'></div>
+					<div id='nbar10'></div>
+					<div id='nbar11'></div>
+					<div id='nbar12'></div>
+					<div id='nbar13'></div>
+					<div id='nbar14'></div>
+					<div id='nbar15'></div>
+					<div id='nbar16'></div>
+					<div id='nbar17'></div>
+					<div id='nbar18'></div>
+					<div id='nbar19'></div>
+					<div id='nbar20'></div>
+					<div id='nbar21'></div>
+					<div id='bbar1'></div>
+					<div id='bbar2'></div>
+					<div id='bbar3'></div>
+					<div id='bbar4'></div>
+					<div id='bbar5'></div>
+					<div id='bbar6'></div>
+					<div id='bbar7'></div>
+					<div id='axis'></div>
+					<div id='tick1'>	<div id='tick1_ie'>	<img id='tick1' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick1.png' alt='' />	</div>	</div>
+					<div id='tick2'>	<div id='tick2_ie'>	<img id='tick2' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick2.png' alt='' />	</div>	</div>
+					<div id='tick3'>	<div id='tick3_ie'>	<img id='tick3' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick3.png' alt='' />	</div>	</div>
+					<div id='tick4'>	<div id='tick4_ie'>	<img id='tick4' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick4.png' alt='' />	</div>	</div>
+					<div id='tick5'>	<div id='tick5_ie'>	<img id='tick5' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick5.png' alt='' />	</div>	</div>
+					<div id='tick6'>	<div id='tick6_ie'>	<img id='tick6' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick6.png' alt='' />	</div>	</div>
+					<div id='tick7'>	<div id='tick7_ie'>	<img id='tick7' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick7.png' alt='' />	</div>	</div>
+					<div id='tick8'>	<div id='tick8_ie'>	<img id='tick8' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick8.png' alt='' />	</div>	</div>
+					<div id='tick9'>	<div id='tick9_ie'>	<img id='tick9' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick9.png' alt='' />	</div>	</div>
+					<div id='tick10'>	<div id='tick10_ie'>	<img id='tick10' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick10.png' alt='' />	</div>	</div>
+					<div id='tick11'>	<div id='tick11_ie'>	<img id='tick11' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick11.png' alt='' />	</div>	</div>
+					<div id='tick12'>	<div id='tick12_ie'>	<img id='tick12' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick12.png' alt='' />	</div>	</div>
+					<div id='tick13'>	<div id='tick13_ie'>	<img id='tick13' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick13.png' alt='' />	</div>	</div>
+					<div id='tick14'>	<div id='tick14_ie'>	<img id='tick14' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick14.png' alt='' />	</div>	</div>
+					<div id='tick15'>	<div id='tick15_ie'>	<img id='tick15' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick15.png' alt='' />	</div>	</div>
+					<div id='tick16'>	<div id='tick16_ie'>	<img id='tick16' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick16.png' alt='' />	</div>	</div>
+					<div id='tick17'>	<div id='tick17_ie'>	<img id='tick17' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick17.png' alt='' />	</div>	</div>
+					<div id='tick18'>	<div id='tick18_ie'>	<img id='tick18' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick18.png' alt='' />	</div>	</div>
+					<div id='tick19'>	<div id='tick19_ie'>	<img id='tick19' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick19.png' alt='' />	</div>	</div>
+					<div id='tick20'>	<div id='tick20_ie'>	<img id='tick20' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick20.png' alt='' />	</div>	</div>
+					<div id='tick21'>	<div id='tick21_ie'>	<img id='tick21' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick21.png' alt='' />	</div>	</div>
+					<div id='tick22'>	<div id='tick22_ie'>	<img id='tick22' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick22.png' alt='' />	</div>	</div>
+					<div id='tick23'>	<div id='tick23_ie'>	<img id='tick23' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick23.png' alt='' />	</div>	</div>
+					<div id='tick24'>	<div id='tick24_ie'>	<img id='tick24' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick24.png' alt='' />	</div>	</div>
+					<div id='tick25'>	<div id='tick25_ie'>	<img id='tick25' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick25.png' alt='' />	</div>	</div>
+					<div id='tick26'>	<div id='tick26_ie'>	<img id='tick26' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick26.png' alt='' />	</div>	</div>
+					<div id='tick27'>	<div id='tick27_ie'>	<img id='tick27' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick27.png' alt='' />	</div>	</div>
+					<div id='tick28'>	<div id='tick28_ie'>	<img id='tick28' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick28.png' alt='' />	</div>	</div>
+					<div id='tick29'>	<div id='tick29_ie'>	<img id='tick29' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick29.png' alt='' />	</div>	</div>
+					<div id='tick30'>	<div id='tick30_ie'>	<img id='tick30' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick30.png' alt='' />	</div>	</div>
+					<div id='tick31'>	<div id='tick31_ie'>	<img id='tick31' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick31.png' alt='' />	</div>	</div>
+					<div id='tick32'>	<div id='tick32_ie'>	<img id='tick32' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick32.png' alt='' />	</div>	</div>
+					<div id='tick33'>	<div id='tick33_ie'>	<img id='tick33' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick33.png' alt='' />	</div>	</div>
+					<div id='tick34'>	<div id='tick34_ie'>	<img id='tick34' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick34.png' alt='' />	</div>	</div>
+					<div id='tick35'>	<div id='tick35_ie'>	<img id='tick35' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_tick35.png' alt='' />	</div>	</div>
+					<div id='blue'>	<div id='blue_ie'>	<img id='blue' class='altPNG' src='../images/STAT_L2_POPULATION_DISTRIBUTION/STAT_L2_POPULATION_DISTRIBUTION_blue.png' alt='' />	</div>	</div>
+					<div id='curve'></div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Population Distribution</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

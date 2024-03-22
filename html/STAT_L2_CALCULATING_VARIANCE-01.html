@@ -1,0 +1,400 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_CALCULATING_VARIANCE-01.css"	rel="stylesheet" type="text/css" />
+<title>Calculating the Variance - Example</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'equas', t0:2000, t1:2100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'bkgr', t0:2000, t1:2500, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hlines', t0:2770, t1:3137, dt:367, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:193},
+			{ID:'vlines1', t0:3040, t1:3407, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:88, y:199, bh:88},
+			{ID:'vlines2', t0:3040, t1:3407, dt:367, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:90},
+			{ID:'hl1', t0:3410, t1:3943, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row1', t0:3410, t1:3510, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl2', t0:3610, t1:4143, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row2', t0:3610, t1:3710, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl3', t0:3810, t1:4343, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row3', t0:3810, t1:3910, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl4', t0:4010, t1:4543, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row4', t0:4010, t1:4110, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl5', t0:4210, t1:4743, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row5', t0:4210, t1:4310, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl6', t0:4410, t1:4943, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row6', t0:4410, t1:4510, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl7', t0:4610, t1:5143, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row7', t0:4610, t1:4710, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl8', t0:4810, t1:5343, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row8', t0:4810, t1:4910, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl9', t0:5010, t1:5543, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row9', t0:5010, t1:5110, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl10', t0:5210, t1:5743, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row10', t0:5210, t1:5310, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl11', t0:5410, t1:5943, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row11', t0:5410, t1:5510, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'nums', t0:5750, t1:6050, dt:300, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:116},
+			{ID:'hl12', t0:6050, t1:6450, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row10a', t0:6050, t1:6150, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lhl1', t0:10330, t1:10530, dt:200, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lhl1', t0:11060, t1:11160, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl13', t0:11090, t1:11490, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row9a', t0:11090, t1:11190, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'mean', t0:13180, t1:13447, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl14', t0:13450, t1:13850, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row11a', t0:13450, t1:13550, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hline', t0:19120, t1:19353, dt:233, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:258},
+			{ID:'vline', t0:19350, t1:19583, dt:233, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:170, y:273, bh:170},
+			{ID:'num1', t0:19680, t1:19780, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ticks1', t0:19810, t1:19910, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ticks2', t0:19940, t1:20040, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ticks3', t0:20070, t1:20170, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ticks4', t0:20200, t1:20300, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hls1', t0:22010, t1:22243, dt:233, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'dot', t0:22280, t1:22513, dt:233, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl15', t0:22510, t1:22710, dt:200, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl2a', t0:22510, t1:22610, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'row2b', t0:22510, t1:22610, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'cnum1', t0:22510, t1:22610, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hls1', t0:24540, t1:24640, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl2a', t0:24540, t1:24640, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hls2', t0:24570, t1:24770, dt:200, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'branch1', t0:24800, t1:25000, dt:200, ease:1, alpha:0, vis:3, vID:22, vName:'wr', w:0, dw:34, x:416, bw:34},
+			{ID:'hl16', t0:25070, t1:25270, dt:200, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl3a', t0:25070, t1:25170, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'row3b', t0:25070, t1:25170, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'cnum2', t0:25070, t1:25170, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hls2', t0:27270, t1:27370, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl3a', t0:27270, t1:27370, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hls3', t0:27300, t1:27500, dt:200, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'branch2', t0:27530, t1:27730, dt:200, ease:1, alpha:0, vis:3, vID:22, vName:'wr', w:0, dw:66, x:416, bw:66},
+			{ID:'cnum3', t0:27800, t1:27900, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl4a', t0:27800, t1:27900, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'row4b', t0:27800, t1:27900, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl17', t0:27800, t1:28000, dt:200, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hls3', t0:29800, t1:29900, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl4a', t0:29800, t1:29900, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'xbar', t0:29800, t1:30800, dt:1000, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:68},
+			{ID:'branch3', t0:29800, t1:29967, dt:167, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:33},
+			{ID:'cnum4', t0:30030, t1:30130, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'branch4', t0:30100, t1:30267, dt:167, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:66},
+			{ID:'cnum5', t0:30330, t1:30430, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'branch5', t0:30400, t1:30600, dt:200, ease:1, alpha:0, vis:3, vID:22, vName:'wr', w:0, dw:130, x:416, bw:130},
+			{ID:'cnum6', t0:30670, t1:30770, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'branch6', t0:30770, t1:30970, dt:200, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:130},
+			{ID:'cnum7', t0:30870, t1:30970, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hls4', t0:46680, t1:46880, dt:200, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl2b', t0:46850, t1:46950, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'cnum1a', t0:46850, t1:46950, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'row2c', t0:46850, t1:46950, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl18', t0:46850, t1:47050, dt:200, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hls4', t0:47990, t1:48090, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl2b', t0:47990, t1:48090, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hls5', t0:48020, t1:48220, dt:200, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl19', t0:48190, t1:48390, dt:200, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'cnum2a', t0:48190, t1:48290, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'row3c', t0:48190, t1:48290, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl3b', t0:48190, t1:48290, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hls5', t0:50560, t1:50660, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl3b', t0:50560, t1:50660, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hls6', t0:50590, t1:50790, dt:200, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl20', t0:50640, t1:50840, dt:200, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'cnum3a', t0:50640, t1:50740, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'row4c', t0:50640, t1:50740, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl4b', t0:50640, t1:50740, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'cnum4a', t0:51600, t1:51700, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl4b', t0:51600, t1:51700, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'squares', t0:51600, t1:52600, dt:1000, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:68},
+			{ID:'hls6', t0:51600, t1:51700, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'cnum5a', t0:51730, t1:51830, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'cnum6a', t0:51860, t1:51960, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'cnum7a', t0:51990, t1:52090, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sums1', t0:55630, t1:56630, dt:1000, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:283},
+			{ID:'hl21', t0:56860, t1:57060, dt:200, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row9c', t0:56860, t1:56960, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl9b', t0:56860, t1:56960, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl9b', t0:76680, t1:76780, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'sig2', t0:76710, t1:76810, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'esign1', t0:76940, t1:77040, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'numer1', t0:77170, t1:77270, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'denom1', t0:77400, t1:77500, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'esign2', t0:77630, t1:77730, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ans1', t0:77860, t1:77960, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'s2', t0:87460, t1:87560, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'esign3', t0:87690, t1:87790, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'numer2', t0:87920, t1:88020, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'dline', t0:88150, t1:88250, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'denom2', t0:88150, t1:88250, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'denom2', t0:89720, t1:90120, dt:400, ease:21, alpha:2, aa:1, daa:-1, vis:6, vID:2, vName:'y', y:310, dy:-8},
+			{ID:'denom3', t0:89720, t1:90120, dt:400, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:321, dy:-11},
+			{ID:'esign4', t0:90290, t1:90390, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ans2', t0:90520, t1:90620, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1}
+	];
+
+
+smA.filename = '../audio/stat_l2_calculating_variance-01';
+smA.soundLength = 103915;
+
+	ccText = [ '',
+				'So let&apos;s practice calculating a variance. We&apos;ve changed the data set',
+				'around just to make the math easier for us. We notice here that if we',
+				'sum all of our data and divide by seven,',
+				'our mean is 10. Now we have to take each observation and subtract it from the mean.',
+				'The first observation has a value of 10.',
+				'Ten minus 10 is zero.',
+				'Nine minus 10 is negative one.',
+				'Eight minus 10 is negative two.',
+				'Eleven minus 10 is one. Twelve minus 10 is two.',
+				'Six minus 10 is negative four. Fourteen minus 10 is four.',
+				'And now we take each of those individual observations and we',
+				'square them. Zero squared is zero.',
+				'Negative one squared',
+				'is one. Negative two squared is',
+				'four and so on',
+				'and so forth. Once we square each of these observations,',
+				'we sum the squared deviations together, in this case adding 1 plus',
+				'4 plus 1 plus 4 plus 16 plus 16 gives us 42. That is the sum of',
+				'the squared deviations. If these seven observations were a population',
+				'in themselves, we could calculate the population variance, σ2,',
+				'as 42 divided by 7 or 6.  But more commonly, these seven observations would',
+				'be a sample pulled from a population. Hence, we would calculate the sample',
+				'standard deviation and that would be 42 divided by the quantity',
+				'7 minus 1 or 6. Hence, the sample variance would be equal to',
+				'seven. That is how we calculate the sample variance for a data set.'
+			];
+
+ccTime = [ 0, 2000, 5750, 10330, 13180, 19120, 22010, 24540, 27270, 29800, 34094, 38884, 43510, 46680, 47990, 50560, 51600, 55630, 60932, 66313, 71536, 76680, 82018, 87430, 91258, 94907, 9999];
+
+
+
+	slideID = 'STAT_L2_CALCULATING_VARIANCE-01';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='equas'>	<div id='equas_ie'>	<img id='equas' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_equas.png' alt='' />	</div>	</div>
+					<div id='bkgr'>	<div id='bkgr_ie'>	<img id='bkgr' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_bkgr.png' alt='' />	</div>	</div>
+					<div id='mean'>	<div id='mean_ie'>	<img id='mean' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_mean.png' alt='' />	</div>	</div>
+					<div id='hline'></div>
+					<div id='vline'></div>
+					<div id='num1'>	<div id='num1_ie'>	<img id='num1' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_num1.png' alt='' />	</div>	</div>
+					<div id='ticks1'>	<div id='ticks1_ie'>	<img id='ticks1' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ticks1.png' alt='' />	</div>	</div>
+					<div id='ticks2'>	<div id='ticks2_ie'>	<img id='ticks2' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ticks2.png' alt='' />	</div>	</div>
+					<div id='ticks3'>	<div id='ticks3_ie'>	<img id='ticks3' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ticks3.png' alt='' />	</div>	</div>
+					<div id='ticks4'>	<div id='ticks4_ie'>	<img id='ticks4' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ticks4.png' alt='' />	</div>	</div>
+					<div id='dot'>	<div id='dot_ie'>	<img id='dot' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_dot.png' alt='' />	</div>	</div>
+					<div id='cnum1'>	<div id='cnum1_ie'>	<img id='cnum1' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum1.png' alt='' />	</div>	</div>
+					<div id='branch1'></div>
+					<div id='cnum2'>	<div id='cnum2_ie'>	<img id='cnum2' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum2.png' alt='' />	</div>	</div>
+					<div id='branch2'></div>
+					<div id='cnum3'>	<div id='cnum3_ie'>	<img id='cnum3' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum3.png' alt='' />	</div>	</div>
+					<div id='sums1'></div>
+					<div id='sig2'>	<div id='sig2_ie'>	<img id='sig2' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_sig2.png' alt='' />	</div>	</div>
+					<div id='esign1'>	<div id='esign1_ie'>	<img id='esign1' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_esign1.png' alt='' />	</div>	</div>
+					<div id='numer1'>	<div id='numer1_ie'>	<img id='numer1' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_numer1.png' alt='' />	</div>	</div>
+					<div id='esign2'>	<div id='esign2_ie'>	<img id='esign2' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_esign2.png' alt='' />	</div>	</div>
+					<div id='ans1'>	<div id='ans1_ie'>	<img id='ans1' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ans1.png' alt='' />	</div>	</div>
+					<div id='denom1'>	<div id='denom1_ie'>	<img id='denom1' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_denom1.png' alt='' />	</div>	</div>
+					<div id='s2'>	<div id='s2_ie'>	<img id='s2' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_s2.png' alt='' />	</div>	</div>
+					<div id='esign3'>	<div id='esign3_ie'>	<img id='esign3' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_esign3.png' alt='' />	</div>	</div>
+					<div id='dline'>	<div id='dline_ie'>	<img id='dline' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_dline.png' alt='' />	</div>	</div>
+					<div id='numer2'>	<div id='numer2_ie'>	<img id='numer2' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_numer2.png' alt='' />	</div>	</div>
+					<div id='denom2'>	<div id='denom2_ie'>	<img id='denom2' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_denom2.png' alt='' />	</div>	</div>
+					<div id='esign4'>	<div id='esign4_ie'>	<img id='esign4' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_esign4.png' alt='' />	</div>	</div>
+					<div id='ans2'>	<div id='ans2_ie'>	<img id='ans2' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ans2.png' alt='' />	</div>	</div>
+					<div id='branch3'></div>
+					<div id='cnum4'>	<div id='cnum4_ie'>	<img id='cnum4' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum4.png' alt='' />	</div>	</div>
+					<div id='cnum4a'>	<div id='cnum4a_ie'>	<img id='cnum4a' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum4a.png' alt='' />	</div>	</div>
+					<div id='branch4'></div>
+					<div id='cnum5'>	<div id='cnum5_ie'>	<img id='cnum5' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum5.png' alt='' />	</div>	</div>
+					<div id='cnum5a'>	<div id='cnum5a_ie'>	<img id='cnum5a' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum5a.png' alt='' />	</div>	</div>
+					<div id='branch5'></div>
+					<div id='cnum6'>	<div id='cnum6_ie'>	<img id='cnum6' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum6.png' alt='' />	</div>	</div>
+					<div id='cnum6a'>	<div id='cnum6a_ie'>	<img id='cnum6a' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum6a.png' alt='' />	</div>	</div>
+					<div id='branch6'></div>
+					<div id='cnum7'>	<div id='cnum7_ie'>	<img id='cnum7' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum7.png' alt='' />	</div>	</div>
+					<div id='cnum7a'>	<div id='cnum7a_ie'>	<img id='cnum7a' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum7a.png' alt='' />	</div>	</div>
+					<div id='cnum1a'>	<div id='cnum1a_ie'>	<img id='cnum1a' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum1a.png' alt='' />	</div>	</div>
+					<div id='cnum2a'>	<div id='cnum2a_ie'>	<img id='cnum2a' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum2a.png' alt='' />	</div>	</div>
+					<div id='cnum3a'>	<div id='cnum3a_ie'>	<img id='cnum3a' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum3a.png' alt='' />	</div>	</div>
+					<div id='denom3'>	<div id='denom3_ie'>	<img id='denom3' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_denom3.png' alt='' />	</div>	</div>
+					<div id='row1'>	<div id='row1_ie'>	<img id='row1' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row1.png' alt='' />	</div>	</div>
+					<div id='row9'>	<div id='row9_ie'>	<img id='row9' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row9.png' alt='' />	</div>	</div>
+					<div id='row10'>	<div id='row10_ie'>	<img id='row10' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row10.png' alt='' />	</div>	</div>
+					<div id='row11'>	<div id='row11_ie'>	<img id='row11' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row11.png' alt='' />	</div>	</div>
+					<div id='vlines1'></div>
+					<div id='vlines2'></div>
+					<div id='hlines'></div>
+					<div id='row2'>	<div id='row2_ie'>	<img id='row2' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row2.png' alt='' />	</div>	</div>
+					<div id='row3'>	<div id='row3_ie'>	<img id='row3' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row3.png' alt='' />	</div>	</div>
+					<div id='row4'>	<div id='row4_ie'>	<img id='row4' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row4.png' alt='' />	</div>	</div>
+					<div id='row5'>	<div id='row5_ie'>	<img id='row5' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row5.png' alt='' />	</div>	</div>
+					<div id='row6'>	<div id='row6_ie'>	<img id='row6' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row6.png' alt='' />	</div>	</div>
+					<div id='row7'>	<div id='row7_ie'>	<img id='row7' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row7.png' alt='' />	</div>	</div>
+					<div id='row8'>	<div id='row8_ie'>	<img id='row8' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row8.png' alt='' />	</div>	</div>
+					<div id='nums'></div>
+					<div id='row10a'>	<div id='row10a_ie'>	<img id='row10a' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row10a.png' alt='' />	</div>	</div>
+					<div id='row11a'>	<div id='row11a_ie'>	<img id='row11a' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row11a.png' alt='' />	</div>	</div>
+					<div id='row9a'>	<div id='row9a_ie'>	<img id='row9a' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row9a.png' alt='' />	</div>	</div>
+					<div id='row2b'>	<div id='row2b_ie'>	<img id='row2b' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row2b.png' alt='' />	</div>	</div>
+					<div id='row3b'>	<div id='row3b_ie'>	<img id='row3b' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row3b.png' alt='' />	</div>	</div>
+					<div id='row4b'>	<div id='row4b_ie'>	<img id='row4b' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row4b.png' alt='' />	</div>	</div>
+					<div id='row2c'>	<div id='row2c_ie'>	<img id='row2c' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row2c.png' alt='' />	</div>	</div>
+					<div id='row3c'>	<div id='row3c_ie'>	<img id='row3c' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row3c.png' alt='' />	</div>	</div>
+					<div id='row4c'>	<div id='row4c_ie'>	<img id='row4c' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row4c.png' alt='' />	</div>	</div>
+					<div id='xbar'></div>
+					<div id='squares'></div>
+					<div id='row9c'>	<div id='row9c_ie'>	<img id='row9c' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row9c.png' alt='' />	</div>	</div>
+					<div id='hls1'>	<div id='hls1_ie'>	<img id='hls1' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls1.png' alt='' />	</div>	</div>
+					<div id='hl15'>	<div id='hl15_ie'>	<img id='hl15' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl15.png' alt='' />	</div>	</div>
+					<div id='hl16'>	<div id='hl16_ie'>	<img id='hl16' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl16.png' alt='' />	</div>	</div>
+					<div id='hls3'>	<div id='hls3_ie'>	<img id='hls3' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls3.png' alt='' />	</div>	</div>
+					<div id='hl17'>	<div id='hl17_ie'>	<img id='hl17' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl17.png' alt='' />	</div>	</div>
+					<div id='hl21'>	<div id='hl21_ie'>	<img id='hl21' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl21.png' alt='' />	</div>	</div>
+					<div id='hl2a'>	<div id='hl2a_ie'>	<img id='hl2a' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl2a.png' alt='' />	</div>	</div>
+					<div id='hls2'>	<div id='hls2_ie'>	<img id='hls2' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls2.png' alt='' />	</div>	</div>
+					<div id='hl3a'>	<div id='hl3a_ie'>	<img id='hl3a' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl3a.png' alt='' />	</div>	</div>
+					<div id='hl4a'>	<div id='hl4a_ie'>	<img id='hl4a' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl4a.png' alt='' />	</div>	</div>
+					<div id='hl2b'>	<div id='hl2b_ie'>	<img id='hl2b' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl2b.png' alt='' />	</div>	</div>
+					<div id='hl3b'>	<div id='hl3b_ie'>	<img id='hl3b' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl3b.png' alt='' />	</div>	</div>
+					<div id='hl4b'>	<div id='hl4b_ie'>	<img id='hl4b' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl4b.png' alt='' />	</div>	</div>
+					<div id='hl9b'>	<div id='hl9b_ie'>	<img id='hl9b' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl9b.png' alt='' />	</div>	</div>
+					<div id='hl12'>	<div id='hl12_ie'>	<img id='hl12' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl12.png' alt='' />	</div>	</div>
+					<div id='lhl1'>	<div id='lhl1_ie'>	<img id='lhl1' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_lhl1.png' alt='' />	</div>	</div>
+					<div id='hl13'>	<div id='hl13_ie'>	<img id='hl13' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl13.png' alt='' />	</div>	</div>
+					<div id='hl14'>	<div id='hl14_ie'>	<img id='hl14' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl14.png' alt='' />	</div>	</div>
+					<div id='hls4'>	<div id='hls4_ie'>	<img id='hls4' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls4.png' alt='' />	</div>	</div>
+					<div id='hl18'>	<div id='hl18_ie'>	<img id='hl18' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl18.png' alt='' />	</div>	</div>
+					<div id='hls5'>	<div id='hls5_ie'>	<img id='hls5' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls5.png' alt='' />	</div>	</div>
+					<div id='hl19'>	<div id='hl19_ie'>	<img id='hl19' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl19.png' alt='' />	</div>	</div>
+					<div id='hls6'>	<div id='hls6_ie'>	<img id='hls6' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls6.png' alt='' />	</div>	</div>
+					<div id='hl20'>	<div id='hl20_ie'>	<img id='hl20' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl20.png' alt='' />	</div>	</div>
+					<div id='hl1'>	<div id='hl1_ie'>	<img id='hl1' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl1.png' alt='' />	</div>	</div>
+					<div id='hl2'>	<div id='hl2_ie'>	<img id='hl2' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl2.png' alt='' />	</div>	</div>
+					<div id='hl3'>	<div id='hl3_ie'>	<img id='hl3' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl3.png' alt='' />	</div>	</div>
+					<div id='hl4'>	<div id='hl4_ie'>	<img id='hl4' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl4.png' alt='' />	</div>	</div>
+					<div id='hl5'>	<div id='hl5_ie'>	<img id='hl5' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl5.png' alt='' />	</div>	</div>
+					<div id='hl6'>	<div id='hl6_ie'>	<img id='hl6' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl6.png' alt='' />	</div>	</div>
+					<div id='hl7'>	<div id='hl7_ie'>	<img id='hl7' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl7.png' alt='' />	</div>	</div>
+					<div id='hl8'>	<div id='hl8_ie'>	<img id='hl8' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl8.png' alt='' />	</div>	</div>
+					<div id='hl9'>	<div id='hl9_ie'>	<img id='hl9' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl9.png' alt='' />	</div>	</div>
+					<div id='hl10'>	<div id='hl10_ie'>	<img id='hl10' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl10.png' alt='' />	</div>	</div>
+					<div id='hl11'>	<div id='hl11_ie'>	<img id='hl11' class='altPNG' src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl11.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Calculating the Variance - Example</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

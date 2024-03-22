@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_DATA_TYPES_DISCRETE.css"	rel="stylesheet" type="text/css" />
+<title>Data Types - Discrete</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'texta1', t0:2000, t1:2500, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:117, dx:10},
+			{ID:'texta2', t0:2300, t1:2800, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:122, dx:-10},
+			{ID:'texta3', t0:2600, t1:3100, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:135, dx:10},
+			{ID:'arrow1', t0:5120, t1:5453, dt:333, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:61},
+			{ID:'textb1', t0:5450, t1:5950, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'arrow2', t0:8720, t1:9387, dt:667, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:254},
+			{ID:'textb2', t0:9390, t1:9890, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'arrow3', t0:15340, t1:16007, dt:667, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:254},
+			{ID:'textb3', t0:16010, t1:16510, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'texta1', t0:20240, t1:20907, dt:667, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'texta2', t0:20240, t1:20907, dt:667, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'texta3', t0:20240, t1:20907, dt:667, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'arrow1', t0:20240, t1:20907, dt:667, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'textb1', t0:20240, t1:20907, dt:667, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'arrow2', t0:20240, t1:20907, dt:667, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'textb2', t0:20240, t1:20907, dt:667, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'arrow3', t0:20240, t1:20907, dt:667, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'textb3', t0:20240, t1:20907, dt:667, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'linea', t0:21140, t1:21640, dt:500, ease:1, alpha:0, vis:3, vID:22, vName:'wr', w:0, dw:250, x:314, bw:250},
+			{ID:'lineb', t0:21140, t1:21640, dt:500, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:246},
+			{ID:'box', t0:21140, t1:21640, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'disc', t0:22910, t1:23410, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'cont', t0:23770, t1:24270, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'nom', t0:27050, t1:27550, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ord', t0:27980, t1:28480, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pic1', t0:29570, t1:30070, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'bullet1', t0:29570, t1:30437, dt:867, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:336, dx:12},
+			{ID:'btext1', t0:29570, t1:30437, dt:867, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:110, dy:8},
+			{ID:'bullet2', t0:32630, t1:33497, dt:867, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:336, dx:12},
+			{ID:'btext2', t0:32630, t1:33497, dt:867, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:128, dy:8},
+			{ID:'bullet3', t0:34040, t1:34907, dt:867, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:336, dx:12},
+			{ID:'btext3', t0:34040, t1:34907, dt:867, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:146, dy:8},
+			{ID:'pic1', t0:86430, t1:86530, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pic2', t0:86430, t1:86930, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'bullet4', t0:86430, t1:87297, dt:867, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:336, dx:12},
+			{ID:'btext4', t0:86430, t1:87297, dt:867, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:175, dy:8},
+			{ID:'bullet5', t0:88930, t1:89797, dt:867, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:336, dx:12},
+			{ID:'btext5', t0:88930, t1:89797, dt:867, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:192, dy:8}
+	];
+
+
+smA.filename = '../audio/stat_l2_data_types_discrete';
+smA.soundLength = 131265;
+
+	ccText = [ '',
+				'Collecting and gathering data is one of',
+				'the primary principles of Six Sigma. We don&apos;t make any',
+				'decisions in the application of statistical methods',
+				'without having data and, more importantly, we don&apos;t get',
+				'to understand our processes unless we collect the right kind of data.',
+				'Let&apos;s talk about',
+				'the two different types of data --',
+				'discrete and',
+				'continuous. Within discrete data,',
+				'we have nominal and',
+				'ordinal data.',
+				'Nominal data can be described as',
+				'categorical or',
+				'pass/fail data, meaning a response can be lumped into categories. For example,',
+				'if you&apos;re asked whether you&apos;re male or female, if you&apos;re asked',
+				'whether you&apos;re black, white or other, whether you&apos;re Operator A, B or C,',
+				'whether the light is green, yellow or red or, most commonly, something called',
+				'attribute data. Attribute data is pass/fail, good/bad, yes/no type information.',
+				'We&apos;ll see in many of our Six Sigma projects that inspection data is discrete,',
+				'nominal, attribute data that can be used for making decisions about processes.',
+				'The next level of maturity of discrete data is something called ordinal data.',
+				'Ordinal data has slightly more information than nominal data. Ordinal data can be',
+				'ordered within very discrete',
+				'categories. For example, when you fill out a survey and it asks you if you',
+				'enjoyed a training session and you say disagree, agree or strongly agree,',
+				'you now have something called ordinal data. The categories that you have',
+				'belong in a particular order, which is why we use the word &quot;ordinal&quot;',
+				'to describe this type of information. Now, unfortunately, discrete data',
+				'isn&apos;t particularly rich with information, so whenever possible we try to',
+				'make sure we can collect continuous data on our Xs and Ys of processes.'
+			];
+
+ccTime = [ 0, 2000, 5120, 8720, 11793, 15340, 20240, 21140, 22910, 23770, 27050, 27980, 29570, 32630, 34040, 39796, 45479, 51527, 57211, 63040, 69088, 74844, 80527, 86430, 88930, 94294, 99586, 104808, 110458, 115608, 121186, 9999];
+
+
+
+	slideID = 'STAT_L2_DATA_TYPES_DISCRETE';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='texta1'>	<div id='texta1_ie'>	<img id='texta1' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_texta1.png' alt='' />	</div>	</div>
+					<div id='texta2'>	<div id='texta2_ie'>	<img id='texta2' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_texta2.png' alt='' />	</div>	</div>
+					<div id='texta3'>	<div id='texta3_ie'>	<img id='texta3' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_texta3.png' alt='' />	</div>	</div>
+					<div id='arrow1'></div>
+					<div id='textb1'>	<div id='textb1_ie'>	<img id='textb1' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_textb1.png' alt='' />	</div>	</div>
+					<div id='arrow2'></div>
+					<div id='textb2'>	<div id='textb2_ie'>	<img id='textb2' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_textb2.png' alt='' />	</div>	</div>
+					<div id='arrow3'></div>
+					<div id='textb3'>	<div id='textb3_ie'>	<img id='textb3' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_textb3.png' alt='' />	</div>	</div>
+					<div id='box'>	<div id='box_ie'>	<img id='box' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_box.png' alt='' />	</div>	</div>
+					<div id='linea'></div>
+					<div id='lineb'></div>
+					<div id='disc'>	<div id='disc_ie'>	<img id='disc' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_disc.png' alt='' />	</div>	</div>
+					<div id='cont'>	<div id='cont_ie'>	<img id='cont' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_cont.png' alt='' />	</div>	</div>
+					<div id='nom'>	<div id='nom_ie'>	<img id='nom' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_nom.png' alt='' />	</div>	</div>
+					<div id='ord'>	<div id='ord_ie'>	<img id='ord' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_ord.png' alt='' />	</div>	</div>
+					<div id='bullet1'>	<div id='bullet1_ie'>	<img id='bullet1' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_bullet1.png' alt='' />	</div>	</div>
+					<div id='btext1'>	<div id='btext1_ie'>	<img id='btext1' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_btext1.png' alt='' />	</div>	</div>
+					<div id='bullet2'>	<div id='bullet2_ie'>	<img id='bullet2' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_bullet2.png' alt='' />	</div>	</div>
+					<div id='btext2'>	<div id='btext2_ie'>	<img id='btext2' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_btext2.png' alt='' />	</div>	</div>
+					<div id='bullet3'>	<div id='bullet3_ie'>	<img id='bullet3' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_bullet3.png' alt='' />	</div>	</div>
+					<div id='btext3'>	<div id='btext3_ie'>	<img id='btext3' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_btext3.png' alt='' />	</div>	</div>
+					<div id='bullet4'>	<div id='bullet4_ie'>	<img id='bullet4' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_bullet4.png' alt='' />	</div>	</div>
+					<div id='btext4'>	<div id='btext4_ie'>	<img id='btext4' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_btext4.png' alt='' />	</div>	</div>
+					<div id='bullet5'>	<div id='bullet5_ie'>	<img id='bullet5' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_bullet5.png' alt='' />	</div>	</div>
+					<div id='btext5'>	<div id='btext5_ie'>	<img id='btext5' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_btext5.png' alt='' />	</div>	</div>
+					<div id='pic1'>	<div id='pic1_ie'>	<img id='pic1' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_pic1.png' alt='' />	</div>	</div>
+					<div id='pic2'>	<div id='pic2_ie'>	<img id='pic2' class='altPNG' src='../images/STAT_L2_DATA_TYPES_DISCRETE/STAT_L2_DATA_TYPES_DISCRETE_pic2.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Data Types - Discrete</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

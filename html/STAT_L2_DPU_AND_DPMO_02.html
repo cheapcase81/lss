@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_DPU_AND_DPMO_02.css"	rel="stylesheet" type="text/css" />
+<title>DPU and DPMO - Analysis</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'every', t0:2000, t1:2100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'bkgr1', t0:2680, t1:3147, dt:467, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'bkgr2', t0:2980, t1:3513, dt:533, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hlines', t0:3450, t1:3817, dt:367, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:481},
+			{ID:'vlines', t0:3720, t1:4087, dt:367, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:97},
+			{ID:'titles', t0:4860, t1:5293, dt:433, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'nums', t0:7110, t1:7977, dt:867, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:83},
+			{ID:'nums2', t0:9340, t1:10207, dt:867, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:83},
+			{ID:'nums3', t0:10390, t1:11257, dt:867, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:83},
+			{ID:'colhl', t0:15340, t1:15440, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'colhl', t0:17460, t1:17560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'rowhl', t0:20950, t1:21317, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rowhl', t0:36410, t1:36510, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'kmkey', t0:56870, t1:57870, dt:1000, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:-2, dx:64},
+			{ID:'kmglint', t0:57870, t1:58003, dt:133, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'kmglint', t0:58000, t1:58500, dt:500, ease:21, alpha:0, vis:7, vID:40, vName:'a', a:1, da:-0.19999999999999996},
+			{ID:'kmtext', t0:58630, t1:59130, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:401, dy:9}
+	];
+
+
+smA.filename = '../audio/stat_l2_dpu_and_dpmo_02';
+smA.soundLength = 77871;
+
+	ccText = [ '',
+				'Now because I',
+				'collected these 1000 gems over many',
+				'shifts and many operators',
+				'and many batches of raw material,',
+				'our 1000-piece',
+				'sample is considered to be long-term data. So in the DPMO column',
+				'of the table below, you can see',
+				'that 50,000 DPMO lies somewhere between a long',
+				'term sigma level of 1.5 and 2.5, which corresponds to a short-term',
+				'sigma level of somewhere between 3 and 4, assuming that our',
+				'short-term process shifts about 1.5 sigma in either direction.',
+				'So when people claim they have a Six Sigma process, they&apos;re usually referring to',
+				'a short-term estimate of their process. That will mean that their real',
+				'long-term delivered process capability is somewhere around 4.5 sigma and that their',
+				'DPMO is somewhere around 3.4 defects per million opportunities. The key takeaway',
+				'here is just to remember that if somebody gives you a sigma',
+				'level, you may want to be smart enough to ask them if it&apos;s a',
+				'short-term sigma level or a long-term sigma level. The short-term',
+				'sigma level will always be better than the long-term sigma',
+				'level, because short term we assume there is no shift in our process.'
+			];
+
+ccTime = [ 0, 2000, 2680, 4860, 7110, 9340, 10390, 15340, 17460, 20950, 26207, 30916, 36410, 41508, 46149, 51640, 56870, 59870, 63170, 66470, 69420, 9999];
+
+
+
+	slideID = 'STAT_L2_DPU_AND_DPMO_02';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='every'>	<div id='every_ie'>	<img id='every' class='altPNG' src='../images/STAT_L2_DPU_AND_DPMO_02/STAT_L2_DPU_AND_DPMO_02_every.png' alt='' />	</div>	</div>
+					<div id='bkgr1'>	<div id='bkgr1_ie'>	<img id='bkgr1' class='altPNG' src='../images/STAT_L2_DPU_AND_DPMO_02/STAT_L2_DPU_AND_DPMO_02_bkgr1.png' alt='' />	</div>	</div>
+					<div id='bkgr2'>	<div id='bkgr2_ie'>	<img id='bkgr2' class='altPNG' src='../images/STAT_L2_DPU_AND_DPMO_02/STAT_L2_DPU_AND_DPMO_02_bkgr2.png' alt='' />	</div>	</div>
+					<div id='hlines'></div>
+					<div id='vlines'></div>
+					<div id='titles'>	<div id='titles_ie'>	<img id='titles' class='altPNG' src='../images/STAT_L2_DPU_AND_DPMO_02/STAT_L2_DPU_AND_DPMO_02_titles.png' alt='' />	</div>	</div>
+					<div id='nums'></div>
+					<div id='nums2'></div>
+					<div id='nums3'></div>
+					<div id='rowhl'>	<div id='rowhl_ie'>	<img id='rowhl' class='altPNG' src='../images/STAT_L2_DPU_AND_DPMO_02/STAT_L2_DPU_AND_DPMO_02_rowhl.png' alt='' />	</div>	</div>
+					<div id='colhl'>	<div id='colhl_ie'>	<img id='colhl' class='altPNG' src='../images/STAT_L2_DPU_AND_DPMO_02/STAT_L2_DPU_AND_DPMO_02_colhl.png' alt='' />	</div>	</div>
+					<div id='kmkey'>	<div id='kmkey_ie'>	<img id='kmkey' class='altPNG' src='../images/STAT_L2_DPU_AND_DPMO_02/STAT_L2_DPU_AND_DPMO_02_kmkey.png' alt='' />	</div>	</div>
+					<div id='kmglint'>	<div id='kmglint_ie'>	<img id='kmglint' class='altPNG' src='../images/STAT_L2_DPU_AND_DPMO_02/STAT_L2_DPU_AND_DPMO_02_kmglint.png' alt='' />	</div>	</div>
+					<div id='kmtext'>	<div id='kmtext_ie'>	<img id='kmtext' class='altPNG' src='../images/STAT_L2_DPU_AND_DPMO_02/STAT_L2_DPU_AND_DPMO_02_kmtext.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>DPU and DPMO - Analysis</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

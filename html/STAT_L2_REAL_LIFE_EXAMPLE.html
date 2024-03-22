@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_REAL_LIFE_EXAMPLE.css"	rel="stylesheet" type="text/css" />
+<title>Normal Distribution Example</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'bkgr', t0:7810, t1:8477, dt:667, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'xaxis', t0:8110, t1:8610, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'yaxis', t0:8280, t1:8780, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'curve', t0:8340, t1:8840, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'nums', t0:10620, t1:11120, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:327, dy:14},
+			{ID:'ans', t0:12600, t1:13067, dt:467, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sline1', t0:13200, t1:13600, dt:400, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sline2', t0:13200, t1:13600, dt:400, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lsl', t0:29100, t1:29600, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:172, dx:16},
+			{ID:'usl', t0:29100, t1:29600, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:526, dx:-16},
+			{ID:'rsu1', t0:65400, t1:65800, dt:400, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rsu2', t0:65400, t1:65800, dt:400, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:367, dx:72},
+			{ID:'lsu1', t0:69400, t1:69800, dt:400, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lsu2', t0:69400, t1:69800, dt:400, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:297, dx:-72},
+			{ID:'hl1', t0:77610, t1:77943, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'text1', t0:77980, t1:78313, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl1', t0:87350, t1:87450, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'text1', t0:87350, t1:87450, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl2', t0:87350, t1:87683, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl2', t0:91490, t1:91590, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl3', t0:91490, t1:91823, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl3', t0:97670, t1:97770, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1}
+	];
+
+
+smA.filename = '../audio/stat_l2_real_life_example';
+smA.soundLength = 102400;
+
+	ccText = [ '',
+				'Let&apos;s take a look at how we can use the normal',
+				'distribution probabilities and apply it to an example.',
+				'Here we have a process. This process',
+				'has a μ of 100 and a',
+				'standard deviation of 10. And these units could be anything. These units could',
+				'be millimeters or seconds or height or weight, whatever. Again, the mean is 100',
+				'and the standard deviation is 10. We also know that our customer wants product',
+				'delivered to them that is between 80 units and 120 units. That means,',
+				'the lower spec limit for this characteristic is 80 and the upper spec limit is',
+				'120. With this information given to you, that is you know the standard',
+				'deviation of the process, you know the mean of the process, you know',
+				'the upper spec limit and you know the lower spec limit, we can use normal',
+				'probability theory to predict what percentage of our product would lie within',
+				'spec and what percentage of our product would lie outside of spec.',
+				'So with this math we can tell that if the standard deviation is 10 we can fit two',
+				'standard deviations between the mean and the upper spec limit and two',
+				'standard deviations between the mean and the lower spec limit.',
+				'Because normal probability charts tell us that 95.4 percent of our data',
+				'lies within plus and minus two standard deviations, we know that this',
+				'process will deliver 95.4 percent good product and it will deliver 2',
+				'point 3 percent product above the upper spec limit and 2.3',
+				'percent product below the lower spec limit.',
+				'So 4.6 percent of our products will be delivered',
+				'outside of specification.'
+			];
+
+ccTime = [ 0, 2000, 4850, 7810, 10620, 12600, 18100, 23669, 29100, 33660, 38282, 42658, 47157, 51471, 56278, 60901, 65400, 69400, 73259, 77610, 82550, 87350, 91490, 94647, 97670, 9999];
+
+
+
+	slideID = 'STAT_L2_REAL_LIFE_EXAMPLE';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='bkgr'>	<div id='bkgr_ie'>	<img id='bkgr' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_bkgr.png' alt='' />	</div>	</div>
+					<div id='nums'>	<div id='nums_ie'>	<img id='nums' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_nums.png' alt='' />	</div>	</div>
+					<div id='ans'>	<div id='ans_ie'>	<img id='ans' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_ans.png' alt='' />	</div>	</div>
+					<div id='curve'>	<div id='curve_ie'>	<img id='curve' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_curve.png' alt='' />	</div>	</div>
+					<div id='xaxis'>	<div id='xaxis_ie'>	<img id='xaxis' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_xaxis.png' alt='' />	</div>	</div>
+					<div id='yaxis'>	<div id='yaxis_ie'>	<img id='yaxis' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_yaxis.png' alt='' />	</div>	</div>
+					<div id='sline1'>	<div id='sline1_ie'>	<img id='sline1' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_sline1.png' alt='' />	</div>	</div>
+					<div id='sline2'>	<div id='sline2_ie'>	<img id='sline2' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_sline2.png' alt='' />	</div>	</div>
+					<div id='usl'>	<div id='usl_ie'>	<img id='usl' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_usl.png' alt='' />	</div>	</div>
+					<div id='lsl'>	<div id='lsl_ie'>	<img id='lsl' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_lsl.png' alt='' />	</div>	</div>
+					<div id='rsu1'>	<div id='rsu1_ie'>	<img id='rsu1' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_rsu1.png' alt='' />	</div>	</div>
+					<div id='rsu2'>	<div id='rsu2_ie'>	<img id='rsu2' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_rsu2.png' alt='' />	</div>	</div>
+					<div id='lsu1'>	<div id='lsu1_ie'>	<img id='lsu1' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_lsu1.png' alt='' />	</div>	</div>
+					<div id='lsu2'>	<div id='lsu2_ie'>	<img id='lsu2' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_lsu2.png' alt='' />	</div>	</div>
+					<div id='hl3'>	<div id='hl3_ie'>	<img id='hl3' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_hl3.png' alt='' />	</div>	</div>
+					<div id='hl2'>	<div id='hl2_ie'>	<img id='hl2' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_hl2.png' alt='' />	</div>	</div>
+					<div id='hl1'>	<div id='hl1_ie'>	<img id='hl1' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_hl1.png' alt='' />	</div>	</div>
+					<div id='text1'>	<div id='text1_ie'>	<img id='text1' class='altPNG' src='../images/STAT_L2_REAL_LIFE_EXAMPLE/STAT_L2_REAL_LIFE_EXAMPLE_text1.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Normal Distribution Example</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

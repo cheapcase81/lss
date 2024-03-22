@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_AGGRESSIVE_GOAL.css"	rel="stylesheet" type="text/css" />
+<title>An Aggressive Goal</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'bkgr1', t0:13010, t1:13543, dt:533, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'bkgr2', t0:13240, t1:13773, dt:533, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hlines', t0:13570, t1:13937, dt:367, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:209},
+			{ID:'vlines', t0:13700, t1:14067, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:129, y:241, bh:129},
+			{ID:'hl1', t0:13930, t1:14463, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row1', t0:13930, t1:14030, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl2', t0:14030, t1:14563, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row2', t0:14030, t1:14130, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl3', t0:14130, t1:14663, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row3', t0:14130, t1:14230, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl4', t0:14230, t1:14763, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row4', t0:14230, t1:14330, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl5', t0:14330, t1:14863, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row5', t0:14330, t1:14430, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl6', t0:14430, t1:14963, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row6', t0:14430, t1:14530, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl7', t0:14530, t1:15063, dt:533, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row7', t0:14530, t1:14630, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'bbar', t0:14650, t1:14883, dt:233, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:354},
+			{ID:'bbar', t0:14880, t1:14980, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'bbox1', t0:14880, t1:15113, dt:233, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:130, y:242, bh:130},
+			{ID:'bbox2', t0:14880, t1:15113, dt:233, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:127},
+			{ID:'btext1', t0:15210, t1:15543, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pbox1a', t0:15580, t1:16180, dt:600, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:90},
+			{ID:'pbox1', t0:15580, t1:16180, dt:600, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:91, y:238, bh:91},
+			{ID:'hl3a', t0:15580, t1:15680, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl3a', t0:15650, t1:15750, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl3b', t0:15720, t1:16053, dt:333, ease:21, alpha:0, vis:3, vID:40, vName:'a', a:1, da:-0.5},
+			{ID:'ptext1', t0:16250, t1:16683, dt:433, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pbox2', t0:42580, t1:43247, dt:667, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pbox1', t0:42580, t1:43247, dt:667, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pbox1a', t0:42580, t1:43247, dt:667, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'ptext1', t0:42580, t1:42980, dt:400, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl3b', t0:42650, t1:42750, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl4a', t0:42720, t1:43053, dt:333, ease:21, alpha:0, vis:3, vID:40, vName:'a', a:1, da:-0.5},
+			{ID:'ptext2', t0:43320, t1:43687, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ptext2', t0:53970, t1:54370, dt:400, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pbox2', t0:53970, t1:54637, dt:667, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pbox3', t0:53970, t1:54637, dt:667, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl4a', t0:54040, t1:54140, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl5a', t0:54110, t1:54443, dt:333, ease:21, alpha:0, vis:3, vID:40, vName:'a', a:1, da:-0.5},
+			{ID:'ptext3', t0:54710, t1:55077, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ptext3', t0:64200, t1:64600, dt:400, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pbox3', t0:64200, t1:64867, dt:667, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pbox4', t0:64200, t1:64867, dt:667, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl5a', t0:64270, t1:64370, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl6a', t0:64340, t1:64673, dt:333, ease:21, alpha:0, vis:3, vID:40, vName:'a', a:1, da:-0.5},
+			{ID:'ptext4', t0:64940, t1:65273, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl6a', t0:71090, t1:71190, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'ptext4', t0:71090, t1:71490, dt:400, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl6b', t0:71090, t1:71190, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pbox4', t0:71090, t1:71757, dt:667, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pbox5', t0:71090, t1:71757, dt:667, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pbox4', t0:71090, t1:71757, dt:667, ease:23, alpha:0, vis:3, vID:2, vName:'y', y:217, dy:-48},
+			{ID:'hl6b', t0:71160, t1:71260, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl7a', t0:71230, t1:71563, dt:333, ease:21, alpha:0, vis:3, vID:40, vName:'a', a:1, da:-0.5},
+			{ID:'ptext5', t0:71830, t1:72197, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1}
+	];
+
+
+smA.filename = '../audio/stat_l2_aggressive_goal';
+smA.soundLength = 89365;
+
+	ccText = [ '',
+				'We can bring our introduction to statistics to a close',
+				'by making sure we understand that Six Sigma is an',
+				'extremely aggressive but rewarding goal if it can be achieved.',
+				'In this diagram, we show a',
+				'blue box that represents one million opportunities to create some kind of',
+				'defect and as you click through the different sigma levels, you notice that',
+				'a two sigma process will take up roughly 30 percent of the area in this',
+				'blue box. So a two sigma process, short term, will yield almost 31 percent',
+				'defects or 308,000 DPMO long term, assuming a 1.5 sigma shift, that is.',
+				'A three sigma process will tend to take up about 6.5 percent of this blue',
+				'area, or roughly 66,000 DPMO long term. If we keep increasing our sigma',
+				'level, we see that a four sigma process will give us about 6200 DPMO --',
+				'that&apos;s less than 1 percent of the area in the blue curve.',
+				'A five sigma process will give us 233 DPMO --',
+				'that&apos;s very, very low defect levels.',
+				'And a Six Sigma process -- holy smokes! -- out of a million',
+				'opportunities will only give us 3.4 defects in a million.',
+				'So the point here is to make sure we&apos;re constantly striving to',
+				'achieve Six Sigma and statistics will help us in that endeavor.'
+			];
+
+ccTime = [ 0, 2000, 5626, 8922, 13010, 14650, 20146, 25792, 31140, 36711, 42580, 48067, 53970, 59193, 64200, 67324, 71090, 74040, 77590, 80923, 9999];
+
+
+
+	slideID = 'STAT_L2_AGGRESSIVE_GOAL';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='bkgr1'>	<div id='bkgr1_ie'>	<img id='bkgr1' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_bkgr1.png' alt='' />	</div>	</div>
+					<div id='bkgr2'>	<div id='bkgr2_ie'>	<img id='bkgr2' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_bkgr2.png' alt='' />	</div>	</div>
+					<div id='bbox1'></div>
+					<div id='bbox2'></div>
+					<div id='bbar'></div>
+					<div id='pbox1'></div>
+					<div id='pbox1a'></div>
+					<div id='pbox2'>	<div id='pbox2_ie'>	<img id='pbox2' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_pbox2.png' alt='' />	</div>	</div>
+					<div id='pbox3'>	<div id='pbox3_ie'>	<img id='pbox3' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_pbox3.png' alt='' />	</div>	</div>
+					<div id='pbox4'>	<div id='pbox4_ie'>	<img id='pbox4' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_pbox4.png' alt='' />	</div>	</div>
+					<div id='pbox5'>	<div id='pbox5_ie'>	<img id='pbox5' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_pbox5.png' alt='' />	</div>	</div>
+					<div id='hlines'></div>
+					<div id='vlines'></div>
+					<div id='row1'>	<div id='row1_ie'>	<img id='row1' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row1.png' alt='' />	</div>	</div>
+					<div id='row2'>	<div id='row2_ie'>	<img id='row2' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row2.png' alt='' />	</div>	</div>
+					<div id='row3'>	<div id='row3_ie'>	<img id='row3' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row3.png' alt='' />	</div>	</div>
+					<div id='row4'>	<div id='row4_ie'>	<img id='row4' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row4.png' alt='' />	</div>	</div>
+					<div id='row5'>	<div id='row5_ie'>	<img id='row5' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row5.png' alt='' />	</div>	</div>
+					<div id='row6'>	<div id='row6_ie'>	<img id='row6' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row6.png' alt='' />	</div>	</div>
+					<div id='row7'>	<div id='row7_ie'>	<img id='row7' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row7.png' alt='' />	</div>	</div>
+					<div id='btext1'>	<div id='btext1_ie'>	<img id='btext1' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_btext1.png' alt='' />	</div>	</div>
+					<div id='ptext1'>	<div id='ptext1_ie'>	<img id='ptext1' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_ptext1.png' alt='' />	</div>	</div>
+					<div id='ptext2'>	<div id='ptext2_ie'>	<img id='ptext2' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_ptext2.png' alt='' />	</div>	</div>
+					<div id='ptext3'>	<div id='ptext3_ie'>	<img id='ptext3' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_ptext3.png' alt='' />	</div>	</div>
+					<div id='ptext4'>	<div id='ptext4_ie'>	<img id='ptext4' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_ptext4.png' alt='' />	</div>	</div>
+					<div id='ptext5'>	<div id='ptext5_ie'>	<img id='ptext5' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_ptext5.png' alt='' />	</div>	</div>
+					<div id='hl1'>	<div id='hl1_ie'>	<img id='hl1' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl1.png' alt='' />	</div>	</div>
+					<div id='hl2'>	<div id='hl2_ie'>	<img id='hl2' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl2.png' alt='' />	</div>	</div>
+					<div id='hl3'>	<div id='hl3_ie'>	<img id='hl3' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl3.png' alt='' />	</div>	</div>
+					<div id='hl4'>	<div id='hl4_ie'>	<img id='hl4' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl4.png' alt='' />	</div>	</div>
+					<div id='hl5'>	<div id='hl5_ie'>	<img id='hl5' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl5.png' alt='' />	</div>	</div>
+					<div id='hl6'>	<div id='hl6_ie'>	<img id='hl6' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl6.png' alt='' />	</div>	</div>
+					<div id='hl7'>	<div id='hl7_ie'>	<img id='hl7' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl7.png' alt='' />	</div>	</div>
+					<div id='hl3a'>	<div id='hl3a_ie'>	<img id='hl3a' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl3a.png' alt='' />	</div>	</div>
+					<div id='hl4a'>	<div id='hl4a_ie'>	<img id='hl4a' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl4a.png' alt='' />	</div>	</div>
+					<div id='hl5a'>	<div id='hl5a_ie'>	<img id='hl5a' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl5a.png' alt='' />	</div>	</div>
+					<div id='hl6a'>	<div id='hl6a_ie'>	<img id='hl6a' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl6a.png' alt='' />	</div>	</div>
+					<div id='hl7a'>	<div id='hl7a_ie'>	<img id='hl7a' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl7a.png' alt='' />	</div>	</div>
+					<div id='hl6b'>	<div id='hl6b_ie'>	<img id='hl6b' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl6b.png' alt='' />	</div>	</div>
+					<div id='hl3b'>	<div id='hl3b_ie'>	<img id='hl3b' class='altPNG' src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl3b.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>An Aggressive Goal</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

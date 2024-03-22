@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_CALCULATING_MEAN.css"	rel="stylesheet" type="text/css" />
+<title>Calculating the Mean</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'bkgr1', t0:2000, t1:2400, dt:400, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'bkgr2', t0:2000, t1:2400, dt:400, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hlines', t0:2230, t1:2597, dt:367, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:129},
+			{ID:'vlines1', t0:2500, t1:2867, dt:367, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:130, y:242, bh:130},
+			{ID:'vlines2', t0:2500, t1:2867, dt:367, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:128},
+			{ID:'row1', t0:2870, t1:2970, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl1', t0:2870, t1:3270, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row2', t0:3070, t1:3170, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl2', t0:3070, t1:3470, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row3', t0:3170, t1:3270, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl3', t0:3170, t1:3570, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row4', t0:3340, t1:3440, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl4', t0:3340, t1:3740, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row5', t0:3540, t1:3640, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl5', t0:3540, t1:3940, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row6', t0:3740, t1:3840, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl6', t0:3740, t1:4140, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row7', t0:3840, t1:3940, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl7', t0:3840, t1:4240, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row8', t0:3970, t1:4070, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl8', t0:3970, t1:4370, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row9', t0:4200, t1:4300, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl9', t0:4200, t1:4600, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row10', t0:4400, t1:4500, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl10', t0:4400, t1:4800, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row11', t0:4500, t1:4600, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl11', t0:4500, t1:4900, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row12', t0:4630, t1:4730, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl12', t0:4630, t1:5030, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row13', t0:4860, t1:4960, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl13', t0:4860, t1:5260, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row14', t0:5060, t1:5160, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl14', t0:5060, t1:5460, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row15', t0:5160, t1:5260, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl15', t0:5160, t1:5560, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row16', t0:5290, t1:5390, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl16', t0:5290, t1:5690, dt:400, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'xi', t0:5430, t1:5830, dt:400, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sigma', t0:5600, t1:6000, dt:400, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:356, dx:32},
+			{ID:'text1', t0:5830, t1:6230, dt:400, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:278, dy:-31},
+			{ID:'xbar', t0:5930, t1:6263, dt:333, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:17, vName:'s', x:325, dx:11, y:225, dy:10, w:76, dw:-38, h:38, dh:-19},
+			{ID:'esign', t0:5930, t1:6330, dt:400, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num1', t0:9120, t1:9220, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num2', t0:9220, t1:9320, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num3', t0:9320, t1:9420, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num4', t0:9420, t1:9520, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num5', t0:9520, t1:9620, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num6', t0:9620, t1:9720, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num7', t0:9720, t1:9820, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num8', t0:9820, t1:9920, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num9', t0:9920, t1:10020, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num10', t0:10020, t1:10120, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'num11', t0:10120, t1:10220, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lhl1', t0:13780, t1:14113, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl17', t0:22140, t1:22407, dt:267, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl14a', t0:22140, t1:22240, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'row14a', t0:22140, t1:22240, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lhl1', t0:25420, t1:25520, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl14a', t0:25420, t1:25520, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl18', t0:25420, t1:25687, dt:267, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'row15a', t0:25420, t1:25520, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl15a', t0:25420, t1:25520, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'equa1', t0:25420, t1:25720, dt:300, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:62},
+			{ID:'equa2', t0:26720, t1:27253, dt:533, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:147},
+			{ID:'equa3', t0:28250, t1:28783, dt:533, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:145},
+			{ID:'equa4', t0:29780, t1:30047, dt:267, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:35},
+			{ID:'equa1', t0:31700, t1:32033, dt:333, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'equa2', t0:31700, t1:32033, dt:333, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'equa3', t0:31700, t1:32033, dt:333, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'equa4', t0:31700, t1:32033, dt:333, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl15a', t0:35780, t1:35880, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'esign1', t0:35780, t1:36047, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'denom', t0:36050, t1:36317, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'esign2', t0:36550, t1:37017, dt:467, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'row16a', t0:36550, t1:36650, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl19', t0:44040, t1:44307, dt:267, ease:21, alpha:0, vis:2, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl16a', t0:44040, t1:44140, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1}
+	];
+
+
+smA.filename = '../audio/stat_l2_calculating_mean';
+smA.soundLength = 48118;
+
+	ccText = [ '',
+				'So we can take our 11 observations and we can calculate',
+				'the sample mean for these observations. Notice in the first',
+				'column we list the observation number, one through 11.',
+				'In the second column we list the value of each observation. The first',
+				'thing we do is count up our total number of observations, n, which is',
+				'11.  The sum of these 11 numbers is actually',
+				'85. And then once we know the number of observations we have, 11, and the sum of',
+				'those observations, 85, we can divide those two numbers',
+				'and calculate the sample mean, which would be 85 divided by',
+				'11.  With a handy-dandy calculator you can see that it is 7',
+				'point 73'
+			];
+
+ccTime = [ 0, 2000, 5430, 9120, 13780, 17770, 22140, 25420, 31700, 35780, 39944, 44040, 9999];
+
+
+
+	slideID = 'STAT_L2_CALCULATING_MEAN';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='bkgr1'>	<div id='bkgr1_ie'>	<img id='bkgr1' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_bkgr1.png' alt='' />	</div>	</div>
+					<div id='bkgr2'>	<div id='bkgr2_ie'>	<img id='bkgr2' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_bkgr2.png' alt='' />	</div>	</div>
+					<div id='row14'>	<div id='row14_ie'>	<img id='row14' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row14.png' alt='' />	</div>	</div>
+					<div id='row15'>	<div id='row15_ie'>	<img id='row15' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row15.png' alt='' />	</div>	</div>
+					<div id='row16'>	<div id='row16_ie'>	<img id='row16' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row16.png' alt='' />	</div>	</div>
+					<div id='row13'>	<div id='row13_ie'>	<img id='row13' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row13.png' alt='' />	</div>	</div>
+					<div id='hlines'></div>
+					<div id='vlines1'></div>
+					<div id='vlines2'></div>
+					<div id='row1'>	<div id='row1_ie'>	<img id='row1' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row1.png' alt='' />	</div>	</div>
+					<div id='row2'>	<div id='row2_ie'>	<img id='row2' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row2.png' alt='' />	</div>	</div>
+					<div id='row3'>	<div id='row3_ie'>	<img id='row3' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row3.png' alt='' />	</div>	</div>
+					<div id='row4'>	<div id='row4_ie'>	<img id='row4' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row4.png' alt='' />	</div>	</div>
+					<div id='row5'>	<div id='row5_ie'>	<img id='row5' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row5.png' alt='' />	</div>	</div>
+					<div id='row6'>	<div id='row6_ie'>	<img id='row6' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row6.png' alt='' />	</div>	</div>
+					<div id='row7'>	<div id='row7_ie'>	<img id='row7' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row7.png' alt='' />	</div>	</div>
+					<div id='row8'>	<div id='row8_ie'>	<img id='row8' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row8.png' alt='' />	</div>	</div>
+					<div id='row9'>	<div id='row9_ie'>	<img id='row9' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row9.png' alt='' />	</div>	</div>
+					<div id='row10'>	<div id='row10_ie'>	<img id='row10' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row10.png' alt='' />	</div>	</div>
+					<div id='row11'>	<div id='row11_ie'>	<img id='row11' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row11.png' alt='' />	</div>	</div>
+					<div id='row12'>	<div id='row12_ie'>	<img id='row12' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row12.png' alt='' />	</div>	</div>
+					<div id='num1'>	<div id='num1_ie'>	<img id='num1' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_num1.png' alt='' />	</div>	</div>
+					<div id='num2'>	<div id='num2_ie'>	<img id='num2' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_num2.png' alt='' />	</div>	</div>
+					<div id='num3'>	<div id='num3_ie'>	<img id='num3' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_num3.png' alt='' />	</div>	</div>
+					<div id='num4'>	<div id='num4_ie'>	<img id='num4' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_num4.png' alt='' />	</div>	</div>
+					<div id='num5'>	<div id='num5_ie'>	<img id='num5' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_num5.png' alt='' />	</div>	</div>
+					<div id='num6'>	<div id='num6_ie'>	<img id='num6' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_num6.png' alt='' />	</div>	</div>
+					<div id='num7'>	<div id='num7_ie'>	<img id='num7' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_num7.png' alt='' />	</div>	</div>
+					<div id='num8'>	<div id='num8_ie'>	<img id='num8' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_num8.png' alt='' />	</div>	</div>
+					<div id='num9'>	<div id='num9_ie'>	<img id='num9' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_num9.png' alt='' />	</div>	</div>
+					<div id='num10'>	<div id='num10_ie'>	<img id='num10' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_num10.png' alt='' />	</div>	</div>
+					<div id='num11'>	<div id='num11_ie'>	<img id='num11' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_num11.png' alt='' />	</div>	</div>
+					<div id='row14a'>	<div id='row14a_ie'>	<img id='row14a' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row14a.png' alt='' />	</div>	</div>
+					<div id='row15a'>	<div id='row15a_ie'>	<img id='row15a' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row15a.png' alt='' />	</div>	</div>
+					<div id='esign1'>	<div id='esign1_ie'>	<img id='esign1' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_esign1.png' alt='' />	</div>	</div>
+					<div id='denom'>	<div id='denom_ie'>	<img id='denom' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_denom.png' alt='' />	</div>	</div>
+					<div id='esign2'>	<div id='esign2_ie'>	<img id='esign2' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_esign2.png' alt='' />	</div>	</div>
+					<div id='row16a'>	<div id='row16a_ie'>	<img id='row16a' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_row16a.png' alt='' />	</div>	</div>
+					<div id='xi'>	<div id='xi_ie'>	<img id='xi' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_xi.png' alt='' />	</div>	</div>
+					<div id='sigma'>	<div id='sigma_ie'>	<img id='sigma' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_sigma.png' alt='' />	</div>	</div>
+					<div id='text1'>	<div id='text1_ie'>	<img id='text1' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_text1.png' alt='' />	</div>	</div>
+					<div id='esign'>	<div id='esign_ie'>	<img id='esign' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_esign.png' alt='' />	</div>	</div>
+					<div id='xbar'>	<div id='xbar_ie'>	<img id='xbar' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_xbar.png' alt='' />	</div>	</div>
+					<div id='equa1'></div>
+					<div id='equa2'></div>
+					<div id='equa3'></div>
+					<div id='equa4'></div>
+					<div id='hl1'>	<div id='hl1_ie'>	<img id='hl1' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl1.png' alt='' />	</div>	</div>
+					<div id='hl2'>	<div id='hl2_ie'>	<img id='hl2' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl2.png' alt='' />	</div>	</div>
+					<div id='hl3'>	<div id='hl3_ie'>	<img id='hl3' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl3.png' alt='' />	</div>	</div>
+					<div id='hl4'>	<div id='hl4_ie'>	<img id='hl4' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl4.png' alt='' />	</div>	</div>
+					<div id='hl5'>	<div id='hl5_ie'>	<img id='hl5' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl5.png' alt='' />	</div>	</div>
+					<div id='hl6'>	<div id='hl6_ie'>	<img id='hl6' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl6.png' alt='' />	</div>	</div>
+					<div id='hl7'>	<div id='hl7_ie'>	<img id='hl7' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl7.png' alt='' />	</div>	</div>
+					<div id='hl8'>	<div id='hl8_ie'>	<img id='hl8' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl8.png' alt='' />	</div>	</div>
+					<div id='hl9'>	<div id='hl9_ie'>	<img id='hl9' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl9.png' alt='' />	</div>	</div>
+					<div id='hl10'>	<div id='hl10_ie'>	<img id='hl10' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl10.png' alt='' />	</div>	</div>
+					<div id='hl11'>	<div id='hl11_ie'>	<img id='hl11' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl11.png' alt='' />	</div>	</div>
+					<div id='hl12'>	<div id='hl12_ie'>	<img id='hl12' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl12.png' alt='' />	</div>	</div>
+					<div id='hl13'>	<div id='hl13_ie'>	<img id='hl13' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl13.png' alt='' />	</div>	</div>
+					<div id='hl14'>	<div id='hl14_ie'>	<img id='hl14' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl14.png' alt='' />	</div>	</div>
+					<div id='hl15'>	<div id='hl15_ie'>	<img id='hl15' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl15.png' alt='' />	</div>	</div>
+					<div id='hl16'>	<div id='hl16_ie'>	<img id='hl16' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl16.png' alt='' />	</div>	</div>
+					<div id='lhl1'>	<div id='lhl1_ie'>	<img id='lhl1' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_lhl1.png' alt='' />	</div>	</div>
+					<div id='hl17'>	<div id='hl17_ie'>	<img id='hl17' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl17.png' alt='' />	</div>	</div>
+					<div id='hl18'>	<div id='hl18_ie'>	<img id='hl18' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl18.png' alt='' />	</div>	</div>
+					<div id='hl19'>	<div id='hl19_ie'>	<img id='hl19' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl19.png' alt='' />	</div>	</div>
+					<div id='hl14a'>	<div id='hl14a_ie'>	<img id='hl14a' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl14a.png' alt='' />	</div>	</div>
+					<div id='hl15a'>	<div id='hl15a_ie'>	<img id='hl15a' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl15a.png' alt='' />	</div>	</div>
+					<div id='hl16a'>	<div id='hl16a_ie'>	<img id='hl16a' class='altPNG' src='../images/STAT_L2_CALCULATING_MEAN/STAT_L2_CALCULATING_MEAN_hl16a.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Calculating the Mean</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

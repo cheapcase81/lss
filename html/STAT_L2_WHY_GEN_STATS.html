@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_WHY_GEN_STATS.css"	rel="stylesheet" type="text/css" />
+<title>Why Generate Statistics</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'why', t0:2000, t1:2100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'target', t0:14430, t1:15097, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:282, dx:40},
+			{ID:'tline', t0:14430, t1:15097, dt:667, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ques1', t0:14430, t1:14930, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'curve', t0:14430, t1:15097, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:380, dx:-56},
+			{ID:'ques2', t0:20510, t1:21077, dt:567, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'curve2', t0:20510, t1:21077, dt:567, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sline1', t0:20510, t1:21077, dt:567, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sline2', t0:20510, t1:21077, dt:567, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sline1', t0:20510, t1:21077, dt:567, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:579, dx:-16},
+			{ID:'sline2', t0:20510, t1:21077, dt:567, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:611, dx:16},
+			{ID:'spec', t0:21080, t1:21580, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ques3', t0:35070, t1:36370, dt:1300, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'curve3', t0:35070, t1:35770, dt:700, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:486, dx:-12},
+			{ID:'curve3', t0:35770, t1:36570, dt:800, ease:21, alpha:0, vis:7, vID:40, vName:'a', a:1, da:-0.8},
+			{ID:'curve4', t0:35770, t1:36570, dt:800, ease:23, alpha:0, vis:3, vID:1, vName:'x', x:474, dx:-33},
+			{ID:'curve4', t0:36570, t1:37503, dt:933, ease:21, alpha:0, vis:7, vID:40, vName:'a', a:1, da:-0.7},
+			{ID:'curve5', t0:36570, t1:37503, dt:933, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:442, dx:-32},
+			{ID:'ques4', t0:40720, t1:41220, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'curve6', t0:41220, t1:41753, dt:533, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:192, dx:20},
+			{ID:'curve7', t0:41220, t1:41753, dt:533, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:248, dx:-20},
+			{ID:'ques5', t0:45830, t1:46330, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'line', t0:45830, t1:46063, dt:233, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:82},
+			{ID:'bar1', t0:46060, t1:46527, dt:467, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:49, y:265, bh:49},
+			{ID:'bar2', t0:46060, t1:46527, dt:467, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:17, y:264, bh:17},
+			{ID:'bar3', t0:46060, t1:46527, dt:467, ease:1, alpha:0, vis:3, vID:23, vName:'wb', h:0, dh:9, y:264, bh:9}
+	];
+
+
+smA.filename = '../audio/stat_l2_why_gen_stats';
+smA.soundLength = 51017;
+
+	ccText = [ '',
+				'Why do we generate statistics? Well, we mentioned earlier that we',
+				'generate statistics because they allow us to infer about the population.',
+				'What kinds of things can we infer about the population? Well, first, we can infer',
+				'that the process is actually delivering to',
+				'some target average value.  Secondly,',
+				'we can add specification limits and decide how often the process is',
+				'delivering to some spec limit. We can also understand and calculate',
+				'the capability of a process or its sigma level.  Next, we can decide',
+				'if there&apos;s been a change in the performance or a',
+				'shift in the mean of some process.  We can decide if',
+				'there&apos;s been a change in the variation of our process and, Lastly,',
+				'we can figure out the defect rate.'
+			];
+
+ccTime = [ 0, 2000, 5729, 10136, 14430, 17579, 20510, 25218, 30144, 35070, 37948, 40720, 45830, 9999];
+
+
+
+	slideID = 'STAT_L2_WHY_GEN_STATS';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='why'>	<div id='why_ie'>	<img id='why' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_why.png' alt='' />	</div>	</div>
+					<div id='ques1'>	<div id='ques1_ie'>	<img id='ques1' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_ques1.png' alt='' />	</div>	</div>
+					<div id='target'>	<div id='target_ie'>	<img id='target' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_target.png' alt='' />	</div>	</div>
+					<div id='curve'>	<div id='curve_ie'>	<img id='curve' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve.png' alt='' />	</div>	</div>
+					<div id='tline'>	<div id='tline_ie'>	<img id='tline' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_tline.png' alt='' />	</div>	</div>
+					<div id='ques2'>	<div id='ques2_ie'>	<img id='ques2' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_ques2.png' alt='' />	</div>	</div>
+					<div id='spec'>	<div id='spec_ie'>	<img id='spec' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_spec.png' alt='' />	</div>	</div>
+					<div id='curve2'>	<div id='curve2_ie'>	<img id='curve2' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve2.png' alt='' />	</div>	</div>
+					<div id='sline1'>	<div id='sline1_ie'>	<img id='sline1' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_sline1.png' alt='' />	</div>	</div>
+					<div id='sline2'>	<div id='sline2_ie'>	<img id='sline2' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_sline2.png' alt='' />	</div>	</div>
+					<div id='ques3'>	<div id='ques3_ie'>	<img id='ques3' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_ques3.png' alt='' />	</div>	</div>
+					<div id='curve3'>	<div id='curve3_ie'>	<img id='curve3' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve3.png' alt='' />	</div>	</div>
+					<div id='curve4'>	<div id='curve4_ie'>	<img id='curve4' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve4.png' alt='' />	</div>	</div>
+					<div id='curve5'>	<div id='curve5_ie'>	<img id='curve5' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve5.png' alt='' />	</div>	</div>
+					<div id='ques4'>	<div id='ques4_ie'>	<img id='ques4' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_ques4.png' alt='' />	</div>	</div>
+					<div id='curve6'>	<div id='curve6_ie'>	<img id='curve6' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve6.png' alt='' />	</div>	</div>
+					<div id='curve7'>	<div id='curve7_ie'>	<img id='curve7' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve7.png' alt='' />	</div>	</div>
+					<div id='line'></div>
+					<div id='ques5'>	<div id='ques5_ie'>	<img id='ques5' class='altPNG' src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_ques5.png' alt='' />	</div>	</div>
+					<div id='bar1'></div>
+					<div id='bar2'></div>
+					<div id='bar3'></div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Why Generate Statistics</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

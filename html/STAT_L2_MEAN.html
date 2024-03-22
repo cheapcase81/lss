@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_MEAN.css"	rel="stylesheet" type="text/css" />
+<title>The Mean</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'line1', t0:9170, t1:9437, dt:267, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:574},
+			{ID:'line2', t0:9440, t1:9707, dt:267, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:291},
+			{ID:'pop1', t0:9710, t1:9977, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'text1', t0:9710, t1:9977, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'samp1', t0:10040, t1:10307, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'text2', t0:10040, t1:10307, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'mu', t0:15550, t1:15883, dt:333, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:17, vName:'s', x:178, dx:5, y:217, dy:6, w:46, dw:-23, h:40, dh:-20},
+			{ID:'esign1', t0:15550, t1:15917, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lx1', t0:22750, t1:23150, dt:400, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sigma1', t0:29540, t1:29973, dt:433, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:177, dx:48},
+			{ID:'ltext1', t0:30820, t1:31253, dt:433, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:288, dy:-56},
+			{ID:'pop2', t0:34300, t1:34733, dt:433, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pop3', t0:34300, t1:34733, dt:433, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pop4', t0:34300, t1:34733, dt:433, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ltext2', t0:34300, t1:34733, dt:433, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pop4', t0:36340, t1:36440, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pop2', t0:36340, t1:36440, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pop3', t0:36340, t1:36440, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pop1', t0:36340, t1:36440, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pop1', t0:36510, t1:36610, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pop2', t0:36510, t1:36610, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pop3', t0:36510, t1:36610, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pop4', t0:36510, t1:36610, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pop3', t0:36680, t1:36780, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pop2', t0:36680, t1:36780, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pop1', t0:36680, t1:36780, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pop4', t0:36680, t1:36780, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pop1', t0:36850, t1:36950, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pop2', t0:36850, t1:36950, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pop3', t0:36850, t1:36950, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pop4', t0:36850, t1:36950, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rx1', t0:42280, t1:42680, dt:400, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'sigma2', t0:45640, t1:46040, dt:400, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:481, dx:32},
+			{ID:'rtext1', t0:46880, t1:47280, dt:400, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:2, vName:'y', y:304, dy:-72},
+			{ID:'xbar', t0:52700, t1:53033, dt:333, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:17, vName:'s', x:453, dx:12, y:211, dy:10, w:76, dw:-38, h:38, dh:-19},
+			{ID:'esign2', t0:52700, t1:53133, dt:433, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'samp2', t0:53320, t1:53753, dt:433, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'samp3', t0:53320, t1:53753, dt:433, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'samp4', t0:53320, t1:53753, dt:433, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rtext2', t0:53320, t1:53753, dt:433, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'samp1', t0:54320, t1:54420, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'samp2', t0:54320, t1:54420, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'samp3', t0:54320, t1:54420, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'samp4', t0:54320, t1:54420, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'samp4', t0:54490, t1:54590, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'samp2', t0:54490, t1:54590, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'samp3', t0:54490, t1:54590, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'samp1', t0:54490, t1:54590, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'samp1', t0:54660, t1:54760, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'samp2', t0:54660, t1:54760, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'samp3', t0:54660, t1:54760, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'samp4', t0:54660, t1:54760, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'samp3', t0:54830, t1:54930, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'samp2', t0:54830, t1:54930, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'samp1', t0:54830, t1:54930, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'samp4', t0:54830, t1:54930, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1}
+	];
+
+
+smA.filename = '../audio/stat_l2_mean';
+smA.soundLength = 58175;
+
+	ccText = [ '',
+				'The most commonly used estimate for measuring central tendency',
+				'is the mean. Just as we had population modes and medians and',
+				'sample modes and medians, we have population',
+				'means and sample means. The population mean is known',
+				'as μ. This is the Greek letter representing',
+				'the population mean. The formula for a population mean is to take',
+				'all of the individual Xs or all of the individual values',
+				'associated with some performance characteristic,',
+				'summing them together and',
+				'dividing by the total number of observations, N,',
+				'in that population. That will give us',
+				'the population mean. Similarly,',
+				'we can pull a sample from that population,',
+				'take the individual values of the observations of our sample,',
+				'sum them together,',
+				'divide by the number of samples we have,',
+				'denoted as little n, and the resulting calculation',
+				'will give us',
+				'X-bar, the sample mean.'
+			];
+
+ccTime = [ 0, 2000, 5672, 9170, 12129, 15550, 18720, 22750, 26175, 29540, 30820, 34300, 36340, 39131, 42280, 45640, 46880, 49502, 52700, 53320, 9999];
+
+
+
+	slideID = 'STAT_L2_MEAN';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='line1'></div>
+					<div id='line2'></div>
+					<div id='pop1'>	<div id='pop1_ie'>	<img id='pop1' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_pop1.png' alt='' />	</div>	</div>
+					<div id='text1'>	<div id='text1_ie'>	<img id='text1' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_text1.png' alt='' />	</div>	</div>
+					<div id='samp1'>	<div id='samp1_ie'>	<img id='samp1' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_samp1.png' alt='' />	</div>	</div>
+					<div id='text2'>	<div id='text2_ie'>	<img id='text2' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_text2.png' alt='' />	</div>	</div>
+					<div id='esign1'>	<div id='esign1_ie'>	<img id='esign1' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_esign1.png' alt='' />	</div>	</div>
+					<div id='mu'>	<div id='mu_ie'>	<img id='mu' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_mu.png' alt='' />	</div>	</div>
+					<div id='lx1'>	<div id='lx1_ie'>	<img id='lx1' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_lx1.png' alt='' />	</div>	</div>
+					<div id='sigma1'>	<div id='sigma1_ie'>	<img id='sigma1' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_sigma1.png' alt='' />	</div>	</div>
+					<div id='ltext1'>	<div id='ltext1_ie'>	<img id='ltext1' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_ltext1.png' alt='' />	</div>	</div>
+					<div id='pop2'>	<div id='pop2_ie'>	<img id='pop2' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_pop2.png' alt='' />	</div>	</div>
+					<div id='pop3'>	<div id='pop3_ie'>	<img id='pop3' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_pop3.png' alt='' />	</div>	</div>
+					<div id='pop4'>	<div id='pop4_ie'>	<img id='pop4' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_pop4.png' alt='' />	</div>	</div>
+					<div id='ltext2'>	<div id='ltext2_ie'>	<img id='ltext2' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_ltext2.png' alt='' />	</div>	</div>
+					<div id='rx1'>	<div id='rx1_ie'>	<img id='rx1' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_rx1.png' alt='' />	</div>	</div>
+					<div id='sigma2'>	<div id='sigma2_ie'>	<img id='sigma2' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_sigma2.png' alt='' />	</div>	</div>
+					<div id='rtext1'>	<div id='rtext1_ie'>	<img id='rtext1' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_rtext1.png' alt='' />	</div>	</div>
+					<div id='esign2'>	<div id='esign2_ie'>	<img id='esign2' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_esign2.png' alt='' />	</div>	</div>
+					<div id='xbar'>	<div id='xbar_ie'>	<img id='xbar' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_xbar.png' alt='' />	</div>	</div>
+					<div id='samp2'>	<div id='samp2_ie'>	<img id='samp2' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_samp2.png' alt='' />	</div>	</div>
+					<div id='samp3'>	<div id='samp3_ie'>	<img id='samp3' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_samp3.png' alt='' />	</div>	</div>
+					<div id='samp4'>	<div id='samp4_ie'>	<img id='samp4' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_samp4.png' alt='' />	</div>	</div>
+					<div id='rtext2'>	<div id='rtext2_ie'>	<img id='rtext2' class='altPNG' src='../images/STAT_L2_MEAN/STAT_L2_MEAN_rtext2.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>The Mean</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

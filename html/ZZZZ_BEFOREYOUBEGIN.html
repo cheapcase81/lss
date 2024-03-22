@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/zzzz_beforeyoubegin.css"	rel="stylesheet" type="text/css" />
+<title>Before You Begin</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'controls', t0:0, t1:667, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:-32, dx:32},
+			{ID:'instructions', t0:700, t1:1367, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:444, dx:-32},
+			{ID:'control1', t0:1400, t1:2067, dt:667, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'control2', t0:2100, t1:2767, dt:667, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'control3', t0:2800, t1:3467, dt:667, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'control4', t0:3500, t1:4167, dt:667, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'control5', t0:4200, t1:4867, dt:667, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'control6', t0:4900, t1:5567, dt:667, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1}
+	];
+
+smA.filename = '../audio/zzzz_beforeyoubegin';
+smA.soundLength = 8000;
+
+	ccText = [ '',
+			];
+
+ccTime = [ 0, 9999];
+
+
+
+	slideID = 'ZZZZ_BEFOREYOUBEGIN';
+	slideCompleteThreshold = 0.01;
+	
+	function initSlideObjects()				// initial position of objects
+	{
+		
+	}
+	console.log("setup processing: " + (new Date().getTime() - qTimer0));
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='controls'>	<div id='controls_ie'>	<img class='altPNG' src='../images/zzzz_beforeyoubegin/beforeyoubegin_controls.png' alt='' />	</div>	</div>
+					<div id='instructions'>	<div id='instructions_ie'>	<img class='altPNG' src='../images/zzzz_beforeyoubegin/beforeyoubegin_instructions.png' alt='' />	</div>	</div>
+					<div id='control1'>	<div id='control1_ie'>	<img class='altPNG' src='../images/zzzz_beforeyoubegin/beforeyoubegin_control1.png' alt='' />	</div>	</div>
+					<div id='control2'>	<div id='control2_ie'>	<img class='altPNG' src='../images/zzzz_beforeyoubegin/beforeyoubegin_control2.png' alt='' />	</div>	</div>
+					<div id='control3'>	<div id='control3_ie'>	<img class='altPNG' src='../images/zzzz_beforeyoubegin/beforeyoubegin_control3.png' alt='' />	</div>	</div>
+					<div id='control4'>	<div id='control4_ie'>	<img class='altPNG' src='../images/zzzz_beforeyoubegin/beforeyoubegin_control4.png' alt='' />	</div>	</div>
+					<div id='control5'>	<div id='control5_ie'>	<img class='altPNG' src='../images/zzzz_beforeyoubegin/beforeyoubegin_control5.png' alt='' />	</div>	</div>
+					<div id='control6'>	<div id='control6_ie'>	<img class='altPNG' src='../images/zzzz_beforeyoubegin/beforeyoubegin_control6.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Before You Begin</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>iPadDebug</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>

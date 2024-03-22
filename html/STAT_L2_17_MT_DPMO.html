@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_17_MT_DPMO.css"	rel="stylesheet" type="text/css" />
+<title>Calculate the DPMO from Z-Scores in MINITAB</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'wsheet', t0:2000, t1:2100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:2000, t1:2100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'menubar', t0:2000, t1:2100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:8450, t1:8950, dt:500, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:368, dx:-256},
+			{ID:'pointer', t0:8450, t1:8950, dt:500, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:240, dy:-209},
+			{ID:'calc', t0:8950, t1:9050, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:9280, t1:9780, dt:500, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:112, dx:149},
+			{ID:'pointer', t0:9280, t1:9780, dt:500, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:31, dy:234},
+			{ID:'pdhl', t0:9780, t1:9880, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'menu2', t0:9780, t1:9880, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:10110, t1:10610, dt:500, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:261, dx:166},
+			{ID:'pointer', t0:10110, t1:10610, dt:500, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:265, dy:24},
+			{ID:'nhl', t0:10610, t1:10710, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'nhl', t0:12970, t1:13070, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'menu2', t0:12970, t1:13070, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pdhl', t0:12970, t1:13070, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'calc', t0:12970, t1:13070, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'ndwin', t0:12970, t1:13070, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:13040, t1:13707, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:427, dx:-141},
+			{ID:'pointer', t0:13040, t1:13707, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:289, dy:-159},
+			{ID:'but1', t0:13710, t1:13810, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:16490, t1:17157, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:286, dx:-1},
+			{ID:'pointer', t0:16490, t1:17157, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:130, dy:185},
+			{ID:'ic1', t0:17160, t1:17260, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:19950, t1:20617, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:285, dx:187},
+			{ID:'box1', t0:20620, t1:20720, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'box2', t0:20950, t1:21617, dt:667, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:89},
+			{ID:'pointer', t0:23510, t1:24177, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:472, dx:-49},
+			{ID:'pointer', t0:23510, t1:24177, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:315, dy:70},
+			{ID:'ok1', t0:24180, t1:24280, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'box1', t0:24850, t1:24950, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box2', t0:24850, t1:24950, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'ok1', t0:24850, t1:24950, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'ic1', t0:24850, t1:24950, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'but1', t0:24850, t1:24950, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'ndwin', t0:24850, t1:24950, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'session1', t0:24850, t1:24950, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'blank1', t0:24850, t1:24950, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:30650, t1:30750, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'comp', t0:30650, t1:31317, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:106, dx:-32},
+			{ID:'dpo', t0:43480, t1:44147, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:132, dx:32},
+			{ID:'equ1a', t0:46440, t1:47107, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:132, dx:32},
+			{ID:'equ1b', t0:49270, t1:49937, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:337, dx:-32},
+			{ID:'equ1c', t0:55410, t1:56077, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:440, dx:-32},
+			{ID:'dpmo', t0:60360, t1:61027, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:132, dx:32},
+			{ID:'equ2a', t0:64270, t1:64937, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:132, dx:32},
+			{ID:'equ2b', t0:66890, t1:67557, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:328, dx:-32},
+			{ID:'equ2c', t0:71920, t1:72587, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:495, dx:-32},
+			{ID:'equ2a', t0:79740, t1:79840, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'dpo', t0:79740, t1:79840, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'equ1a', t0:79740, t1:79840, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'equ1b', t0:79740, t1:79840, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'equ1c', t0:79740, t1:79840, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pointer', t0:79740, t1:79840, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'equ2b', t0:79740, t1:79840, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'equ2c', t0:79740, t1:79840, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'dpmo', t0:79740, t1:79840, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'comp', t0:79740, t1:79840, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pointer', t0:80070, t1:80570, dt:500, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:423, dx:-311},
+			{ID:'pointer', t0:80070, t1:80570, dt:500, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:385, dy:-354},
+			{ID:'calc', t0:80570, t1:80670, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:80900, t1:81400, dt:500, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:112, dx:149},
+			{ID:'pointer', t0:80900, t1:81400, dt:500, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:31, dy:234},
+			{ID:'pdhl', t0:81400, t1:81500, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'menu2', t0:81400, t1:81500, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:81730, t1:82230, dt:500, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:261, dx:166},
+			{ID:'pointer', t0:81730, t1:82230, dt:500, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:265, dy:24},
+			{ID:'nhl', t0:82230, t1:82330, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'nhl', t0:84970, t1:85070, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'menu2', t0:84970, t1:85070, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pdhl', t0:84970, t1:85070, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'calc', t0:84970, t1:85070, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'ndwin2', t0:84970, t1:85070, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:85040, t1:85707, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:427, dx:-141},
+			{ID:'pointer', t0:85040, t1:85707, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:289, dy:-159},
+			{ID:'but1', t0:85710, t1:85810, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pointer', t0:87820, t1:88487, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:286, dx:186},
+			{ID:'pointer', t0:87820, t1:88487, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:130, dy:185},
+			{ID:'box3', t0:88490, t1:88590, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'box4', t0:88820, t1:89487, dt:667, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:89},
+			{ID:'pointer', t0:92120, t1:92787, dt:667, ease:23, alpha:0, vis:7, vID:1, vName:'x', x:472, dx:-49},
+			{ID:'pointer', t0:92120, t1:92787, dt:667, ease:23, alpha:0, vis:7, vID:2, vName:'y', y:315, dy:70},
+			{ID:'ok1', t0:92790, t1:92890, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ok1', t0:93460, t1:93560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box3', t0:93460, t1:93560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box4', t0:93460, t1:93560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'but1', t0:93460, t1:93560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'ndwin2', t0:93460, t1:93560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'pointer', t0:93460, t1:93560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'blank1', t0:93460, t1:93560, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'comp2', t0:96290, t1:96957, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:106, dx:-32},
+			{ID:'equ3a', t0:101180, t1:101847, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:14, dx:32},
+			{ID:'equ3b', t0:107830, t1:108497, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:316, dx:-32},
+			{ID:'equ3c', t0:116250, t1:116917, dt:667, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:519, dx:-32}
+	];
+
+
+smA.filename = '../audio/stat_l2_17_mt_dpmo';
+smA.soundLength = 133198;
+
+	ccText = [ '',
+				'Using Minitab, let&apos;s calculate probabilities',
+				'from Z-scores. With our GemWeight data, in Minitab,',
+				'go to Calc > Probability Distributions > Normal.',
+				'Select the cumulative probability radio button.',
+				'Then select the Input Constant radio button.',
+				'Enter &quot;0.5&quot; for our input constant,',
+				'click OK, and Minitab writes the results to the Session',
+				'Window. However, there is something wrong with this answer.',
+				'By calculating probabilities this way, Minitab provides a',
+				'compliance rate, not a defect rate. To convert this value to',
+				'a defect rate, DPMO, we need to do a few more calculations.',
+				'First, we will calculate the DPO by',
+				'subtracting the compliance rate from 1.',
+				'Here, we have 1 minus 0.691462, which gives us a',
+				'DPO of 0.308538.',
+				'Next, to convert this DPO to a DPMO,',
+				'we&apos;ll multiply it by one million.',
+				'Multiplying 0.308538 by one million gives us a',
+				'DPMO of 308,538. Let&apos;s try this again with a different Z-score.',
+				'Once again go to Calc > Probability Distribution > Normal',
+				'and select Cumulative probability.',
+				'In the Input constant field, we now enter 1.5.',
+				'Click OK and Minitab writes the results to the Session Window.',
+				'Once again Minitab shows us the compliance rate, not the defect rate.',
+				'We can simplify the two calculations we did',
+				'earlier to one formula, shown here.  Using this formula',
+				'we subtract 0.933193 from 1 and then multiply that result by one million.',
+				'Completing this calculation gives us a DPMO of 66,807.',
+				'Although some extra calculations are necessary, you see how',
+				'easily Minitab can help you calculate probabilities from Z-scores.'
+			];
+
+ccTime = [ 0, 2000, 5193, 8450, 13040, 16490, 19950, 23510, 26986, 30650, 34830, 39227, 43480, 46440, 49270, 55410, 60360, 64269, 66890, 71920, 79740, 85040, 87820, 92120, 96290, 101180, 104135, 107830, 116250, 119880, 123841, 9999];
+
+
+
+	slideID = 'STAT_L2_17_MT_DPMO';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='menubar'>	<div id='menubar_ie'>	<img id='menubar' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_menubar.png' alt='' />	</div>	</div>
+					<div id='wsheet'>	<div id='wsheet_ie'>	<img id='wsheet' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_wsheet.png' alt='' />	</div>	</div>
+					<div id='session1'>	<div id='session1_ie'>	<img id='session1' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_session1.png' alt='' />	</div>	</div>
+					<div id='blank1'>	<div id='blank1_ie'>	<img id='blank1' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_blank1.png' alt='' />	</div>	</div>
+					<div id='comp'>	<div id='comp_ie'>	<img id='comp' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_comp.png' alt='' />	</div>	</div>
+					<div id='dpo'>	<div id='dpo_ie'>	<img id='dpo' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_dpo.png' alt='' />	</div>	</div>
+					<div id='equ1a'>	<div id='equ1a_ie'>	<img id='equ1a' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_equ1a.png' alt='' />	</div>	</div>
+					<div id='equ1b'>	<div id='equ1b_ie'>	<img id='equ1b' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_equ1b.png' alt='' />	</div>	</div>
+					<div id='equ1c'>	<div id='equ1c_ie'>	<img id='equ1c' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_equ1c.png' alt='' />	</div>	</div>
+					<div id='dpmo'>	<div id='dpmo_ie'>	<img id='dpmo' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_dpmo.png' alt='' />	</div>	</div>
+					<div id='equ2a'>	<div id='equ2a_ie'>	<img id='equ2a' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_equ2a.png' alt='' />	</div>	</div>
+					<div id='equ2b'>	<div id='equ2b_ie'>	<img id='equ2b' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_equ2b.png' alt='' />	</div>	</div>
+					<div id='equ2c'>	<div id='equ2c_ie'>	<img id='equ2c' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_equ2c.png' alt='' />	</div>	</div>
+					<div id='comp2'>	<div id='comp2_ie'>	<img id='comp2' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_comp2.png' alt='' />	</div>	</div>
+					<div id='equ3a'>	<div id='equ3a_ie'>	<img id='equ3a' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_equ3a.png' alt='' />	</div>	</div>
+					<div id='equ3b'>	<div id='equ3b_ie'>	<img id='equ3b' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_equ3b.png' alt='' />	</div>	</div>
+					<div id='equ3c'>	<div id='equ3c_ie'>	<img id='equ3c' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_equ3c.png' alt='' />	</div>	</div>
+					<div id='calc'>	<div id='calc_ie'>	<img id='calc' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_calc.png' alt='' />	</div>	</div>
+					<div id='menu2'>	<div id='menu2_ie'>	<img id='menu2' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_menu2.png' alt='' />	</div>	</div>
+					<div id='pdhl'>	<div id='pdhl_ie'>	<img id='pdhl' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_pdhl.png' alt='' />	</div>	</div>
+					<div id='nhl'>	<div id='nhl_ie'>	<img id='nhl' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_nhl.png' alt='' />	</div>	</div>
+					<div id='ndwin'>	<div id='ndwin_ie'>	<img id='ndwin' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_ndwin.png' alt='' />	</div>	</div>
+					<div id='ndwin2'>	<div id='ndwin2_ie'>	<img id='ndwin2' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_ndwin2.png' alt='' />	</div>	</div>
+					<div id='ic1'>	<div id='ic1_ie'>	<img id='ic1' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_ic1.png' alt='' />	</div>	</div>
+					<div id='but1'>	<div id='but1_ie'>	<img id='but1' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_but1.png' alt='' />	</div>	</div>
+					<div id='box1'>	<div id='box1_ie'>	<img id='box1' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_box1.png' alt='' />	</div>	</div>
+					<div id='box2'></div>
+					<div id='box3'>	<div id='box3_ie'>	<img id='box3' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_box3.png' alt='' />	</div>	</div>
+					<div id='box4'></div>
+					<div id='ok1'>	<div id='ok1_ie'>	<img id='ok1' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_ok1.png' alt='' />	</div>	</div>
+					<div id='pointer'>	<div id='pointer_ie'>	<img id='pointer' class='altPNG' src='../images/STAT_L2_17_MT_DPMO/STAT_L2_17_MT_DPMO_pointer.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Calculate the DPMO from Z-Scores in MINITAB</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

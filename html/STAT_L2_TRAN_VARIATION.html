@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bmgi.css"		rel="stylesheet" type="text/css" />
+<link href="../css/client.css"		rel="stylesheet" type="text/css" />
+<link href="../css/STAT_L2_TRAN_VARIATION.css"	rel="stylesheet" type="text/css" />
+<title>Long-Term vs. Short-Term Variation - Transactional</title>
+
+<script type="text/javascript" src="../scripts/soundmanager2.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="../scripts/bmg_utils.js"></script>
+<script type="text/javascript" src="../scripts/bmg_math.js"></script>
+<script type="text/javascript" src="../scripts/bmg_init.js"></script>
+<script type="text/javascript" src="../scripts/bmg_controls.js"></script>
+<script type="text/javascript" src="../scripts/bmg_vEngine.js"></script>
+<script type="text/javascript" src="../scripts/bmg_audio.js"></script>
+<script type="text/javascript" src="../scripts/bmg_start.js"></script>
+
+<script type="text/javascript">		// scene definition
+
+	vvv	= [
+			// fast cursor title sequence
+			{ID:'cursorFast', t0:100, t1:300, dt:200, ease:1, alpha:2, aa:0, daa:1, vis:2, vID:1, vName:'x', x:422, dx:-430},
+			{ID:'titleCursor', t0:300, t1:1100, dt:800, ease:1, alpha:2, vis:2, aa:1, daa:-1, vID:1, vName:'x', x:-8, dx:480},
+			{ID:'slideTitle', t0:300, t1:1100, dt:800, ease:1, alpha:0, vis:3, vID:20, vName:'wl', x:0, w:1, dw:479},
+			
+			// scene events
+			{ID:'lpic', t0:2000, t1:2500, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'bkgr', t0:2530, t1:2863, dt:333, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'title1', t0:2900, t1:3233, dt:333, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:430, dx:-10},
+			{ID:'sigma', t0:3270, t1:3603, dt:333, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:250, dx:-10},
+			{ID:'box1', t0:3300, t1:3400, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'box1', t0:3430, t1:3530, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box1', t0:3560, t1:3660, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'text1', t0:3560, t1:3927, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'arrow1', t0:3590, t1:3923, dt:333, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:34},
+			{ID:'box2', t0:3890, t1:3990, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'box2', t0:4020, t1:4120, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box2', t0:4150, t1:4250, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'text2', t0:4150, t1:4517, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'arrow2', t0:4180, t1:4513, dt:333, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:34},
+			{ID:'box3', t0:4480, t1:4580, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'box3', t0:4610, t1:4710, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box3', t0:4740, t1:4840, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'text3', t0:4740, t1:5107, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'arrow3', t0:4770, t1:5103, dt:333, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:34},
+			{ID:'box4', t0:5070, t1:5170, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'box4', t0:5200, t1:5300, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box4', t0:5330, t1:5430, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'text4', t0:5330, t1:5697, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'line1', t0:5360, t1:5493, dt:133, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:14},
+			{ID:'line2', t0:5490, t1:5823, dt:333, ease:1, alpha:0, vis:3, vID:22, vName:'wr', w:0, dw:128, x:655, bw:128},
+			{ID:'line3', t0:5820, t1:5920, dt:100, ease:1, alpha:0, vis:3, vID:21, vName:'wt', h:0, dh:14},
+			{ID:'box5', t0:5820, t1:5920, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'box5', t0:5950, t1:6050, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box5', t0:6080, t1:6180, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'text5', t0:6080, t1:6447, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'arrow5', t0:6110, t1:6443, dt:333, ease:1, alpha:0, vis:3, vID:20, vName:'wl', w:0, dw:34},
+			{ID:'no', t0:6110, t1:6377, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'box6', t0:6410, t1:6510, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'box6', t0:6540, t1:6640, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box6', t0:6670, t1:6770, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'text6', t0:6670, t1:7037, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'arrow6', t0:6700, t1:7033, dt:333, ease:1, alpha:0, vis:3, vID:22, vName:'wr', w:0, dw:34, x:480, bw:34},
+			{ID:'yes', t0:6700, t1:6967, dt:267, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'box7', t0:7000, t1:7100, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'box7', t0:7130, t1:7230, dt:100, ease:1, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box7', t0:7260, t1:7360, dt:100, ease:1, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'text7', t0:7260, t1:7627, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'box7', t0:10130, t1:10497, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'yes', t0:10130, t1:10497, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'arrow6', t0:10130, t1:10497, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'text7', t0:10130, t1:10497, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'arrow5', t0:10160, t1:10527, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'no', t0:10160, t1:10527, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box6', t0:10160, t1:10527, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'text6', t0:10160, t1:10527, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'line3', t0:10190, t1:10557, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'line2', t0:10190, t1:10557, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'line1', t0:10190, t1:10557, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box5', t0:10190, t1:10557, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'text5', t0:10190, t1:10557, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'arrow3', t0:10220, t1:10587, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box4', t0:10220, t1:10587, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'text4', t0:10220, t1:10587, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'arrow2', t0:10250, t1:10617, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box3', t0:10250, t1:10617, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'text3', t0:10250, t1:10617, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'text2', t0:10280, t1:10647, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box2', t0:10280, t1:10647, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'arrow1', t0:10280, t1:10647, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'box1', t0:10310, t1:10677, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'text1', t0:10310, t1:10677, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'bkgr', t0:10340, t1:10707, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'title1', t0:10340, t1:10707, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'sigma', t0:10340, t1:10707, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'lpic', t0:10370, t1:10737, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'corner', t0:10770, t1:11270, dt:500, ease:22, alpha:2, aa:0, daa:1, vis:3, vID:1, vName:'x', x:736, dx:-84},
+			{ID:'title2', t0:10800, t1:11233, dt:433, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'ltd', t0:18520, t1:18887, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'cal1', t0:18690, t1:19057, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'std', t0:19060, t1:19427, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'cal2', t0:19230, t1:19597, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl1', t0:25870, t1:26237, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl1', t0:26920, t1:27287, dt:367, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'hl2', t0:26920, t1:27287, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'month', t0:26920, t1:27287, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'hl3', t0:34120, t1:34487, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'week', t0:34120, t1:34487, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pic1', t0:41510, t1:42010, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'lod', t0:41840, t1:42207, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pic2', t0:46010, t1:46510, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'alo', t0:46340, t1:46707, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pic3', t0:50470, t1:50970, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'nec', t0:50800, t1:51167, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'pic4', t0:56660, t1:57160, dt:500, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'allc', t0:56990, t1:57357, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rhl', t0:60780, t1:61147, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1},
+			{ID:'rhl', t0:70070, t1:70403, dt:333, ease:21, alpha:0, vis:6, vID:40, vName:'a', a:1, da:-1},
+			{ID:'lhl', t0:70300, t1:70667, dt:367, ease:22, alpha:0, vis:3, vID:40, vName:'a', a:0, da:1}
+	];
+
+
+smA.filename = '../audio/stat_l2_tran_variation';
+smA.soundLength = 81737;
+
+	ccText = [ '',
+				'Let&apos;s illustrate the concept of short-term versus long-term',
+				'variation in the context of the Sigma Bank car loan application process.',
+				'An important process metric is decision cycle time, the time from',
+				'which a loan application is reviewed to when a funding decision is made.',
+				'The definition of long-term will depend on how frequently loans are',
+				'processed at the Sunnyside Branch.  Long term could be defined as a',
+				'week of data',
+				'or a month of loan processing data.  Short term could be',
+				'observed by monitoring loans approved in a shorter time frame,',
+				'such as a week. However, our definition of short term',
+				'does not always have to be time-based.  Loans processed by',
+				'an individual loan officer could represent short-term variation, while loans',
+				'from all loan officers represent long-term variation.  Loans processed',
+				'for existing customers or new customers could each be',
+				'considered short-term data, while loans processed for',
+				'all customers could be considered long-term data. Ultimately,',
+				'short-term variation is observed over short periods of time or when',
+				'all factors influencing the output are held as constant as possible.',
+				'Long-term variation, on the other hand, is observed in data collected over',
+				'long periods of time and when factors influencing the output are allowed to vary.'
+			];
+
+ccTime = [ 0, 2000, 5857, 10130, 14142, 18520, 22222, 25870, 26920, 30368, 34120, 37683, 41510, 46010, 50470, 53593, 56660, 60780, 65425, 70070, 73275, 9999];
+
+
+
+	slideID = 'STAT_L2_TRAN_VARIATION';
+	
+	function initSlideObjects()				// initial position of objects
+	{
+
+	}
+	console.log("slide setup processing: " + (new Date().getTime() - qTimer0) + 'ms');
+			
+</script>
+<script type="text/javascript" src="../scripts/bmg_postprocess.js"></script>
+<script type="text/javascript" src="../scripts/slidelist.js"></script>
+</head>
+
+<body>
+<div id="mainContainer1">
+<div id="mainContainer2">
+<div id="mainContainer3">
+	<!--	Header
+	___________________________________________________________________________ -->
+	<div id="BMG_header">
+		<div class="headerLeft">
+			<h1 id="courseTitle">Introduction to Statistics</h1>
+		</div>
+		<div class="headerRight">
+		</div>
+	</div>
+	<div id="BMG_main">
+		<div id="BMG_bezel">
+			<div id="BMG_screen">
+				<div id="slideLoading">
+					<p>L O A D I N G</p>
+					<div id="loadingData"><p>DATA</p></div>
+					<div id="loadingImages"><p>IMAGES</p></div>
+					<div id="loadingAudio"><p>AUDIO</p></div>
+					<div id="loadingCircles"><img src='../images/common/loading.gif' alt="" /></div>
+				</div>
+				<div id="playSlide">
+					<a id="b_playSlide href="#" onClick="return b_playSlide_click()">
+						<img src="../images/common/play.png" alt="play" />
+					</a>
+				</div>
+				<div id="B01_Scenes">
+				
+					<div id='lpic'>	<div id='lpic_ie'>	<img id='lpic' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_lpic.png' alt='' />	</div>	</div>
+					<div id='bkgr'>	<div id='bkgr_ie'>	<img id='bkgr' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_bkgr.png' alt='' />	</div>	</div>
+					<div id='title1'>	<div id='title1_ie'>	<img id='title1' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_title1.png' alt='' />	</div>	</div>
+					<div id='sigma'>	<div id='sigma_ie'>	<img id='sigma' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_sigma.png' alt='' />	</div>	</div>
+					<div id='box1'>	<div id='box1_ie'>	<img id='box1' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_box1.png' alt='' />	</div>	</div>
+					<div id='text1'>	<div id='text1_ie'>	<img id='text1' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_text1.png' alt='' />	</div>	</div>
+					<div id='arrow1'></div>
+					<div id='box2'>	<div id='box2_ie'>	<img id='box2' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_box2.png' alt='' />	</div>	</div>
+					<div id='text2'>	<div id='text2_ie'>	<img id='text2' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_text2.png' alt='' />	</div>	</div>
+					<div id='arrow2'></div>
+					<div id='box3'>	<div id='box3_ie'>	<img id='box3' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_box3.png' alt='' />	</div>	</div>
+					<div id='text3'>	<div id='text3_ie'>	<img id='text3' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_text3.png' alt='' />	</div>	</div>
+					<div id='arrow3'></div>
+					<div id='box4'>	<div id='box4_ie'>	<img id='box4' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_box4.png' alt='' />	</div>	</div>
+					<div id='text4'>	<div id='text4_ie'>	<img id='text4' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_text4.png' alt='' />	</div>	</div>
+					<div id='line1'></div>
+					<div id='line2'></div>
+					<div id='line3'></div>
+					<div id='box5'>	<div id='box5_ie'>	<img id='box5' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_box5.png' alt='' />	</div>	</div>
+					<div id='text5'>	<div id='text5_ie'>	<img id='text5' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_text5.png' alt='' />	</div>	</div>
+					<div id='arrow5'></div>
+					<div id='no'>	<div id='no_ie'>	<img id='no' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_no.png' alt='' />	</div>	</div>
+					<div id='box6'>	<div id='box6_ie'>	<img id='box6' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_box6.png' alt='' />	</div>	</div>
+					<div id='text6'>	<div id='text6_ie'>	<img id='text6' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_text6.png' alt='' />	</div>	</div>
+					<div id='arrow6'></div>
+					<div id='yes'>	<div id='yes_ie'>	<img id='yes' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_yes.png' alt='' />	</div>	</div>
+					<div id='box7'>	<div id='box7_ie'>	<img id='box7' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_box7.png' alt='' />	</div>	</div>
+					<div id='text7'>	<div id='text7_ie'>	<img id='text7' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_text7.png' alt='' />	</div>	</div>
+					<div id='hl1'>	<div id='hl1_ie'>	<img id='hl1' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_hl1.png' alt='' />	</div>	</div>
+					<div id='hl2'>	<div id='hl2_ie'>	<img id='hl2' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_hl2.png' alt='' />	</div>	</div>
+					<div id='hl3'>	<div id='hl3_ie'>	<img id='hl3' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_hl3.png' alt='' />	</div>	</div>
+					<div id='rhl'>	<div id='rhl_ie'>	<img id='rhl' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_rhl.png' alt='' />	</div>	</div>
+					<div id='lhl'>	<div id='lhl_ie'>	<img id='lhl' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_lhl.png' alt='' />	</div>	</div>
+					<div id='corner'>	<div id='corner_ie'>	<img id='corner' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_corner.png' alt='' />	</div>	</div>
+					<div id='title2'>	<div id='title2_ie'>	<img id='title2' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_title2.png' alt='' />	</div>	</div>
+					<div id='ltd'>	<div id='ltd_ie'>	<img id='ltd' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_ltd.png' alt='' />	</div>	</div>
+					<div id='cal1'>	<div id='cal1_ie'>	<img id='cal1' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_cal1.png' alt='' />	</div>	</div>
+					<div id='std'>	<div id='std_ie'>	<img id='std' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_std.png' alt='' />	</div>	</div>
+					<div id='cal2'>	<div id='cal2_ie'>	<img id='cal2' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_cal2.png' alt='' />	</div>	</div>
+					<div id='month'>	<div id='month_ie'>	<img id='month' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_month.png' alt='' />	</div>	</div>
+					<div id='week'>	<div id='week_ie'>	<img id='week' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_week.png' alt='' />	</div>	</div>
+					<div id='lod'>	<div id='lod_ie'>	<img id='lod' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_lod.png' alt='' />	</div>	</div>
+					<div id='pic1'>	<div id='pic1_ie'>	<img id='pic1' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_pic1.png' alt='' />	</div>	</div>
+					<div id='alo'>	<div id='alo_ie'>	<img id='alo' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_alo.png' alt='' />	</div>	</div>
+					<div id='pic2'>	<div id='pic2_ie'>	<img id='pic2' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_pic2.png' alt='' />	</div>	</div>
+					<div id='pic3'>	<div id='pic3_ie'>	<img id='pic3' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_pic3.png' alt='' />	</div>	</div>
+					<div id='nec'>	<div id='nec_ie'>	<img id='nec' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_nec.png' alt='' />	</div>	</div>
+					<div id='pic4'>	<div id='pic4_ie'>	<img id='pic4' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_pic4.png' alt='' />	</div>	</div>
+					<div id='allc'>	<div id='allc_ie'>	<img id='allc' class='altPNG' src='../images/STAT_L2_TRAN_VARIATION/STAT_L2_TRAN_VARIATION_allc.png' alt='' />	</div>	</div>
+
+				</div>
+				<div id="openingTitle">
+					<div id='slideTitle'>	<div id='slideTitle_w'> 	<p>Long-Term vs. Short-Term Variation - Transactional</p> </div> </div>
+					<div id='cursorFast'>	<div id='cursorFast_ie'>	<img class='altPNG' src='../images/common/cursorFast.png' alt='' />	</div>	</div>
+					<div id='titleCursor'>	<div id='titleCursor_ie'>	<img class='altPNG' src='../images/common/cursor.png' alt='' />		</div>	</div>
+				</div>
+				<div id="iPadDebug">
+					<p id='iPadDebugText'>&nbsp;</p>
+				</div>
+			</div>
+			<div id="ccArea">
+				<p id="ccText">Closed Captioning</p>
+			</div>
+		</div>
+		
+		<div id="controls1">
+			<div id="scrollGray">
+				<div id="scrollBlue">
+					<div id="playHead">
+						<img src="../images/common/b_scroll.png" />
+					</div>
+				</div>
+			</div>
+			<div id="BMG_time">
+				<p id="timeDisplay">Loading...</p>
+			</div>
+		</div>
+		
+		<div class="controls2">
+			<a id="b_cc"	href="#" draggable="false" onMouseDown="return b_CC_down()"					onMouseUp="return b_CC_up()">				</a>
+			<a id="b_index"	href="#" draggable="false" ></a>
+			
+			<a id="b_home"	href="#" draggable="false" onMouseDown="return b_home_down()"				onMouseUp="return b_home_up()">				</a>
+			<a id="b_rew"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event, -1)"	onMouseUp="return b_ffwdRew_up(event, -1)">	</a>
+			<a id="b_ffwd"	href="#" draggable="false" onMouseDown="return b_ffwdRew_down(event,  1)"	onMouseUp="return b_ffwdRew_up(event, 1)">	</a>
+			<a id="b_play"	href="#" draggable="false" onMouseDown="return b_playPause_down()"			onMouseUp="return b_playPause_up()">		</a>
+			
+			<a id="b_guide"	href="#" draggable="false" onMouseDown="return b_guide_down()"				onMouseUp="return b_guide_up()">			</a>
+			<a id="b_prev"	href="#" draggable="false" onMouseDown="return b_prevSlide_down()"			onMouseUp="return b_prevSlide_up()">		</a>
+			<a id="b_next"	href="#" draggable="false" onMouseDown="return b_nextSlide_down()"			onMouseUp="return b_nextSlide_up()">		</a>
+			<a id="b_auto"	href="#" draggable="false" onMouseDown="return b_autoNext_down()"			onMouseUp="return b_autoNext_up()">			</a>
+		</div>
+	</div>
+	
+	<div id="BMG_footer">
+		<div class="footerLeft">
+			<p id="BMG_copyright">Copyright <a href='http://www.bmgi.com' target='_blank'>BMGI</a>. Use subject to License Agreement at: <a href='http://www.bmgi.com/legal' target='_blank'>www.bmgi.com/legal</a>.<br>No portion may be copied, rebroadcast, reproduced, redistributed, or rewritten without permission.</p>
+		</div>
+		<div class="footerRight">
+		</div>
+	</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

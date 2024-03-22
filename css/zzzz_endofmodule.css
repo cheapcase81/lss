@@ -1,0 +1,19 @@
+﻿@charset "utf-8";
+
+/*	Breakthrough Management Group, Inc slide styles
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+div#BMG_screen		{ background: black url(../images/backgrounds/zzzz_endofmodule.jpg) }
+
+div#exittext	{width:570px; height:29px; left:116px; top:411px; }
+div#exittext_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_endofmodule/endofmodule_exittext.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_endofmodule/endofmodule_exittext.png'); }
+div#congrats	{width:166px; height:19px; left:175px; top:267px; }
+div#congrats_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_endofmodule/endofmodule_congrats.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_endofmodule/endofmodule_congrats.png'); }
+div#congratstext	{width:226px; height:39px; left:145px; top:290px; }
+div#congratstext_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_endofmodule/endofmodule_congratstext.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_endofmodule/endofmodule_congratstext.png'); }
+div#logo	{width:256px; height:97px; left:106px; top:127px; }
+div#logo_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_endofmodule/endofmodule_logo.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_endofmodule/endofmodule_logo.png'); }

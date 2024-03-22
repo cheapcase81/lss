@@ -1,0 +1,301 @@
+@charset "utf-8";
+
+/*	Breakthrough Management Group, Inc slide styles
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+div#BMG_screen		{ background: black url(../images/backgrounds/stat_l2_04_1.jpg) }
+
+div#equas	{width:134px; height:119px; left:539px; top:105px; }
+div#equas_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_equas.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_equas.png'); }
+div#bkgr	{width:192px; height:176px; left:81px; top:112px; }
+div#bkgr_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_bkgr.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_bkgr.png'); }
+div#mean	{width:110px; height:27px; left:113px; top:299px; }
+div#mean_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_mean.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_mean.png'); }
+div#hline	{width: 258px; height: 2px; left: 287px; top: 271px; background: url(../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hline.png) top left;}
+div#vline	{width: 2px; height: 170px; left: 415px; top: 103px; background: url(../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_vline.png) top left;}
+div#num1	{width:24px; height:11px; left:410px; top:276px; }
+div#num1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_num1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_num1.png'); }
+div#ticks1	{width:66px; height:18px; left:383px; top:263px; }
+div#ticks1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ticks1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ticks1.png'); }
+div#ticks2	{width:130px; height:18px; left:351px; top:263px; }
+div#ticks2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ticks2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ticks2.png'); }
+div#ticks3	{width:194px; height:18px; left:319px; top:263px; }
+div#ticks3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ticks3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ticks3.png'); }
+div#ticks4	{width:279px; height:31px; left:285px; top:263px; }
+div#ticks4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ticks4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ticks4.png'); }
+div#dot	{width:8px; height:8px; left:412px; top:100px; }
+div#dot_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_dot.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_dot.png'); }
+div#cnum1	{width:17px; height:11px; left:413px; top:87px; }
+div#cnum1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum1.png'); }
+div#branch1	{width: 34px; height: 2px; left: 382px; top: 127px; background: url(../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_branch1.png) top left;}
+div#cnum2	{width:37px; height:17px; left:379px; top:115px; }
+div#cnum2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum2.png'); }
+div#branch2	{width: 66px; height: 2px; left: 350px; top: 151px; background: url(../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_branch2.png) top left;}
+div#cnum3	{width:37px; height:19px; left:347px; top:137px; }
+div#cnum3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum3.png'); }
+div#sums1	{width: 283px; height: 19px; left: 282px; top: 320px; background: url(../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_sums1.png) top left;}
+div#sig2	{width:23px; height:18px; left:583px; top:245px; }
+div#sig2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_sig2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_sig2.png'); }
+div#esign1	{width:19px; height:11px; left:604px; top:253px; }
+div#esign1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_esign1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_esign1.png'); }
+div#numer1	{width:25px; height:11px; left:618px; top:246px; }
+div#numer1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_numer1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_numer1.png'); }
+div#esign2	{width:19px; height:11px; left:639px; top:253px; }
+div#esign2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_esign2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_esign2.png'); }
+div#ans1	{width:17px; height:11px; left:656px; top:253px; }
+div#ans1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ans1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ans1.png'); }
+div#denom1	{width:22px; height:14px; left:617px; top:259px; }
+div#denom1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_denom1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_denom1.png'); }
+div#s2	{width:20px; height:17px; left:583px; top:293px; }
+div#s2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_s2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_s2.png'); }
+div#esign3	{width:19px; height:11px; left:601px; top:301px; }
+div#esign3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_esign3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_esign3.png'); }
+div#dline	{width:22px; height:1px; left:614px; top:307px; }
+div#dline_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_dline.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_dline.png'); }
+div#numer2	{width:25px; height:11px; left:617px; top:294px; }
+div#numer2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_numer2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_numer2.png'); }
+div#denom2	{width:30px; height:11px; left:615px; top:310px; }
+div#denom2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_denom2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_denom2.png'); }
+div#esign4	{width:19px; height:11px; left:639px; top:301px; }
+div#esign4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_esign4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_esign4.png'); }
+div#ans2	{width:17px; height:11px; left:653px; top:301px; }
+div#ans2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ans2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_ans2.png'); }
+div#branch3	{width: 33px; height: 2px; left: 416px; top: 168px; background: url(../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_branch3.png) top left;}
+div#cnum4	{width:28px; height:17px; left:425px; top:155px; }
+div#cnum4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum4.png'); }
+div#cnum4a	{width:17px; height:11px; left:436px; top:171px; }
+div#cnum4a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum4a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum4a.png'); }
+div#branch4	{width: 66px; height: 2px; left: 416px; top: 199px; background: url(../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_branch4.png) top left;}
+div#cnum5	{width:28px; height:17px; left:457px; top:187px; }
+div#cnum5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum5.png'); }
+div#cnum5a	{width:18px; height:11px; left:466px; top:203px; }
+div#cnum5a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum5a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum5a.png'); }
+div#branch5	{width: 130px; height: 2px; left: 286px; top: 223px; background: url(../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_branch5.png) top left;}
+div#cnum6	{width:85px; height:17px; left:283px; top:211px; }
+div#cnum6_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum6.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum6.png'); }
+div#cnum6a	{width:24px; height:11px; left:344px; top:227px; }
+div#cnum6a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum6a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum6a.png'); }
+div#branch6	{width: 130px; height: 2px; left: 416px; top: 247px; background: url(../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_branch6.png) top left;}
+div#cnum7	{width:74px; height:17px; left:475px; top:235px; }
+div#cnum7_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum7.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum7.png'); }
+div#cnum7a	{width:24px; height:11px; left:478px; top:251px; }
+div#cnum7a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum7a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum7a.png'); }
+div#cnum1a	{width:17px; height:11px; left:419px; top:111px; }
+div#cnum1a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum1a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum1a.png'); }
+div#cnum2a	{width:17px; height:11px; left:399px; top:131px; }
+div#cnum2a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum2a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum2a.png'); }
+div#cnum3a	{width:18px; height:11px; left:366px; top:155px; }
+div#cnum3a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum3a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_cnum3a.png'); }
+div#denom3	{width:17px; height:11px; left:622px; top:310px; }
+div#denom3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_denom3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_denom3.png'); }
+div#row1	{width:198px; height:16px; left:81px; top:112px; }
+div#row1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row1.png'); }
+div#row9	{width:48px; height:16px; left:81px; top:241px; }
+div#row9_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row9.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row9.png'); }
+div#row10	{width:192px; height:16px; left:81px; top:257px; }
+div#row10_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row10.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row10.png'); }
+div#row11	{width:192px; height:16px; left:81px; top:273px; }
+div#row11_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row11.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row11.png'); }
+div#vlines1	{width: 193px; height: 88px; left: 80px; top: 111px; background: url(../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_vlines1.png) top left;}
+div#vlines2	{width: 193px; height: 90px; left: 80px; top: 199px; background: url(../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_vlines2.png) top left;}
+div#hlines	{width: 193px; height: 177px; left: 79px; top: 112px; background: url(../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hlines.png) top left;}
+div#row2	{width:26px; height:12px; left:146px; top:131px; }
+div#row2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row2.png'); }
+div#row3	{width:19px; height:12px; left:149px; top:147px; }
+div#row3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row3.png'); }
+div#row4	{width:19px; height:12px; left:149px; top:163px; }
+div#row4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row4.png'); }
+div#row5	{width:26px; height:12px; left:146px; top:179px; }
+div#row5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row5.png'); }
+div#row6	{width:26px; height:12px; left:146px; top:195px; }
+div#row6_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row6.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row6.png'); }
+div#row7	{width:19px; height:12px; left:149px; top:211px; }
+div#row7_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row7.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row7.png'); }
+div#row8	{width:26px; height:12px; left:146px; top:227px; }
+div#row8_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row8.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row8.png'); }
+div#nums	{width: 22px; height: 116px; left: 98px; top: 127px; background: url(../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_nums.png) top left;}
+div#row10a	{width:19px; height:12px; left:149px; top:258px; }
+div#row10a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row10a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row10a.png'); }
+div#row11a	{width:26px; height:12px; left:146px; top:274px; }
+div#row11a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row11a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row11a.png'); }
+div#row9a	{width:25px; height:11px; left:145px; top:243px; }
+div#row9a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row9a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row9a.png'); }
+div#row2b	{width:19px; height:12px; left:200px; top:131px; }
+div#row2b_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row2b.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row2b.png'); }
+div#row3b	{width:25px; height:12px; left:194px; top:147px; }
+div#row3b_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row3b.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row3b.png'); }
+div#row4b	{width:25px; height:12px; left:194px; top:163px; }
+div#row4b_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row4b.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row4b.png'); }
+div#row2c	{width:19px; height:12px; left:245px; top:131px; }
+div#row2c_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row2c.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row2c.png'); }
+div#row3c	{width:18px; height:12px; left:246px; top:147px; }
+div#row3c_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row3c.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row3c.png'); }
+div#row4c	{width:19px; height:12px; left:245px; top:163px; }
+div#row4c_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row4c.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row4c.png'); }
+div#xbar	{width: 28px; height: 68px; left: 191px; top: 175px; background: url(../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_xbar.png) top left;}
+div#squares	{width: 30px; height: 68px; left: 238px; top: 175px; background: url(../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_squares.png) top left;}
+div#row9c	{width:27px; height:12px; left:240px; top:243px; }
+div#row9c_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row9c.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_row9c.png'); }
+div#hls1	{width:48px; height:160px; left:128px; top:128px; }
+div#hls1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls1.png'); }
+div#hl15	{width:48px; height:16px; left:177px; top:128px; }
+div#hl15_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl15.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl15.png'); }
+div#hl16	{width:48px; height:16px; left:177px; top:144px; }
+div#hl16_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl16.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl16.png'); }
+div#hls3	{width:48px; height:128px; left:128px; top:160px; }
+div#hls3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls3.png'); }
+div#hl17	{width:48px; height:16px; left:177px; top:160px; }
+div#hl17_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl17.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl17.png'); }
+div#hl21	{width:48px; height:16px; left:224px; top:240px; }
+div#hl21_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl21.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl21.png'); }
+div#hl2a	{width:48px; height:16px; left:177px; top:128px; }
+div#hl2a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl2a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl2a.png'); }
+div#hls2	{width:48px; height:144px; left:128px; top:144px; }
+div#hls2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls2.png'); }
+div#hl3a	{width:48px; height:16px; left:177px; top:144px; }
+div#hl3a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl3a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl3a.png'); }
+div#hl4a	{width:48px; height:16px; left:177px; top:160px; }
+div#hl4a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl4a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl4a.png'); }
+div#hl2b	{width:48px; height:16px; left:224px; top:128px; }
+div#hl2b_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl2b.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl2b.png'); }
+div#hl3b	{width:48px; height:16px; left:224px; top:144px; }
+div#hl3b_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl3b.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl3b.png'); }
+div#hl4b	{width:48px; height:16px; left:224px; top:160px; }
+div#hl4b_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl4b.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl4b.png'); }
+div#hl9b	{width:48px; height:16px; left:224px; top:240px; }
+div#hl9b_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl9b.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl9b.png'); }
+div#hl12	{width:48px; height:16px; left:128px; top:256px; }
+div#hl12_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl12.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl12.png'); }
+div#lhl1	{width:48px; height:112px; left:128px; top:128px; }
+div#lhl1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_lhl1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_lhl1.png'); }
+div#hl13	{width:48px; height:16px; left:128px; top:240px; }
+div#hl13_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl13.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl13.png'); }
+div#hl14	{width:48px; height:16px; left:128px; top:272px; }
+div#hl14_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl14.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl14.png'); }
+div#hls4	{width:48px; height:16px; left:176px; top:128px; }
+div#hls4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls4.png'); }
+div#hl18	{width:48px; height:16px; left:224px; top:128px; }
+div#hl18_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl18.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl18.png'); }
+div#hls5	{width:48px; height:16px; left:176px; top:144px; }
+div#hls5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls5.png'); }
+div#hl19	{width:48px; height:16px; left:224px; top:144px; }
+div#hl19_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl19.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl19.png'); }
+div#hls6	{width:48px; height:16px; left:176px; top:160px; }
+div#hls6_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls6.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hls6.png'); }
+div#hl20	{width:48px; height:16px; left:224px; top:160px; }
+div#hl20_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl20.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl20.png'); }
+div#hl1	{width:192px; height:16px; left:80px; top:112px; }
+div#hl1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl1.png'); }
+div#hl2	{width:192px; height:16px; left:80px; top:128px; }
+div#hl2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl2.png'); }
+div#hl3	{width:192px; height:16px; left:80px; top:144px; }
+div#hl3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl3.png'); }
+div#hl4	{width:192px; height:16px; left:80px; top:160px; }
+div#hl4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl4.png'); }
+div#hl5	{width:192px; height:16px; left:80px; top:176px; }
+div#hl5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl5.png'); }
+div#hl6	{width:192px; height:16px; left:80px; top:192px; }
+div#hl6_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl6.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl6.png'); }
+div#hl7	{width:192px; height:16px; left:80px; top:208px; }
+div#hl7_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl7.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl7.png'); }
+div#hl8	{width:192px; height:16px; left:80px; top:224px; }
+div#hl8_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl8.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl8.png'); }
+div#hl9	{width:192px; height:16px; left:80px; top:240px; }
+div#hl9_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl9.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl9.png'); }
+div#hl10	{width:192px; height:16px; left:80px; top:256px; }
+div#hl10_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl10.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl10.png'); }
+div#hl11	{width:192px; height:16px; left:80px; top:272px; }
+div#hl11_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl11.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_CALCULATING_VARIANCE-01/STAT_L2_CALCULATING_VARIANCE-01_hl11.png'); }

@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+/*	Breakthrough Management Group, Inc slide styles
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+div#BMG_screen		{ background: black url(../images/backgrounds/stat_l2_05_1.jpg) }
+
+div#text1	{width:76px; height:14px; left:401px; top:97px; }
+div#text1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_DPU_AND_DPMO_01/STAT_L2_DPU_AND_DPMO_01_text1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_DPU_AND_DPMO_01/STAT_L2_DPU_AND_DPMO_01_text1.png'); }
+div#text2	{width:72px; height:11px; left:400px; top:121px; }
+div#text2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_DPU_AND_DPMO_01/STAT_L2_DPU_AND_DPMO_01_text2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_DPU_AND_DPMO_01/STAT_L2_DPU_AND_DPMO_01_text2.png'); }
+div#curve	{width: 281px; height: 140px; left: 89px; top: 101px; background: url(../images/STAT_L2_DPU_AND_DPMO_01/STAT_L2_DPU_AND_DPMO_01_curve.png) top left;}
+div#lines	{width: 105px; height: 113px; left: 176px; top: 129px; background: url(../images/STAT_L2_DPU_AND_DPMO_01/STAT_L2_DPU_AND_DPMO_01_lines.png) top left;}
+div#defects	{width:235px; height:52px; left:123px; top:187px; }
+div#defects_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_DPU_AND_DPMO_01/STAT_L2_DPU_AND_DPMO_01_defects.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_DPU_AND_DPMO_01/STAT_L2_DPU_AND_DPMO_01_defects.png'); }
+div#equa1	{width: 174px; height: 37px; left: 396px; top: 141px; background: url(../images/STAT_L2_DPU_AND_DPMO_01/STAT_L2_DPU_AND_DPMO_01_equa1.png) top left;}
+div#equa2	{width: 43px; height: 37px; left: 392px; top: 182px; background: url(../images/STAT_L2_DPU_AND_DPMO_01/STAT_L2_DPU_AND_DPMO_01_equa2.png) top left;}
+div#equa2a	{width: 98px; height: 19px; left: 425px; top: 191px; background: url(../images/STAT_L2_DPU_AND_DPMO_01/STAT_L2_DPU_AND_DPMO_01_equa2a.png) top left;}
+div#equa3	{width: 177px; height: 19px; left: 397px; top: 226px; background: url(../images/STAT_L2_DPU_AND_DPMO_01/STAT_L2_DPU_AND_DPMO_01_equa3.png) top left;}
+div#equa4	{width: 227px; height: 20px; left: 397px; top: 253px; background: url(../images/STAT_L2_DPU_AND_DPMO_01/STAT_L2_DPU_AND_DPMO_01_equa4.png) top left;}

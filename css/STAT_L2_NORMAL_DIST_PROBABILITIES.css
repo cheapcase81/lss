@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+/*	Breakthrough Management Group, Inc slide styles
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+div#BMG_screen		{ background: black url(../images/backgrounds/stat_l2_05_1.jpg) }
+
+div#bkgr	{width:512px; height:208px; left:112px; top:128px; }
+div#bkgr_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_bkgr.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_bkgr.png'); }
+div#title	{width:155px; height:267px; left:305px; top:101px; }
+div#title_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_title.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_title.png'); }
+div#axis	{width:500px; height:14px; left:122px; top:319px; }
+div#axis_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_axis.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_axis.png'); }
+div#kmkey	{width:35px; height:40px; left:62px; top:406px; }
+div#kmkey_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_kmkey.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_kmkey.png'); }
+div#kmglint	{width:218px; height:142px; left:-32px; top:342px; }
+div#kmglint_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_kmglint.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_kmglint.png'); }
+div#kmtext	{width:241px; height:14px; left:114px; top:410px; }
+div#kmtext_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_kmtext.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_kmtext.png'); }
+div#curve	{width:473px; height:165px; left:131px; top:156px; }
+div#curve_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_curve.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_curve.png'); }
+div#lines	{width:481px; height:177px; left:128px; top:143px; }
+div#lines_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_lines.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_lines.png'); }
+div#hl1	{width:96px; height:164px; left:320px; top:156px; }
+div#hl1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_hl1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_hl1.png'); }
+div#hl2	{width:192px; height:164px; left:272px; top:156px; }
+div#hl2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_hl2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_hl2.png'); }
+div#hl3	{width:288px; height:165px; left:225px; top:156px; }
+div#hl3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_hl3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_hl3.png'); }
+div#sigma1	{width:48px; height:17px; left:320px; top:303px; }
+div#sigma1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma1.png'); }
+div#sigma2	{width:48px; height:17px; left:368px; top:303px; }
+div#sigma2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma2.png'); }
+div#sigma3	{width:48px; height:17px; left:272px; top:303px; }
+div#sigma3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma3.png'); }
+div#sigma4	{width:48px; height:17px; left:416px; top:303px; }
+div#sigma4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma4.png'); }
+div#sigma5	{width:48px; height:17px; left:224px; top:303px; }
+div#sigma5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma5.png'); }
+div#sigma6	{width:48px; height:17px; left:464px; top:303px; }
+div#sigma6_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma6.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_sigma6.png'); }
+div#per1	{width:97px; height:17px; left:320px; top:176px; }
+div#per1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_per1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_per1.png'); }
+div#per2	{width:192px; height:17px; left:273px; top:225px; }
+div#per2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_per2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_per2.png'); }
+div#per3	{width:289px; height:17px; left:224px; top:257px; }
+div#per3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_per3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_NORMAL_DIST_PROBABILITIES/STAT_L2_NORMAL_DIST_PROBABILITIES_per3.png'); }

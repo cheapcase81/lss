@@ -1,0 +1,113 @@
+@charset "utf-8";
+
+/*	Breakthrough Management Group, Inc slide styles
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+div#BMG_screen		{ background: black url(../images/backgrounds/stat_l2_05_1.jpg) }
+
+div#bkgr1	{width:208px; height:128px; left:80px; top:112px; }
+div#bkgr1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_bkgr1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_bkgr1.png'); }
+div#bkgr2	{width:208px; height:15px; left:80px; top:112px; }
+div#bkgr2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_bkgr2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_bkgr2.png'); }
+div#bbox1	{width: 353px; height: 130px; left: 304px; top: 112px; background: url(../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_bbox1.png) top left;}
+div#bbox2	{width: 353px; height: 127px; left: 304px; top: 241px; background: url(../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_bbox2.png) top left;}
+div#bbar	{width: 354px; height: 20px; left: 303px; top: 222px; background: url(../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_bbar.png) top left;}
+div#pbox1	{width: 201px; height: 91px; left: 387px; top: 147px; background: url(../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_pbox1.png) top left;}
+div#pbox1a	{width: 201px; height: 90px; left: 387px; top: 237px; background: url(../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_pbox1a.png) top left;}
+div#pbox2	{width:125px; height:62px; left:422px; top:210px; }
+div#pbox2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_pbox2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_pbox2.png'); }
+div#pbox3	{width:11px; height:62px; left:422px; top:210px; }
+div#pbox3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_pbox3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_pbox3.png'); }
+div#pbox4	{width:11px; height:3px; left:422px; top:217px; }
+div#pbox4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_pbox4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_pbox4.png'); }
+div#pbox5	{width:1px; height:1px; left:425px; top:169px; }
+div#pbox5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_pbox5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_pbox5.png'); }
+div#hlines	{width: 209px; height: 129px; left: 80px; top: 112px; background: url(../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hlines.png) top left;}
+div#vlines	{width: 209px; height: 129px; left: 80px; top: 112px; background: url(../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_vlines.png) top left;}
+div#row1	{width:120px; height:12px; left:127px; top:115px; }
+div#row1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row1.png'); }
+div#row2	{width:191px; height:23px; left:96px; top:134px; }
+div#row2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row2.png'); }
+div#row3	{width:135px; height:11px; left:135px; top:163px; }
+div#row3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row3.png'); }
+div#row4	{width:131px; height:11px; left:135px; top:179px; }
+div#row4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row4.png'); }
+div#row5	{width:128px; height:11px; left:134px; top:195px; }
+div#row5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row5.png'); }
+div#row6	{width:122px; height:10px; left:135px; top:210px; }
+div#row6_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row6.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row6.png'); }
+div#row7	{width:121px; height:10px; left:135px; top:227px; }
+div#row7_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row7.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_row7.png'); }
+div#btext1	{width:116px; height:41px; left:314px; top:316px; }
+div#btext1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_btext1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_btext1.png'); }
+div#ptext1	{width:74px; height:58px; left:406px; top:164px; }
+div#ptext1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_ptext1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_ptext1.png'); }
+div#ptext2	{width:99px; height:43px; left:430px; top:218px; }
+div#ptext2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_ptext2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_ptext2.png'); }
+div#ptext3	{width:77px; height:58px; left:441px; top:213px; }
+div#ptext3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_ptext3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_ptext3.png'); }
+div#ptext4	{width:75px; height:58px; left:438px; top:215px; }
+div#ptext4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_ptext4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_ptext4.png'); }
+div#ptext5	{width:95px; height:58px; left:432px; top:164px; }
+div#ptext5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_ptext5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_ptext5.png'); }
+div#hl1	{width:208px; height:16px; left:80px; top:112px; }
+div#hl1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl1.png'); }
+div#hl2	{width:208px; height:32px; left:80px; top:128px; }
+div#hl2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl2.png'); }
+div#hl3	{width:208px; height:16px; left:80px; top:160px; }
+div#hl3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl3.png'); }
+div#hl4	{width:208px; height:16px; left:80px; top:176px; }
+div#hl4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl4.png'); }
+div#hl5	{width:208px; height:16px; left:80px; top:192px; }
+div#hl5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl5.png'); }
+div#hl6	{width:208px; height:16px; left:80px; top:208px; }
+div#hl6_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl6.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl6.png'); }
+div#hl7	{width:208px; height:16px; left:80px; top:224px; }
+div#hl7_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl7.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl7.png'); }
+div#hl3a	{width:208px; height:16px; left:80px; top:160px; }
+div#hl3a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl3a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl3a.png'); }
+div#hl4a	{width:208px; height:16px; left:80px; top:176px; }
+div#hl4a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl4a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl4a.png'); }
+div#hl5a	{width:208px; height:16px; left:80px; top:192px; }
+div#hl5a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl5a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl5a.png'); }
+div#hl6a	{width:208px; height:16px; left:80px; top:208px; }
+div#hl6a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl6a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl6a.png'); }
+div#hl7a	{width:208px; height:16px; left:80px; top:224px; }
+div#hl7a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl7a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl7a.png'); }
+div#hl6b	{width:208px; height:16px; left:80px; top:208px; }
+div#hl6b_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl6b.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl6b.png'); }
+div#hl3b	{width:208px; height:16px; left:80px; top:160px; }
+div#hl3b_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl3b.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_AGGRESSIVE_GOAL/STAT_L2_AGGRESSIVE_GOAL_hl3b.png'); }

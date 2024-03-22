@@ -1,0 +1,97 @@
+@charset "utf-8";
+
+/*	Breakthrough Management Group, Inc slide styles
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+div#BMG_screen		{ background: black url(../images/backgrounds/stat_l2_04_1.jpg) }
+
+div#range	{width:113px; height:27px; left:171px; top:102px; }
+div#range_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_range.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_range.png'); }
+div#max	{width:147px; height:22px; left:280px; top:102px; }
+div#max_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_max.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_max.png'); }
+div#msign	{width:33px; height:22px; left:422px; top:102px; }
+div#msign_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_msign.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_msign.png'); }
+div#min	{width:140px; height:22px; left:450px; top:102px; }
+div#min_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_min.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_min.png'); }
+div#tnum1	{width:37px; height:22px; left:176px; top:164px; }
+div#tnum1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum1.png'); }
+div#tnum2	{width:38px; height:22px; left:220px; top:164px; }
+div#tnum2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum2.png'); }
+div#tnum3	{width:38px; height:22px; left:264px; top:164px; }
+div#tnum3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum3.png'); }
+div#tnum4	{width:37px; height:22px; left:308px; top:164px; }
+div#tnum4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum4.png'); }
+div#tnum5	{width:37px; height:22px; left:352px; top:164px; }
+div#tnum5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum5.png'); }
+div#tnum6	{width:37px; height:22px; left:396px; top:164px; }
+div#tnum6_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum6.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum6.png'); }
+div#tnum7	{width:38px; height:22px; left:440px; top:164px; }
+div#tnum7_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum7.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum7.png'); }
+div#tnum8	{width:38px; height:22px; left:484px; top:164px; }
+div#tnum8_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum8.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum8.png'); }
+div#tnum9	{width:38px; height:22px; left:527px; top:164px; }
+div#tnum9_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum9.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_tnum9.png'); }
+div#bnum1	{width:37px; height:22px; left:176px; top:290px; }
+div#bnum1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum1.png'); }
+div#bnum2	{width:37px; height:22px; left:220px; top:290px; }
+div#bnum2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum2.png'); }
+div#bnum3	{width:37px; height:22px; left:264px; top:290px; }
+div#bnum3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum3.png'); }
+div#bnum4	{width:37px; height:22px; left:308px; top:290px; }
+div#bnum4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum4.png'); }
+div#bnum5	{width:37px; height:22px; left:352px; top:290px; }
+div#bnum5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum5.png'); }
+div#bnum6	{width:37px; height:22px; left:396px; top:290px; }
+div#bnum6_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum6.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum6.png'); }
+div#bnum7	{width:37px; height:22px; left:440px; top:290px; }
+div#bnum7_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum7.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum7.png'); }
+div#bnum8	{width:37px; height:22px; left:484px; top:290px; }
+div#bnum8_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum8.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum8.png'); }
+div#bnum9	{width:38px; height:22px; left:527px; top:290px; }
+div#bnum9_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum9.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_bnum9.png'); }
+div#total1	{width: 265px; height: 36px; left: 236px; top: 219px; background: url(../images/STAT_L2_RANGE/STAT_L2_RANGE_total1.png) top left;}
+div#total2	{width: 265px; height: 36px; left: 236px; top: 344px; background: url(../images/STAT_L2_RANGE/STAT_L2_RANGE_total2.png) top left;}
+div#STAT_L2_RANGE_hlights_1000	{width:13px; height:20px; left:176px; top:165px; }
+div#STAT_L2_RANGE_hlights_1000_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_hlights_1000.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_hlights_1000.png'); }
+div#STAT_L2_RANGE_hlights_1001	{width:58px; height:20px; left:219px; top:165px; }
+div#STAT_L2_RANGE_hlights_1001_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_hlights_1001.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_hlights_1001.png'); }
+div#STAT_L2_RANGE_hlights_1002	{width:101px; height:19px; left:307px; top:165px; }
+div#STAT_L2_RANGE_hlights_1002_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_hlights_1002.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_hlights_1002.png'); }
+div#STAT_L2_RANGE_hlights_1003	{width:58px; height:20px; left:439px; top:165px; }
+div#STAT_L2_RANGE_hlights_1003_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_hlights_1003.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_hlights_1003.png'); }
+div#STAT_L2_RANGE_hlights_1004	{width:14px; height:20px; left:527px; top:165px; }
+div#STAT_L2_RANGE_hlights_1004_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_hlights_1004.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_hlights_1004.png'); }
+div#STAT_L2_RANGE_hlights_1005	{width:321px; height:20px; left:176px; top:291px; }
+div#STAT_L2_RANGE_hlights_1005_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_hlights_1005.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_hlights_1005.png'); }
+div#STAT_L2_RANGE_hlights_1006	{width:14px; height:20px; left:527px; top:290px; }
+div#STAT_L2_RANGE_hlights_1006_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_hlights_1006.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_RANGE/STAT_L2_RANGE_hlights_1006.png'); }
+div#hlights	{width: 736px; height: 480px; left: 0px; top: 0px;}

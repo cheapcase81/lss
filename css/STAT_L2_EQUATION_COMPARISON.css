@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+/*	Breakthrough Management Group, Inc slide styles
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+div#BMG_screen		{ background: black url(../images/backgrounds/stat_l2_04_1.jpg) }
+
+div#hline	{width: 574px; height: 1px; left: 82px; top: 143px; background: url(../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hline.png) top left;}
+div#vline	{width: 1px; height: 291px; left: 464px; top: 96px; background: url(../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_vline.png) top left;}
+div#pop	{width:97px; height:34px; left:332px; top:96px; }
+div#pop_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_pop.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_pop.png'); }
+div#samp	{width:81px; height:34px; left:515px; top:96px; }
+div#samp_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_samp.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_samp.png'); }
+div#mean1	{width:238px; height:73px; left:156px; top:150px; }
+div#mean1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_mean1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_mean1.png'); }
+div#mean2	{width:108px; height:72px; left:480px; top:150px; }
+div#mean2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_mean2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_mean2.png'); }
+div#vari1	{width:316px; height:73px; left:147px; top:239px; }
+div#vari1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_vari1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_vari1.png'); }
+div#vari2	{width:175px; height:72px; left:482px; top:240px; }
+div#vari2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_vari2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_vari2.png'); }
+div#sd1	{width:221px; height:34px; left:147px; top:349px; }
+div#sd1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_sd1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_sd1.png'); }
+div#sd2	{width:76px; height:21px; left:481px; top:355px; }
+div#sd2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_sd2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_sd2.png'); }
+div#hl1	{width:105px; height:73px; left:288px; top:150px; }
+div#hl1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl1.png'); }
+div#hl2	{width:175px; height:73px; left:288px; top:239px; }
+div#hl2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl2.png'); }
+div#hl3	{width:81px; height:20px; left:288px; top:355px; }
+div#hl3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl3.png'); }
+div#hl4	{width:108px; height:72px; left:479px; top:150px; }
+div#hl4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl4.png'); }
+div#hl5	{width:175px; height:72px; left:482px; top:240px; }
+div#hl5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl5.png'); }
+div#hl6	{width:76px; height:21px; left:482px; top:355px; }
+div#hl6_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl6.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_EQUATION_COMPARISON/STAT_L2_EQUATION_COMPARISON_hl6.png'); }

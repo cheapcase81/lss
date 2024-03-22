@@ -1,0 +1,65 @@
+@charset "utf-8";
+
+/*	Breakthrough Management Group, Inc slide styles
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+div#BMG_screen		{ background: black url(../images/backgrounds/stat_l2_02_1.jpg) }
+
+div#why	{width:176px; height:44px; left:293px; top:220px; }
+div#why_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_why.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_why.png'); }
+div#ques1	{width:206px; height:12px; left:270px; top:108px; }
+div#ques1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_ques1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_ques1.png'); }
+div#target	{width:40px; height:12px; left:322px; top:128px; }
+div#target_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_target.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_target.png'); }
+div#curve	{width:88px; height:73px; left:324px; top:128px; }
+div#curve_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve.png'); }
+div#tline	{width:2px; height:78px; left:367px; top:123px; }
+div#tline_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_tline.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_tline.png'); }
+div#ques2	{width:147px; height:28px; left:528px; top:143px; }
+div#ques2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_ques2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_ques2.png'); }
+div#spec	{width:127px; height:12px; left:537px; top:214px; }
+div#spec_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_spec.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_spec.png'); }
+div#curve2	{width:128px; height:73px; left:532px; top:192px; }
+div#curve2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve2.png'); }
+div#sline1	{width:2px; height:82px; left:563px; top:183px; }
+div#sline1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_sline1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_sline1.png'); }
+div#sline2	{width:2px; height:82px; left:627px; top:183px; }
+div#sline2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_sline2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_sline2.png'); }
+div#ques3	{width:136px; height:26px; left:422px; top:369px; }
+div#ques3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_ques3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_ques3.png'); }
+div#curve3	{width:88px; height:73px; left:474px; top:286px; }
+div#curve3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve3.png'); }
+div#curve4	{width:88px; height:73px; left:474px; top:286px; }
+div#curve4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve4.png'); }
+div#curve5	{width:88px; height:73px; left:410px; top:286px; }
+div#curve5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve5.png'); }
+div#ques4	{width:161px; height:12px; left:197px; top:375px; }
+div#ques4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_ques4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_ques4.png'); }
+div#curve6	{width:121px; height:73px; left:212px; top:287px; }
+div#curve6_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve6.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve6.png'); }
+div#curve7	{width:88px; height:73px; left:228px; top:287px; }
+div#curve7_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve7.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_curve7.png'); }
+div#line	{width: 82px; height: 2px; left: 111px; top: 263px; background: url(../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_line.png) top left;}
+div#ques5	{width:143px; height:10px; left:86px; top:190px; }
+div#ques5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_ques5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_ques5.png'); }
+div#bar1	{width: 17px; height: 49px; left: 128px; top: 216px; background: url(../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_bar1.png) top left;}
+div#bar2	{width: 17px; height: 17px; left: 144px; top: 247px; background: url(../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_bar2.png) top left;}
+div#bar3	{width: 17px; height: 9px; left: 160px; top: 255px; background: url(../images/STAT_L2_WHY_GEN_STATS/STAT_L2_WHY_GEN_STATS_bar3.png) top left;}

@@ -1,0 +1,150 @@
+@charset "utf-8";
+
+/*	Breakthrough Management Group, Inc slide styles
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+div#BMG_screen		{ background: black url(../images/backgrounds/stat_l2_02_1.jpg) }
+
+div#bkgr	{width:576px; height:256px; left:80px; top:112px; }
+div#bkgr_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_bkgr.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_bkgr.png'); }
+div#line	{width: 354px; height: 2px; left: 191px; top: 303px; background: url(../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_line.png) top left;}
+div#box1	{width:33px; height:33px; left:271px; top:272px; }
+div#box1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box1.png'); }
+div#box3	{width:33px; height:97px; left:335px; top:208px; }
+div#box3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box3.png'); }
+div#box5	{width:33px; height:129px; left:399px; top:175px; }
+div#box5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box5.png'); }
+div#box7	{width:33px; height:65px; left:463px; top:240px; }
+div#box7_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box7.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box7.png'); }
+div#box2	{width:33px; height:65px; left:303px; top:240px; }
+div#box2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box2.png'); }
+div#box4	{width:33px; height:161px; left:367px; top:144px; }
+div#box4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box4.png'); }
+div#box6	{width:33px; height:97px; left:431px; top:208px; }
+div#box6_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box6.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box6.png'); }
+div#box8	{width:33px; height:33px; left:496px; top:272px; }
+div#box8_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box8.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box8.png'); }
+div#box1a	{width:33px; height:33px; left:271px; top:272px; }
+div#box1a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box1a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box1a.png'); }
+div#box3a	{width:33px; height:97px; left:335px; top:208px; }
+div#box3a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box3a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box3a.png'); }
+div#box5a	{width:33px; height:129px; left:399px; top:175px; }
+div#box5a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box5a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box5a.png'); }
+div#box7a	{width:33px; height:65px; left:463px; top:240px; }
+div#box7a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box7a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box7a.png'); }
+div#box2a	{width:33px; height:65px; left:303px; top:240px; }
+div#box2a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box2a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box2a.png'); }
+div#box4a	{width:33px; height:161px; left:367px; top:144px; }
+div#box4a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box4a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box4a.png'); }
+div#box6a	{width:33px; height:97px; left:431px; top:208px; }
+div#box6a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box6a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box6a.png'); }
+div#box8a	{width:33px; height:33px; left:496px; top:272px; }
+div#box8a_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box8a.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_box8a.png'); }
+div#tick1	{width:2px; height:14px; left:207px; top:297px; }
+div#tick1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick1.png'); }
+div#tick2	{width:2px; height:8px; left:223px; top:300px; }
+div#tick2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick2.png'); }
+div#tick3	{width:2px; height:14px; left:239px; top:297px; }
+div#tick3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick3.png'); }
+div#tick4	{width:2px; height:8px; left:255px; top:300px; }
+div#tick4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick4.png'); }
+div#tick5	{width:2px; height:14px; left:271px; top:297px; }
+div#tick5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick5.png'); }
+div#tick6	{width:2px; height:8px; left:287px; top:300px; }
+div#tick6_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick6.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick6.png'); }
+div#tick7	{width:2px; height:14px; left:303px; top:297px; }
+div#tick7_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick7.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick7.png'); }
+div#tick8	{width:2px; height:8px; left:319px; top:300px; }
+div#tick8_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick8.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick8.png'); }
+div#tick9	{width:2px; height:14px; left:335px; top:297px; }
+div#tick9_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick9.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick9.png'); }
+div#tick10	{width:2px; height:8px; left:351px; top:300px; }
+div#tick10_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick10.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick10.png'); }
+div#tick11	{width:2px; height:14px; left:367px; top:297px; }
+div#tick11_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick11.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick11.png'); }
+div#tick12	{width:2px; height:8px; left:383px; top:300px; }
+div#tick12_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick12.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick12.png'); }
+div#tick13	{width:2px; height:14px; left:399px; top:297px; }
+div#tick13_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick13.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick13.png'); }
+div#tick14	{width:2px; height:8px; left:415px; top:300px; }
+div#tick14_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick14.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick14.png'); }
+div#tick15	{width:2px; height:14px; left:431px; top:297px; }
+div#tick15_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick15.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick15.png'); }
+div#tick16	{width:2px; height:8px; left:447px; top:300px; }
+div#tick16_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick16.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick16.png'); }
+div#tick17	{width:2px; height:14px; left:463px; top:297px; }
+div#tick17_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick17.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick17.png'); }
+div#tick18	{width:2px; height:8px; left:479px; top:300px; }
+div#tick18_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick18.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick18.png'); }
+div#tick19	{width:2px; height:14px; left:495px; top:297px; }
+div#tick19_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick19.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick19.png'); }
+div#tick20	{width:2px; height:8px; left:511px; top:300px; }
+div#tick20_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick20.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick20.png'); }
+div#tick21	{width:2px; height:14px; left:527px; top:297px; }
+div#tick21_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick21.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_tick21.png'); }
+div#nums	{width:314px; height:11px; left:217px; top:315px; }
+div#nums_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_nums.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_nums.png'); }
+div#boxnums	{width: 255px; height: 147px; left: 277px; top: 151px; background: url(../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_boxnums.png) top left;}
+div#min	{width:71px; height:31px; left:258px; top:327px; }
+div#min_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_min.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_min.png'); }
+div#max	{width:75px; height:31px; left:482px; top:326px; }
+div#max_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_max.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_max.png'); }
+div#defect	{width:163px; height:11px; left:503px; top:227px; }
+div#defect_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_defect.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_defect.png'); }
+div#defect2	{width:122px; height:11px; left:98px; top:227px; }
+div#defect2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_defect2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_defect2.png'); }
+div#ok1	{width:38px; height:11px; left:371px; top:127px; }
+div#ok1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_ok1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_ok1.png'); }
+div#lines	{width:288px; height:184px; left:241px; top:122px; }
+div#lines_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_lines.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_lines.png'); }
+div#sum	{width:84px; height:11px; left:574px; top:259px; }
+div#sum_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_sum.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_sum.png'); }
+div#count	{width:85px; height:11px; left:98px; top:257px; }
+div#count_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_count.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_WHAT_IS_STATISTIC/STAT_L2_WHAT_IS_STATISTIC_count.png'); }

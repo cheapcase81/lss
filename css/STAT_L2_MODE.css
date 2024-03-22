@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+/*	Breakthrough Management Group, Inc slide styles
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+div#BMG_screen		{ background: black url(../images/backgrounds/stat_l2_03_1.jpg) }
+
+div#blinker	{width:147px; height:35px; left:447px; top:223px; }
+div#blinker_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MODE/STAT_L2_MODE_blinker.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MODE/STAT_L2_MODE_blinker.png'); }
+div#title	{width:53px; height:13px; left:348px; top:133px; }
+div#title_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MODE/STAT_L2_MODE_title.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MODE/STAT_L2_MODE_title.png'); }
+div#nums	{width:535px; height:11px; left:109px; top:235px; }
+div#nums_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MODE/STAT_L2_MODE_nums.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MODE/STAT_L2_MODE_nums.png'); }
+div#def	{width:293px; height:11px; left:227px; top:321px; }
+div#def_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MODE/STAT_L2_MODE_def.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MODE/STAT_L2_MODE_def.png'); }
+div#line1	{width: 4px; height: 35px; left: 447px; top: 223px; background: url(../images/STAT_L2_MODE/STAT_L2_MODE_line1.png) top left;}
+div#line2	{width: 147px; height: 3px; left: 447px; top: 223px; background: url(../images/STAT_L2_MODE/STAT_L2_MODE_line2.png) top left;}
+div#line3	{width: 147px; height: 3px; left: 447px; top: 255px; background: url(../images/STAT_L2_MODE/STAT_L2_MODE_line3.png) top left;}
+div#line4	{width: 3px; height: 35px; left: 591px; top: 223px; background: url(../images/STAT_L2_MODE/STAT_L2_MODE_line4.png) top left;}

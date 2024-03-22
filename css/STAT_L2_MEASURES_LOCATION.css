@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+/*	Breakthrough Management Group, Inc slide styles
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+div#BMG_screen		{ background: black url(../images/backgrounds/stat_l2_03_1.jpg) }
+
+div#mean	{width:56px; height:13px; left:380px; top:293px; }
+div#mean_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEASURES_LOCATION/STAT_L2_MEASURES_LOCATION_mean.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEASURES_LOCATION/STAT_L2_MEASURES_LOCATION_mean.png'); }
+div#def3	{width:256px; height:32px; left:379px; top:291px; }
+div#def3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEASURES_LOCATION/STAT_L2_MEASURES_LOCATION_def3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEASURES_LOCATION/STAT_L2_MEASURES_LOCATION_def3.png'); }
+div#medi	{width:76px; height:13px; left:380px; top:212px; }
+div#medi_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEASURES_LOCATION/STAT_L2_MEASURES_LOCATION_medi.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEASURES_LOCATION/STAT_L2_MEASURES_LOCATION_medi.png'); }
+div#def2	{width:258px; height:54px; left:379px; top:211px; }
+div#def2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEASURES_LOCATION/STAT_L2_MEASURES_LOCATION_def2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEASURES_LOCATION/STAT_L2_MEASURES_LOCATION_def2.png'); }
+div#mode	{width:57px; height:13px; left:380px; top:132px; }
+div#mode_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEASURES_LOCATION/STAT_L2_MEASURES_LOCATION_mode.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEASURES_LOCATION/STAT_L2_MEASURES_LOCATION_mode.png'); }
+div#def1	{width:253px; height:54px; left:379px; top:131px; }
+div#def1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEASURES_LOCATION/STAT_L2_MEASURES_LOCATION_def1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEASURES_LOCATION/STAT_L2_MEASURES_LOCATION_def1.png'); }
+div#bars	{width:193px; height:121px; left:111px; top:191px; }
+div#bars_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEASURES_LOCATION/STAT_L2_MEASURES_LOCATION_bars.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEASURES_LOCATION/STAT_L2_MEASURES_LOCATION_bars.png'); }

@@ -1,0 +1,75 @@
+@charset "utf-8";
+
+/*	Breakthrough Management Group, Inc slide styles
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+div#BMG_screen		{ background: black url(../images/backgrounds/stat_l2_03_1.jpg) }
+
+div#line1	{width: 574px; height: 1px; left: 82px; top: 143px; background: url(../images/STAT_L2_MEAN/STAT_L2_MEAN_line1.png) top left;}
+div#line2	{width: 1px; height: 291px; left: 368px; top: 96px; background: url(../images/STAT_L2_MEAN/STAT_L2_MEAN_line2.png) top left;}
+div#pop1	{width:90px; height:16px; left:185px; top:101px; }
+div#pop1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_pop1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_pop1.png'); }
+div#text1	{width:89px; height:14px; left:185px; top:119px; }
+div#text1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_text1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_text1.png'); }
+div#samp1	{width:68px; height:16px; left:497px; top:101px; }
+div#samp1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_samp1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_samp1.png'); }
+div#text2	{width:73px; height:14px; left:495px; top:119px; }
+div#text2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_text2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_text2.png'); }
+div#esign1	{width:29px; height:16px; left:200px; top:223px; }
+div#esign1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_esign1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_esign1.png'); }
+div#mu	{width:23px; height:20px; left:183px; top:223px; }
+div#mu_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_mu.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_mu.png'); }
+div#lx1	{width:34px; height:22px; left:250px; top:195px; }
+div#lx1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_lx1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_lx1.png'); }
+div#sigma1	{width:34px; height:46px; left:225px; top:181px; }
+div#sigma1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_sigma1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_sigma1.png'); }
+div#ltext1	{width:53px; height:21px; left:219px; top:232px; }
+div#ltext1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_ltext1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_ltext1.png'); }
+div#pop2	{width:67px; height:13px; left:177px; top:291px; }
+div#pop2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_pop2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_pop2.png'); }
+div#pop3	{width:67px; height:13px; left:151px; top:332px; }
+div#pop3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_pop3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_pop3.png'); }
+div#pop4	{width:67px; height:13px; left:172px; top:367px; }
+div#pop4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_pop4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_pop4.png'); }
+div#ltext2	{width:251px; height:87px; left:97px; top:291px; }
+div#ltext2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_ltext2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_ltext2.png'); }
+div#rx1	{width:32px; height:22px; left:537px; top:193px; }
+div#rx1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_rx1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_rx1.png'); }
+div#sigma2	{width:34px; height:46px; left:513px; top:181px; }
+div#sigma2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_sigma2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_sigma2.png'); }
+div#rtext1	{width:53px; height:21px; left:507px; top:232px; }
+div#rtext1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_rtext1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_rtext1.png'); }
+div#esign2	{width:39px; height:17px; left:489px; top:223px; }
+div#esign2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_esign2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_esign2.png'); }
+div#xbar	{width:38px; height:19px; left:465px; top:221px; }
+div#xbar_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_xbar.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_xbar.png'); }
+div#samp2	{width:48px; height:13px; left:471px; top:293px; }
+div#samp2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_samp2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_samp2.png'); }
+div#samp3	{width:48px; height:13px; left:627px; top:315px; }
+div#samp3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_samp3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_samp3.png'); }
+div#samp4	{width:48px; height:13px; left:468px; top:354px; }
+div#samp4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_samp4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_samp4.png'); }
+div#rtext2	{width:260px; height:73px; left:393px; top:292px; }
+div#rtext2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_rtext2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEAN/STAT_L2_MEAN_rtext2.png'); }

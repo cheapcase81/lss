@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+/*	Breakthrough Management Group, Inc slide styles
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+div#BMG_screen		{ background: black url(../images/backgrounds/zzzz_beforeyoubegin.jpg) }
+
+div#controls	{width:412px; height:448px; left:0px; top:32px; }
+div#controls_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_beforeyoubegin/beforeyoubegin_controls.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_beforeyoubegin/beforeyoubegin_controls.png'); }
+div#instructions	{width:324px; height:232px; left:412px; top:52px; }
+div#instructions_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_beforeyoubegin/beforeyoubegin_instructions.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_beforeyoubegin/beforeyoubegin_instructions.png'); }
+div#control1	{width:315px; height:40px; left:16px; top:76px; }
+div#control1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_beforeyoubegin/beforeyoubegin_control1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_beforeyoubegin/beforeyoubegin_control1.png'); }
+div#control2	{width:234px; height:34px; left:34px; top:140px; }
+div#control2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_beforeyoubegin/beforeyoubegin_control2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_beforeyoubegin/beforeyoubegin_control2.png'); }
+div#control3	{width:289px; height:48px; left:28px; top:208px; }
+div#control3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_beforeyoubegin/beforeyoubegin_control3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_beforeyoubegin/beforeyoubegin_control3.png'); }
+div#control4	{width:308px; height:48px; left:28px; top:276px; }
+div#control4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_beforeyoubegin/beforeyoubegin_control4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_beforeyoubegin/beforeyoubegin_control4.png'); }
+div#control5	{width:268px; height:34px; left:30px; top:344px; }
+div#control5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_beforeyoubegin/beforeyoubegin_control5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_beforeyoubegin/beforeyoubegin_control5.png'); }
+div#control6	{width:349px; height:48px; left:28px; top:412px; }
+div#control6_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_beforeyoubegin/beforeyoubegin_control6.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/zzzz_beforeyoubegin/beforeyoubegin_control6.png'); }

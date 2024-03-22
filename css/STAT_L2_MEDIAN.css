@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+/*	Breakthrough Management Group, Inc slide styles
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+div#BMG_screen		{ background: black url(../images/backgrounds/stat_l2_03_1.jpg) }
+
+div#title	{width:67px; height:13px; left:341px; top:133px; }
+div#title_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_title.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_title.png'); }
+div#num1	{width:18px; height:11px; left:109px; top:235px; }
+div#num1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num1.png'); }
+div#num2	{width:19px; height:11px; left:159px; top:235px; }
+div#num2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num2.png'); }
+div#num3	{width:18px; height:11px; left:211px; top:235px; }
+div#num3_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num3.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num3.png'); }
+div#num4	{width:18px; height:11px; left:262px; top:235px; }
+div#num4_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num4.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num4.png'); }
+div#num5	{width:18px; height:11px; left:314px; top:235px; }
+div#num5_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num5.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num5.png'); }
+div#num6	{width:18px; height:11px; left:365px; top:235px; }
+div#num6_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num6.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num6.png'); }
+div#num7	{width:18px; height:11px; left:416px; top:235px; }
+div#num7_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num7.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num7.png'); }
+div#num8	{width:26px; height:11px; left:464px; top:235px; }
+div#num8_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num8.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num8.png'); }
+div#num9	{width:26px; height:11px; left:515px; top:235px; }
+div#num9_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num9.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num9.png'); }
+div#num10	{width:26px; height:11px; left:566px; top:235px; }
+div#num10_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num10.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num10.png'); }
+div#num11	{width:26px; height:11px; left:618px; top:235px; }
+div#num11_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num11.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_num11.png'); }
+div#def	{width:584px; height:15px; left:80px; top:321px; }
+div#def_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_def.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_def.png'); }
+div#mnum	{width:31px; height:11px; left:357px; top:235px; }
+div#mnum_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_mnum.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_mnum.png'); }
+div#STAT_L2_MEDIAN_blinker_1000	{width:32px; height:32px; left:352px; top:224px; }
+div#STAT_L2_MEDIAN_blinker_1000_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_blinker_1000.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_blinker_1000.png'); }
+div#STAT_L2_MEDIAN_blinker_1001	{width:32px; height:32px; left:352px; top:224px; }
+div#STAT_L2_MEDIAN_blinker_1001_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_blinker_1001.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_blinker_1001.png'); }
+div#blinker	{width: 736px; height: 480px; left: 0px; top: 0px;}
+div#xline1	{width: 20px; height: 20px; left: 614px; top: 230px; background: url(../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_xline1.png) top left;}
+div#xline2	{width: 20px; height: 20px; left: 615px; top: 230px; background: url(../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_xline2.png) top left;}
+div#circ1	{width:35px; height:35px; left:351px; top:223px; }
+div#circ1_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_circ1.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_circ1.png'); }
+div#circ2	{width:35px; height:35px; left:351px; top:223px; }
+div#circ2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_circ2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_circ2.png'); }
+div#box	{width:99px; height:35px; left:319px; top:223px; }
+div#box_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_box.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_box.png'); }
+div#box2	{width:52px; height:35px; left:342px; top:223px; }
+div#box2_ie	{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_box2.png')";
+			filter:  progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='../images/STAT_L2_MEDIAN/STAT_L2_MEDIAN_box2.png'); }

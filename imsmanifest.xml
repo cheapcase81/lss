@@ -1,0 +1,522 @@
+<?xml version="1.0" standalone="no" ?>
+									
+									
+<manifest	identifier			= "com.bmgi" version="1"
+			xmlns				= "http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+			xmlns:adlcp			= "http://www.adlnet.org/xsd/adlcp_rootv1p2"
+			xmlns:xsi			= "http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation	= "http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
+									http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd
+									http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd" >
+  
+	<metadata>
+		<schema>ADL SCORM</schema>
+		<schemaversion>1.2</schemaversion>
+	</metadata>
+									
+	<organizations default="B0">
+		<organization identifier="B0">
+			<title>Introduction to Statistics</title>
+			<item identifier = "id1" identifierref = "ZZZZ_BEFOREYOUBEGIN" isvisible = "true">
+				<title>Before You Begin</title>
+			</item>
+			<item identifier = "id2" identifierref = "STAT_L2_MODULE_OBJECTIVES" isvisible = "true">
+				<title>Module Objectives</title>
+			</item>
+			<item identifier = "id4" identifierref = "STAT_L2_DATA_TYPES_DISCRETE" isvisible = "true">
+				<title>Data Types - Discrete</title>
+			</item>
+			<item identifier = "id5" identifierref = "STAT_L2_DATA_TYPES_CONTINUOUS" isvisible = "true">
+				<title>Data Types - Continuous</title>
+			</item>
+			<item identifier = "id6" identifierref = "STAT_L2_CONTINUOUS_VS_DISCRETE" isvisible = "true">
+				<title>Continuous vs. Discrete [A]</title>
+			</item>
+			<item identifier = "id8" identifierref = "STAT_L2_POPULATION_VS_SAMPLE" isvisible = "true">
+				<title>Population vs. Sample</title>
+			</item>
+			<item identifier = "id9" identifierref = "STAT_L2_WHY_GEN_STATS" isvisible = "true">
+				<title>Why Generate Statistics</title>
+			</item>
+			<item identifier = "id10" identifierref = "STAT_L2_PROCESS_PERSPECTIVE" isvisible = "true">
+				<title>The Process Perspective</title>
+			</item>
+			<item identifier = "id11" identifierref = "STAT_L2_NON_PREDICTIVE_OUTPUT" isvisible = "true">
+				<title>Non-predictive Output</title>
+			</item>
+			<item identifier = "id12" identifierref = "STAT_L2_HOW_MANY_SAMPLES" isvisible = "true">
+				<title>How Many Samples are Enough? [A]</title>
+			</item>
+			<item identifier = "id13" identifierref = "STAT_L2_SAMPLING_PROCESS" isvisible = "true">
+				<title>Sampling From a Process [A]</title>
+			</item>
+			<item identifier = "id14" identifierref = "STAT_L2_PREDICTING_FREQUENCIES" isvisible = "true">
+				<title>Predicting Frequencies [A]</title>
+			</item>
+			<item identifier = "id15" identifierref = "STAT_L2_WHAT_IS_STATISTIC" isvisible = "true">
+				<title>What is a Statistic?</title>
+			</item>
+			<item identifier = "id16" identifierref = "STAT_L2_IMPORTANT_POPULATION_ATTRIBUTES" isvisible = "true">
+				<title>Important Population Attributes</title>
+			</item>
+			<item identifier = "id18" identifierref = "STAT_L2_MEASURES_LOCATION" isvisible = "true">
+				<title>Measures of Location</title>
+			</item>
+			<item identifier = "id19" identifierref = "STAT_L2_MODE" isvisible = "true">
+				<title>The Mode</title>
+			</item>
+			<item identifier = "id20" identifierref = "STAT_L2_MEDIAN" isvisible = "true">
+				<title>The Median</title>
+			</item>
+			<item identifier = "id21" identifierref = "STAT_L2_MEAN" isvisible = "true">
+				<title>The Mean</title>
+			</item>
+			<item identifier = "id22" identifierref = "STAT_L2_CALCULATING_MEAN" isvisible = "true">
+				<title>Calculating the Mean</title>
+			</item>
+			<item identifier = "id23" identifierref = "STAT_L2_CALCULATE_MODE" isvisible = "true">
+				<title>Calculate the Mode [A]</title>
+			</item>
+			<item identifier = "id24" identifierref = "STAT_L2_17_MT_MODE1" isvisible = "true">
+				<title>Calculate the Mode in MINITAB - Method 1</title>
+			</item>
+			<item identifier = "id25" identifierref = "STAT_L2_17_MT_MODE1_TI" isvisible = "true">
+				<title>Calculate the Mode in MINITAB - Method 1 - Try It [A]</title>
+			</item>
+			<item identifier = "id26" identifierref = "STAT_L2_17_MT_MODE2" isvisible = "true">
+				<title>Calculate the Mode in MINITAB - Method 2</title>
+			</item>
+			<item identifier = "id27" identifierref = "STAT_L2_17_MT_MODE2_TI" isvisible = "true">
+				<title>Calculate the Mode in MINITAB - Method 2 - Try It [A]</title>
+			</item>
+			<item identifier = "id28" identifierref = "STAT_L2_CALCULATE_MEDIAN" isvisible = "true">
+				<title>Calculate the Median [A]</title>
+			</item>
+			<item identifier = "id29" identifierref = "STAT_L2_17_MT_MEDIAN" isvisible = "true">
+				<title>Calculate the Median, Mean, and Range in MINITAB</title>
+			</item>
+			<item identifier = "id30" identifierref = "STAT_L2_17_MT_MEDIAN_TI" isvisible = "true">
+				<title>Calculate the Median, Mean, and Range in MINITAB - Try It [A]</title>
+			</item>
+			<item identifier = "id31" identifierref = "STAT_L2_CALCULATE_MEAN" isvisible = "true">
+				<title>Calculate the Mean [A]</title>
+			</item>
+			<item identifier = "id33" identifierref = "STAT_L2_RANGE" isvisible = "true">
+				<title>The Range</title>
+			</item>
+			<item identifier = "id34" identifierref = "STAT_L2_VARIANCE" isvisible = "true">
+				<title>The Variance</title>
+			</item>
+			<item identifier = "id35" identifierref = "STAT_L2_CALCULATING_VARIANCE-01" isvisible = "true">
+				<title>Calculating the Variance - Example</title>
+			</item>
+			<item identifier = "id36" identifierref = "STAT_L2_CALCULATING_VARIANCE-02" isvisible = "true">
+				<title>Calculating the Variance - Explanation</title>
+			</item>
+			<item identifier = "id37" identifierref = "STAT_L2_17_MT_VARIANCE" isvisible = "true">
+				<title>Calculate the Variance in MINITAB</title>
+			</item>
+			<item identifier = "id38" identifierref = "STAT_L2_17_MT_VARIANCE_TI" isvisible = "true">
+				<title>Calculate the Variance in MINITAB - Try It [A]</title>
+			</item>
+			<item identifier = "id39" identifierref = "STAT_L2_STANDARD_DEVIATION" isvisible = "true">
+				<title>The Standard Deviation</title>
+			</item>
+			<item identifier = "id40" identifierref = "STAT_L2_EQUATION_COMPARISON" isvisible = "true">
+				<title>Comparing Population and Sample Equations</title>
+			</item>
+			<item identifier = "id41" identifierref = "STAT_L2_CALCULATING_STANDARD_DEVIATION" isvisible = "true">
+				<title>Calculating the Standard Deviation</title>
+			</item>
+			<item identifier = "id42" identifierref = "STAT_L2_CALCULATE_STANDARD_DEVIATION" isvisible = "true">
+				<title>Calculate the Standard Deviation [A]</title>
+			</item>
+			<item identifier = "id43" identifierref = "STAT_L2_17_MT_DEVIATION" isvisible = "true">
+				<title>Calculate the Standard Deviation in MINITAB</title>
+			</item>
+			<item identifier = "id44" identifierref = "STAT_L2_17_MT_DEVIATION_TI" isvisible = "true">
+				<title>Calculate the Standard Deviation in MINITAB - Try It [A]</title>
+			</item>
+			<item identifier = "id46" identifierref = "STAT_L2_POPULATION_DISTRIBUTION" isvisible = "true">
+				<title>Population Distribution</title>
+			</item>
+			<item identifier = "id47" identifierref = "STAT_L2_NORMAL_DIST_PROBABILITIES" isvisible = "true">
+				<title>Normal Distribution Probabilities</title>
+			</item>
+			<item identifier = "id48" identifierref = "STAT_L2_REAL_LIFE_EXAMPLE" isvisible = "true">
+				<title>Normal Distribution Example</title>
+			</item>
+			<item identifier = "id49" identifierref = "STAT_L2_3_6_SIGMA_PROCESS" isvisible = "true">
+				<title>Three Sigma vs. Six Sigma Process</title>
+			</item>
+			<item identifier = "id50" identifierref = "STAT_L2_LONG_TERM_DISTRIBUTION" isvisible = "true">
+				<title>Long Term Distributions</title>
+			</item>
+			<item identifier = "id51" identifierref = "STAT_L2_TRAN_VARIATION" isvisible = "true">
+				<title>Long-Term vs. Short-Term Variation - Transactional</title>
+			</item>
+			<item identifier = "id52" identifierref = "STAT_L2_DPU_AND_DPMO_01" isvisible = "true">
+				<title>DPU and DPMO - Computation</title>
+			</item>
+			<item identifier = "id53" identifierref = "STAT_L2_DPU_AND_DPMO_02" isvisible = "true">
+				<title>DPU and DPMO - Analysis</title>
+			</item>
+			<item identifier = "id54" identifierref = "STAT_L2_TRAN_DPMO" isvisible = "true">
+				<title>DPU and DPMO - Transactional</title>
+			</item>
+			<item identifier = "id55" identifierref = "STAT_L2_17_MT_DPMO" isvisible = "true">
+				<title>Calculate the DPMO from Z-Scores in MINITAB</title>
+			</item>
+			<item identifier = "id56" identifierref = "STAT_L2_17_MT_DPMO_TI" isvisible = "true">
+				<title>Calculate the DPMO from Z-Scores in MINITAB - Try It [A]</title>
+			</item>
+			<item identifier = "id57" identifierref = "STAT_L2_SHIFT_DRIFT" isvisible = "true">
+				<title>Shift and Drift</title>
+			</item>
+			<item identifier = "id58" identifierref = "STAT_L2_AGGRESSIVE_GOAL" isvisible = "true">
+				<title>An Aggressive Goal</title>
+			</item>
+			<item identifier = "id59" identifierref = "STAT_L2_MODULE_REVIEW" isvisible = "true">
+				<title>Module Review</title>
+			</item>
+			<item identifier = "id60" identifierref = "ZZZZ_ENDOFMODULE4" isvisible = "true">
+				<title>End of Module</title>
+			</item>
+
+		</organization>
+	</organizations>
+
+	<resources>
+		<resource	identifier = "ZZZZ_BEFOREYOUBEGIN"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/ZZZZ_BEFOREYOUBEGIN.html">
+			<file	href="html/ZZZZ_BEFOREYOUBEGIN.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_MODULE_OBJECTIVES"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_MODULE_OBJECTIVES.html">
+			<file	href="html/STAT_L2_MODULE_OBJECTIVES.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_DATA_TYPES_DISCRETE"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_DATA_TYPES_DISCRETE.html">
+			<file	href="html/STAT_L2_DATA_TYPES_DISCRETE.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_DATA_TYPES_CONTINUOUS"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_DATA_TYPES_CONTINUOUS.html">
+			<file	href="html/STAT_L2_DATA_TYPES_CONTINUOUS.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_CONTINUOUS_VS_DISCRETE"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_CONTINUOUS_VS_DISCRETE/stat_l2_continuous_vs_discrete - Storyline output/index_lms.html">
+			<file	href="html/STAT_L2_CONTINUOUS_VS_DISCRETE/stat_l2_continuous_vs_discrete - Storyline output/index_lms.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_POPULATION_VS_SAMPLE"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_POPULATION_VS_SAMPLE.html">
+			<file	href="html/STAT_L2_POPULATION_VS_SAMPLE.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_WHY_GEN_STATS"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_WHY_GEN_STATS.html">
+			<file	href="html/STAT_L2_WHY_GEN_STATS.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_PROCESS_PERSPECTIVE"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_PROCESS_PERSPECTIVE.html">
+			<file	href="html/STAT_L2_PROCESS_PERSPECTIVE.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_NON_PREDICTIVE_OUTPUT"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_NON_PREDICTIVE_OUTPUT.html">
+			<file	href="html/STAT_L2_NON_PREDICTIVE_OUTPUT.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_HOW_MANY_SAMPLES"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_HOW_MANY_SAMPLES/stat_l2_how_many_samples - Storyline output/index_lms.html">
+			<file	href="html/STAT_L2_HOW_MANY_SAMPLES/stat_l2_how_many_samples - Storyline output/index_lms.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_SAMPLING_PROCESS"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_SAMPLING_PROCESS/stat_l2_sampling_process - Storyline output/index_lms.html">
+			<file	href="html/STAT_L2_SAMPLING_PROCESS/stat_l2_sampling_process - Storyline output/index_lms.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_PREDICTING_FREQUENCIES"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_PREDICTING_FREQUENCIES/stat_l2_predicting_frequencies - Storyline output/index_lms.html">
+			<file	href="html/STAT_L2_PREDICTING_FREQUENCIES/stat_l2_predicting_frequencies - Storyline output/index_lms.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_WHAT_IS_STATISTIC"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_WHAT_IS_STATISTIC.html">
+			<file	href="html/STAT_L2_WHAT_IS_STATISTIC.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_IMPORTANT_POPULATION_ATTRIBUTES"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_IMPORTANT_POPULATION_ATTRIBUTES.html">
+			<file	href="html/STAT_L2_IMPORTANT_POPULATION_ATTRIBUTES.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_MEASURES_LOCATION"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_MEASURES_LOCATION.html">
+			<file	href="html/STAT_L2_MEASURES_LOCATION.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_MODE"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_MODE.html">
+			<file	href="html/STAT_L2_MODE.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_MEDIAN"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_MEDIAN.html">
+			<file	href="html/STAT_L2_MEDIAN.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_MEAN"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_MEAN.html">
+			<file	href="html/STAT_L2_MEAN.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_CALCULATING_MEAN"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_CALCULATING_MEAN.html">
+			<file	href="html/STAT_L2_CALCULATING_MEAN.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_CALCULATE_MODE"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_CALCULATE_MODE/stat_l2_calculate_mode - Storyline output/index_lms.html">
+			<file	href="html/STAT_L2_CALCULATE_MODE/stat_l2_calculate_mode - Storyline output/index_lms.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_17_MT_MODE1"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_17_MT_MODE1.html">
+			<file	href="html/STAT_L2_17_MT_MODE1.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_17_MT_MODE1_TI"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_17_MT_MODE1_TI/stat_l2_17_mt_mode1_ti - Storyline output/index_lms.html">
+			<file	href="html/STAT_L2_17_MT_MODE1_TI/stat_l2_17_mt_mode1_ti - Storyline output/index_lms.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_17_MT_MODE2"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_17_MT_MODE2.html">
+			<file	href="html/STAT_L2_17_MT_MODE2.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_17_MT_MODE2_TI"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_17_MT_MODE2_TI/stat_l2_17_mt_mode2_ti - Storyline output/index_lms.html">
+			<file	href="html/STAT_L2_17_MT_MODE2_TI/stat_l2_17_mt_mode2_ti - Storyline output/index_lms.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_CALCULATE_MEDIAN"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_CALCULATE_MEDIAN/stat_l2_calculate_median - Storyline output/index_lms.html">
+			<file	href="html/STAT_L2_CALCULATE_MEDIAN/stat_l2_calculate_median - Storyline output/index_lms.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_17_MT_MEDIAN"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_17_MT_MEDIAN.html">
+			<file	href="html/STAT_L2_17_MT_MEDIAN.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_17_MT_MEDIAN_TI"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_17_MT_MEDIAN_TI/stat_l2_17_mt_median_ti - Storyline output/index_lms.html">
+			<file	href="html/STAT_L2_17_MT_MEDIAN_TI/stat_l2_17_mt_median_ti - Storyline output/index_lms.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_CALCULATE_MEAN"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_CALCULATE_MEAN/stat_l2_calculate_mean - Storyline output/index_lms.html">
+			<file	href="html/STAT_L2_CALCULATE_MEAN/stat_l2_calculate_mean - Storyline output/index_lms.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_RANGE"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_RANGE.html">
+			<file	href="html/STAT_L2_RANGE.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_VARIANCE"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_VARIANCE.html">
+			<file	href="html/STAT_L2_VARIANCE.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_CALCULATING_VARIANCE-01"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_CALCULATING_VARIANCE-01.html">
+			<file	href="html/STAT_L2_CALCULATING_VARIANCE-01.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_CALCULATING_VARIANCE-02"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_CALCULATING_VARIANCE-02.html">
+			<file	href="html/STAT_L2_CALCULATING_VARIANCE-02.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_17_MT_VARIANCE"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_17_MT_VARIANCE.html">
+			<file	href="html/STAT_L2_17_MT_VARIANCE.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_17_MT_VARIANCE_TI"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_17_MT_VARIANCE_TI/stat_l2_17_mt_variance_ti - Storyline output/index_lms.html">
+			<file	href="html/STAT_L2_17_MT_VARIANCE_TI/stat_l2_17_mt_variance_ti - Storyline output/index_lms.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_STANDARD_DEVIATION"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_STANDARD_DEVIATION.html">
+			<file	href="html/STAT_L2_STANDARD_DEVIATION.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_EQUATION_COMPARISON"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_EQUATION_COMPARISON.html">
+			<file	href="html/STAT_L2_EQUATION_COMPARISON.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_CALCULATING_STANDARD_DEVIATION"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_CALCULATING_STANDARD_DEVIATION.html">
+			<file	href="html/STAT_L2_CALCULATING_STANDARD_DEVIATION.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_CALCULATE_STANDARD_DEVIATION"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_CALCULATE_STANDARD_DEVIATION/stat_l2_calculate_standard_deviation - Storyline output/index_lms.html">
+			<file	href="html/STAT_L2_CALCULATE_STANDARD_DEVIATION/stat_l2_calculate_standard_deviation - Storyline output/index_lms.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_17_MT_DEVIATION"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_17_MT_DEVIATION.html">
+			<file	href="html/STAT_L2_17_MT_DEVIATION.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_17_MT_DEVIATION_TI"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_17_MT_DEVIATION_TI/stat_l2_17_mt_deviation_ti - Storyline output/index_lms.html">
+			<file	href="html/STAT_L2_17_MT_DEVIATION_TI/stat_l2_17_mt_deviation_ti - Storyline output/index_lms.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_POPULATION_DISTRIBUTION"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_POPULATION_DISTRIBUTION.html">
+			<file	href="html/STAT_L2_POPULATION_DISTRIBUTION.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_NORMAL_DIST_PROBABILITIES"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_NORMAL_DIST_PROBABILITIES.html">
+			<file	href="html/STAT_L2_NORMAL_DIST_PROBABILITIES.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_REAL_LIFE_EXAMPLE"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_REAL_LIFE_EXAMPLE.html">
+			<file	href="html/STAT_L2_REAL_LIFE_EXAMPLE.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_3_6_SIGMA_PROCESS"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_3_6_SIGMA_PROCESS.html">
+			<file	href="html/STAT_L2_3_6_SIGMA_PROCESS.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_LONG_TERM_DISTRIBUTION"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_LONG_TERM_DISTRIBUTION.html">
+			<file	href="html/STAT_L2_LONG_TERM_DISTRIBUTION.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_TRAN_VARIATION"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_TRAN_VARIATION.html">
+			<file	href="html/STAT_L2_TRAN_VARIATION.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_DPU_AND_DPMO_01"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_DPU_AND_DPMO_01.html">
+			<file	href="html/STAT_L2_DPU_AND_DPMO_01.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_DPU_AND_DPMO_02"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_DPU_AND_DPMO_02.html">
+			<file	href="html/STAT_L2_DPU_AND_DPMO_02.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_TRAN_DPMO"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_TRAN_DPMO.html">
+			<file	href="html/STAT_L2_TRAN_DPMO.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_17_MT_DPMO"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_17_MT_DPMO.html">
+			<file	href="html/STAT_L2_17_MT_DPMO.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_17_MT_DPMO_TI"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_17_MT_DPMO_TI/stat_l2_17_mt_dpmo_ti - Storyline output/index_lms.html">
+			<file	href="html/STAT_L2_17_MT_DPMO_TI/stat_l2_17_mt_dpmo_ti - Storyline output/index_lms.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_SHIFT_DRIFT"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_SHIFT_DRIFT.html">
+			<file	href="html/STAT_L2_SHIFT_DRIFT.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_AGGRESSIVE_GOAL"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_AGGRESSIVE_GOAL.html">
+			<file	href="html/STAT_L2_AGGRESSIVE_GOAL.html" />
+		</resource>
+		<resource	identifier = "STAT_L2_MODULE_REVIEW"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/STAT_L2_MODULE_REVIEW.html">
+			<file	href="html/STAT_L2_MODULE_REVIEW.html" />
+		</resource>
+		<resource	identifier = "ZZZZ_ENDOFMODULE4"
+					type = "webcontent"
+					adlcp:scormtype="sco"
+					href="html/ZZZZ_ENDOFMODULE4.html">
+			<file	href="html/ZZZZ_ENDOFMODULE4.html" />
+		</resource>
+
+	</resources>
+</manifest>
